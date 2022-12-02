@@ -32,20 +32,19 @@ const addUser = async (data) => {
   }
 };
 
-const deleteuser = async (userId, user, next) => {
+const deleteUser = async (userId, user, next) => {
   try {
-    let sql = "DELETE FROM duck_profile where user _id = ?";
+    let sql = "DELETE FROM duck_profile where id = ?";
     const params = [];
-    if (user.role === 0) {
+    if (user.role === 1) {
       params.push(userId);
     } else {
-      sql += " AND owner = ?;";
-      params.push(userId, user.user_id);
+      params.push(user.id);
     }
     const [rows] = await promisePool.execute(sql, params);
     return rows;
   } catch (e) {
-    console.error("deleteuser", e.message);
+    console.error("deleteUser", e.message);
     next(httpError("Database error", 500));
   }
 };
@@ -67,6 +66,6 @@ module.exports = {
   getAllUsers,
   getUser,
   addUser,
-  deleteuser,
+  deleteUser,
   getUserLogin,
 };
