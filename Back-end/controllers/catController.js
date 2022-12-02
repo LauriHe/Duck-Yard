@@ -1,46 +1,46 @@
 "use strict";
-// catController
+// postController
 const {
-  getCat,
-  getAllCats,
-  addCat,
-  updateCat,
-  deleteCat,
+  getpost,
+  getAllposts,
+  addpost,
+  updatepost,
+  deletepost,
 } = require("../models/catModel");
 const { httpError } = require("../utils/errors");
 const { validationResult } = require("express-validator");
 const sharp = require("sharp");
 const { getCoordinates } = require("../utils/imageMeta");
 
-const cat_list_get = async (req, res, next) => {
+const post_list_get = async (req, res, next) => {
   try {
-    const kissat = await getAllCats(next);
+    const kissat = await getAllposts(next);
     if (kissat.length < 1) {
-      next(httpError("No cats found", 404));
+      next(httpError("No posts found", 404));
       return;
     }
     res.json(kissat);
   } catch (e) {
-    console.error("cat_list_get", e.message);
+    console.error("post_list_get", e.message);
     next(httpError("Internal server error", 500));
   }
 };
 
-const cat_get = async (req, res, next) => {
+const post_get = async (req, res, next) => {
   try {
-    const cat = await getCat(req.params.id, next);
-    if (cat.length < 1) {
-      next(httpError("No cat found", 404));
+    const post = await getpost(req.params.id, next);
+    if (post.length < 1) {
+      next(httpError("No post found", 404));
       return;
     }
-    res.json(cat.pop());
+    res.json(post.pop());
   } catch (e) {
-    console.error("cat_get", e.message);
+    console.error("post_get", e.message);
     next(httpError("Internal server error", 500));
   }
 };
 
-const cat_post = async (req, res, next) => {
+const post_post = async (req, res, next) => {
   try {
     // Extract the validation errors from a request.
     const errors = validationResult(req);
@@ -53,7 +53,7 @@ const cat_post = async (req, res, next) => {
       return;
     }
 
-    console.log("cat_post", req.body, req.file);
+    console.log("post_post", req.body, req.file);
 
     const thumbnail = await sharp(req.file.path)
       .resize(160, 160)
@@ -71,24 +71,24 @@ const cat_post = async (req, res, next) => {
       JSON.stringify(coords),
     ];
 
-    const result = await addCat(data, next);
+    const result = await addpost(data, next);
     if (result.affectedRows < 1) {
       next(httpError("Invalid data", 400));
       return;
     }
     if (thumbnail) {
       res.json({
-        message: "cat added",
-        cat_id: result.insertId,
+        message: "post added",
+        post_id: result.insertId,
       });
     }
   } catch (e) {
-    console.error("cat_post", e.message);
+    console.error("post_post", e.message);
     next(httpError("Internal server error", 500));
   }
 };
 
-const cat_put = async (req, res, next) => {
+const post_put = async (req, res, next) => {
   try {
     // Extract the validation errors from a request.
     const errors = validationResult(req);
@@ -121,32 +121,32 @@ const cat_put = async (req, res, next) => {
       ];
     }
 
-    console.log("cat_put", data);
+    console.log("post_put", data);
 
-    const result = await updateCat(data, req.user, next);
+    const result = await updatepost(data, req.user, next);
     if (result.affectedRows < 1) {
-      next(httpError("No cat modified", 400));
+      next(httpError("No post modified", 400));
       return;
     }
 
     res.json({
-      message: "cat modified",
+      message: "post modified",
     });
   } catch (e) {
-    console.error("cat_put", e.message);
+    console.error("post_put", e.message);
     next(httpError("Internal server error", 500));
   }
 };
 
-const cat_delete = async (req, res, next) => {
+const post_delete = async (req, res, next) => {
   try {
-    const result = await deleteCat(req.params.id, req.user, next);
+    const result = await deletepost(req.params.id, req.user, next);
     if (result.affectedRows < 1) {
-      next(httpError("No cat deleted", 400));
+      next(httpError("No post deleted", 400));
       return;
     }
     res.json({
-      message: "cat deleted",
+      message: "post deleted",
     });
   } catch (e) {
     console.error("delete", e.message);
@@ -155,9 +155,9 @@ const cat_delete = async (req, res, next) => {
 };
 
 module.exports = {
-  cat_list_get,
-  cat_get,
-  cat_post,
-  cat_put,
-  cat_delete,
+  post_list_get,
+  post_get,
+  post_post,
+  post_put,
+  post_delete,
 };

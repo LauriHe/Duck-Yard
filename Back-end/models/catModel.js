@@ -3,93 +3,91 @@ const pool = require("../database/db");
 const { httpError } = require("../utils/errors");
 const promisePool = pool.promise();
 
-const getAllCats = async (next) => {
+const getAllposts = async (next) => {
   try {
     const [rows] =
-      await promisePool.execute(`SELECT cat_id, wop_cat.name, weight, owner, filename, birthdate, wop_user.name as ownername 
-    FROM wop_cat 
-    INNER JOIN wop_user 
-    ON wop_user.user_id = wop_cat.owner`);
+      await promisePool.execute(`SELECT *  
+    FROM duck_post`);
     return rows;
   } catch (e) {
-    console.error("getAllCats", e.message);
+    console.error("getAllposts", e.message);
     next(httpError("database error", 500));
   }
 };
 
-const getCat = async (catId, next) => {
+const getpost = async (postId, next) => {
   try {
     const [rows] = await promisePool.execute(
-      `SELECT cat_id, wop_cat.name, weight, owner, filename, birthdate, coords, wop_user.name as ownername 
-      FROM wop_cat 
+      `SELECT id, heading, price, image, description, profileid, duck_profile.name, duck_profile.email, duck_profile.lopostion, duck_profile.image,  
+      FROM duck_post 
       INNER JOIN wop_user 
-      ON wop_user.user_id = wop_cat.owner 
-      WHERE cat_id = ?;`,
-      [catId]
+      ON wop_user.user_id = wop_post.owner 
+      WHERE post_id = ?;`,
+      [postId]
     );
     return rows;
   } catch (e) {
-    console.error("getCat", e.message);
+    console.error("getpost", e.message);
     next(httpError("database error", 500));
   }
 };
 
-const addCat = async (data, next) => {
+const addpost = async (data, next) => {
   try {
     const [rows] = await promisePool.execute(
-      `INSERT INTO wop_cat (name, birthdate, weight, owner, filename, coords) VALUES (?, ?, ?, ?, ?, ?);`,
+      `INSERT INTO wop_post (name, birthdate, weight, owner, filename, coords) VALUES (?, ?, ?, ?, ?, ?);`,
       data
     );
     return rows;
   } catch (e) {
-    console.error("addCat", e.message);
+    console.error("addpost", e.message);
     next(httpError("database error", 500));
   }
 };
 
-const updateCat = async (data, user, next) => {
+const updatepost = async (data, user, next) => {
   try {
     if ((user.role = 0)) {
       const [rows] = await promisePool.execute(
-        `UPDATE wop_cat SET name = ?, birthdate = ?, weight = ?, owner = ? WHERE cat_id = ?`,
+        `UPDATE wop_post SET name = ?, birthdate = ?, weight = ?, owner = ? WHERE post_id = ?`,
         data
       );
       return rows;
     } else {
       const [rows] = await promisePool.execute(
-        `UPDATE wop_cat SET name = ?, birthdate = ?, weight = ? WHERE cat_id = ? AND owner = ?;`,
+        `UPDATE wop_post SET name = ?, birthdate = ?, weight = ? WHERE post_id = ? AND owner = ?;`,
         data
       );
       return rows;
     }
   } catch (e) {
-    console.error("updateCat", e.message);
+    console.error("updatepost", e.message);
     next(httpError("database error", 500));
   }
 };
 
-const deleteCat = async (catId, user, next) => {
+const deletepost = async (postId, user, next) => {
   try {
-    let sql = "DELETE FROM wop_cat where cat_id = ?";
+    let sql = "DELETE FROM wop_post where post_id = ?";
     const params = [];
     if (user.role === 0) {
-      params.push(catId);
+      params.push(postId);
     } else {
       sql += " AND owner = ?;";
-      params.push(catId, user.user_id);
+      params.push(postId, user.user_id);
     }
     const [rows] = await promisePool.execute(sql, params);
     return rows;
   } catch (e) {
-    console.error("deleteCat", e.message);
+    console.error("deletepost", e.message);
     next(httpError("Database error", 500));
   }
 };
 
 module.exports = {
-  getAllCats,
-  getCat,
-  addCat,
-  updateCat,
-  deleteCat,
+  getAllposts,
+  getpost,
+  addpost,
+  updatepost,
+  deletepost,
 };

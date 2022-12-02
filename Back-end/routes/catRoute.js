@@ -14,34 +14,34 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer({ dest: "uploads/", fileFilter });
 const {
-  cat_list_get,
-  cat_get,
-  cat_post,
-  cat_put,
-  cat_delete,
+  post_list_get,
+  post_get,
+  post_post,
+  post_put,
+  post_delete,
 } = require("../controllers/catController");
 const router = express.Router();
 
 router
   .route("/")
-  .get(cat_list_get)
+  .get(post_list_get)
   .post(
     upload.single("cat"),
     body("name").isLength({ min: 1 }).escape(),
     body("birthdate").isDate(),
     body("weight").isNumeric(),
-    cat_post
+    post_post
   );
 
 router
   .route("/:id")
-  .get(cat_get)
-  .delete(cat_delete)
+  .get(post_get)
+  .delete(post_delete)
   .put(
     body("name").isLength({ min: 1 }).escape(),
     body("birthdate").isDate(),
     body("weight").isNumeric(),
-    cat_put
+    post_put
   );
 
 module.exports = router;
