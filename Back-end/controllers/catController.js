@@ -6,7 +6,7 @@ const {
   addpost,
   updatepost,
   deletepost,
-} = require("../models/postModel");
+} = require("../models/catModel");
 const { httpError } = require("../utils/errors");
 const { validationResult } = require("express-validator");
 const sharp = require("sharp");
