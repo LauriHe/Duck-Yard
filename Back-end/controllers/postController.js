@@ -6,7 +6,8 @@ const {
   addpost,
   updatepost,
   deletepost,
-} = require("../models/catModel");
+  getpostLikes,
+} = require("../models/postModel");
 const { httpError } = require("../utils/errors");
 const { validationResult } = require("express-validator");
 const sharp = require("sharp");
@@ -154,10 +155,25 @@ const post_delete = async (req, res, next) => {
   }
 };
 
+const post_likes_get = async (req, res, next) => {
+  try {
+    const post = await getpostLikes(req.params.id, next);
+    if (post.length < 1) {
+      next(httpError("No post found", 404));
+      return;
+    }
+    res.json(post.pop());
+  } catch (e) {
+    console.error("post_get", e.message);
+    next(httpError("Internal server error", 500));
+  }
+};
+
 module.exports = {
   post_list_get,
   post_get,
   post_post,
   post_put,
   post_delete,
+  post_likes_get,
 };

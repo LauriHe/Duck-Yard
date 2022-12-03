@@ -19,14 +19,15 @@ const {
   post_post,
   post_put,
   post_delete,
-} = require("../controllers/catController");
+  post_likes_get,
+} = require("../controllers/postController");
 const router = express.Router();
 
 router
   .route("/")
   .get(post_list_get)
   .post(
-    upload.single("cat"),
+    upload.single("post"),
     body("name").isLength({ min: 1 }).escape(),
     body("birthdate").isDate(),
     body("weight").isNumeric(),
@@ -43,5 +44,7 @@ router
     body("weight").isNumeric(),
     post_put
   );
+
+router.route("/likes/:id").get(post_likes_get);
 
 module.exports = router;

@@ -5,8 +5,7 @@ const promisePool = pool.promise();
 
 const getAllposts = async (next) => {
   try {
-    const [rows] =
-      await promisePool.execute(`SELECT *  
+    const [rows] = await promisePool.execute(`SELECT *  
     FROM duck_post`);
     return rows;
   } catch (e) {
@@ -84,10 +83,24 @@ const deletepost = async (postId, user, next) => {
   }
 };
 
+const getpostLikes = async (postId, next) => {
+  try {
+    const [rows] = await promisePool.execute(
+      `SELECT COUNT(*) AS "Number of likes" FROM duck_likes WHERE postid = ?`,
+      [postId]
+    );
+    return rows;
+  } catch (e) {
+    console.error("getpost", e.message);
+    next(httpError("database error", 500));
+  }
+};
+
 module.exports = {
   getAllposts,
   getpost,
   addpost,
   updatepost,
   deletepost,
+  getpostLikes,
 };
