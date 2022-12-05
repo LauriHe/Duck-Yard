@@ -5,6 +5,7 @@ const cors = require("cors");
 const authRoute = require("./routes/authRoute");
 const postRoute = require("./routes/postRoute");
 const userRoute = require("./routes/userRoute");
+const categoryRoute = require("./routes/categoryRoute");
 const { httpError } = require("./utils/errors");
 const passport = require("./utils/pass");
 const app = express();
@@ -38,6 +39,11 @@ app.use(
 app.use(
   "/user",
   /*passport.authenticate("jwt", { session: false }),*/ userRoute
+);
+
+app.use(
+  "/category",
+  /*passport.authenticate("jwt", { session: false }),*/ categoryRoute
 );
 
 app.use((req, res, next) => {
