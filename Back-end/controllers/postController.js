@@ -8,6 +8,7 @@ const {
   deletepost,
   getpostLikes,
   getpostCategories,
+  getpostComments,
 } = require("../models/postModel");
 const { httpError } = require("../utils/errors");
 const { validationResult } = require("express-validator");
@@ -16,12 +17,12 @@ const { getCoordinates } = require("../utils/imageMeta");
 
 const post_list_get = async (req, res, next) => {
   try {
-    const kissat = await getAllposts(next);
-    if (kissat.length < 1) {
+    const post = await getAllposts(next);
+    if (post.length < 1) {
       next(httpError("No posts found", 404));
       return;
     }
-    res.json(kissat);
+    res.json(post);
   } catch (e) {
     console.error("post_list_get", e.message);
     next(httpError("Internal server error", 500));
@@ -170,6 +171,20 @@ const post_likes_get = async (req, res, next) => {
   }
 };
 
+const post_comments_get = async (req, res, next) => {
+  try {
+    const post = await getpostComments(req.params.id, next);
+    if (post.length < 1) {
+      next(httpError("No post found", 404));
+      return;
+    }
+    res.json(post);
+  } catch (e) {
+    console.error("post_get", e.message);
+    next(httpError("Internal server error", 500));
+  }
+};
+
 const post_categories_get = async (req, res, next) => {
   try {
     const post = await getpostCategories(req.params.id, next);
@@ -192,4 +207,5 @@ module.exports = {
   post_delete,
   post_likes_get,
   post_categories_get,
+  post_comments_get,
 };

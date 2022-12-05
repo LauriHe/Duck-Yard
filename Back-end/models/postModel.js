@@ -17,13 +17,14 @@ const getAllposts = async (next) => {
 const getpost = async (postId, next) => {
   try {
     const [rows] = await promisePool.execute(
-      `SELECT id, heading, price, image, description, profileid, duck_profile.name, duck_profile.email, duck_profile.lopostion, duck_profile.image,  
+      `SELECT id, heading, price, image, description, profileid, duck_profile.name, duck_profile.email, duck_profile.location, duck_profile.image  
       FROM duck_post 
-      INNER JOIN wop_user 
-      ON wop_user.user_id = wop_post.owner 
-      WHERE post_id = ?;`,
+      INNER JOIN duck_profile 
+      ON duck_profile.id = duck_post.profileid 
+      WHERE duck_post.id = ?;`,
       [postId]
     );
+    console.log(rows);
     return rows;
   } catch (e) {
     console.error("getpost", e.message);
@@ -96,6 +97,19 @@ const getpostLikes = async (postId, next) => {
   }
 };
 
+const getpostComments = async (postId, next) => {
+  try {
+    const [rows] = await promisePool.execute(
+      `SELECT text FROM duck_comments INNER JOIN duck_post ON duck_post.id = duck_comments.postid WHERE duck_post.id = ?`,
+      [postId]
+    );
+    return rows;
+  } catch (e) {
+    console.error("getpost", e.message);
+    next(httpError("database error", 500));
+  }
+};
+
 const getpostCategories = async (postId, next) => {
   try {
     const [rows] = await promisePool.execute(
@@ -120,4 +134,5 @@ module.exports = {
   deletepost,
   getpostLikes,
   getpostCategories,
+  getpostComments,
 };
