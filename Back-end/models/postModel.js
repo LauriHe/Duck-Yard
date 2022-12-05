@@ -17,7 +17,7 @@ const getAllposts = async (next) => {
 const getpost = async (postId, next) => {
   try {
     const [rows] = await promisePool.execute(
-      `SELECT id, heading, price, image, description, profileid, duck_profile.name, duck_profile.email, duck_profile.location, duck_profile.image  
+      `SELECT duck_post.id, duck_post.heading, duck_post.price, duck_post.image, duck_post.description, duck_post.profileid, duck_profile.name, duck_profile.email, duck_profile.location, duck_profile.image  
       FROM duck_post 
       INNER JOIN duck_profile 
       ON duck_profile.id = duck_post.profileid 
