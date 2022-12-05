@@ -7,6 +7,7 @@ const {
   updatepost,
   deletepost,
   getpostLikes,
+  getpostCategories,
 } = require("../models/postModel");
 const { httpError } = require("../utils/errors");
 const { validationResult } = require("express-validator");
@@ -169,6 +170,20 @@ const post_likes_get = async (req, res, next) => {
   }
 };
 
+const post_categories_get = async (req, res, next) => {
+  try {
+    const post = await getpostCategories(req.params.id, next);
+    if (post.length < 1) {
+      next(httpError("No post found", 404));
+      return;
+    }
+    res.json(post);
+  } catch (e) {
+    console.error("post_get", e.message);
+    next(httpError("Internal server error", 500));
+  }
+};
+
 module.exports = {
   post_list_get,
   post_get,
@@ -176,4 +191,5 @@ module.exports = {
   post_put,
   post_delete,
   post_likes_get,
+  post_categories_get,
 };

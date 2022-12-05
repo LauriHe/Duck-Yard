@@ -20,6 +20,7 @@ const {
   post_put,
   post_delete,
   post_likes_get,
+  post_categories_get,
 } = require("../controllers/postController");
 const router = express.Router();
 
@@ -46,5 +47,7 @@ router
   );
 
 router.route("/likes/:id").get(post_likes_get);
+
+router.route("/categories/:id").get(post_categories_get);
 
 module.exports = router;

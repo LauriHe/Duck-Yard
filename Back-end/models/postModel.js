@@ -96,6 +96,22 @@ const getpostLikes = async (postId, next) => {
   }
 };
 
+const getpostCategories = async (postId, next) => {
+  try {
+    const [rows] = await promisePool.execute(
+      `SELECT duck_category.name 
+      FROM duck_category INNER JOIN duck_includes 
+      ON duck_category.id = duck_includes.categoryid
+      where duck_includes.postid = ?;`,
+      [postId]
+    );
+    return rows;
+  } catch (e) {
+    console.error("getpost", e.message);
+    next(httpError("database error", 500));
+  }
+};
+
 module.exports = {
   getAllposts,
   getpost,
@@ -103,4 +119,5 @@ module.exports = {
   updatepost,
   deletepost,
   getpostLikes,
+  getpostCategories,
 };
