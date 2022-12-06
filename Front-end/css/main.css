@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --text-color: black;
+  --bg-color: white;
+  --main-color: #4da87d;
+  --secondary-color: #1d5c5dce;
+  --shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+@font-face {
+  font-family: "Comfortaa";
+  src: url("../fonts/Comfortaa-VariableFont_wght.ttf");
+}
+
+body {
+  font-family: "Comfortaa";
+  background-color: var(--bg-color);
+}

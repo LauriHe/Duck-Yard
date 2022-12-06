@@ -1,27 +1,8 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --text-color: black;
-  --bg-color: white;
-  --main-color: #4da87d;
-  --secondary-color: #1d5c5dce;
-  --shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
-}
-
-@font-face {
-  font-family: "Comfortaa";
-  src: url("Comfortaa-VariableFont_wght.ttf");
-}
+@import url("main.css");
 
 body {
-  font-family: "Comfortaa";
   display: flex;
   justify-content: center;
-  background-color: var(--bg-color);
 }
 
 .container {
@@ -143,7 +124,7 @@ aside > h2 {
 .cardImage {
   width: 100%;
   height: 80%;
-  background-image: url("images/laptop.jpeg");
+  background-image: url("../images/laptop.jpeg");
   background-size: cover;
 }
 
@@ -153,7 +134,7 @@ aside > h2 {
       rgba(35, 9, 42, 0.2),
       rgb(35, 9, 42, 0.2)
     ),
-    url("images/laptop.jpeg");
+    url("../images/laptop.jpeg");
 }
 
 .cardText {
@@ -242,7 +223,7 @@ a {
       rgba(0, 0, 0, 0.092),
       var(--secondary-color)
     ),
-    url("images/laptop.jpeg");
+    url("../images/laptop.jpeg");
 }
 
 .mainCard > .cardText {
