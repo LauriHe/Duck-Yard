@@ -107,7 +107,7 @@ nav button i {
   color: var(--main-color);
 }
 
-.navMenuOpen {
+.MenuOpen {
   height: 100vh;
   overflow: hidden;
 }

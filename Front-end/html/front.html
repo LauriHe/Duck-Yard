@@ -9,6 +9,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="../js/menu.js" defer></script>
+    <script src="../js/categoryFilterMenu.js" defer></script>
     <link rel="stylesheet" href="../css/front.css" />
     <title>Kauppa Sovellus</title>
   </head>
@@ -34,17 +35,93 @@
         </ul>
       </ul>
       <main>
-        <div id="dropdownContainer">
-          <div class="dropdown">
-            <span>Filtteri 1</span>
+        <div id="categoryfilterContainer">
+          <button class="categoryfilterButton" id="categoryButton">
+            <div>Kategoriat</div>
+            <i class="fa-solid fa-sliders"></i>
+          </button>
+          <button class="categoryfilterButton" id="filterButton">
+            <div>Suodata</div>
+            <i class="fa-solid fa-sliders"></i>
+          </button>
+        </div>
+        <div id="categoryMenu" class="categoryFiterMenu">
+          <div class="categoryItem hidden">
+            <input
+              type="radio"
+              id="category1"
+              value="category1"
+              name="selectCategory"
+            />
+            <label for="category1">Kategoria 1</label>
           </div>
-          <div class="dropdown">
-            <span>Filtteri 2</span>
+          <div class="categoryItem hidden">
+            <input
+              type="radio"
+              id="category2"
+              value="category2"
+              name="selectCategory"
+            />
+            <label for="category2">Kategoria 2</label>
           </div>
-          <div class="dropdown">
-            <span>Filtteri 3</span>
+          <div class="categoryItem hidden">
+            <input
+              type="radio"
+              id="category3"
+              value="category3"
+              name="selectCategory"
+            />
+            <label for="category3">Kategoria 3</label>
           </div>
-          <span id="moreFilters">Lisää</span>
+          <div class="categoryItem hidden">
+            <input
+              type="radio"
+              id="category4"
+              value="category4"
+              name="selectCategory"
+            />
+            <label for="category4">Kategoria 4</label>
+          </div>
+        </div>
+        <div id="filterMenu" class="categoryFiterMenu">
+          <h3 class="filterItem hidden">Kunto</h3>
+          <div class="filterItem hidden">
+            <input
+              type="radio"
+              id="condition1"
+              value="condition1"
+              name="selectCondition"
+            />
+            <label for="condition1">Kunto 1</label>
+          </div>
+          <div class="filterItem hidden">
+            <input
+              type="radio"
+              id="condition2"
+              value="condition2"
+              name="selectCondition"
+            />
+            <label for="condition2">Kunto 2</label>
+          </div>
+          <div class="filterItem hidden">
+            <input
+              type="radio"
+              id="condition3"
+              value="condition3"
+              name="selectCondition"
+            />
+            <label for="condition3">Kunto 3</label>
+          </div>
+          <div class="filterItem hidden">
+            <input
+              type="radio"
+              id="condition4"
+              value="condition4"
+              name="selectCondition"
+            />
+            <label for="condition4">Kunto 4</label>
+          </div>
+          <h3 class="filterItem hidden">Sijainti</h3>
         </div>
         <h2>Tietokoneet</h2>
         <div class="mainCard">

@@ -12,17 +12,17 @@ function delay(time) {
 }
 
 menuButton.addEventListener("click", () => {
-  container.classList.toggle("navMenuOpen");
+  container.classList.toggle("MenuOpen");
   menu.classList.toggle("width-100");
-  if (menuHidden) {
+  if (categoryMenuHidden) {
     icon.classList.remove("fa-bars");
     icon.classList.add("fa-x");
     delay(100).then(() => menuItems.classList.toggle("hidden"));
-    menuHidden = false;
+    categoryMenuHidden = false;
   } else {
     icon.classList.remove("fa-x");
     icon.classList.add("fa-bars");
     menuItems.classList.toggle("hidden");
-    menuHidden = true;
+    categoryMenuHidden = true;
   }
 });

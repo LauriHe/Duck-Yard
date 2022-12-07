@@ -77,8 +77,6 @@ aside > h2 {
 
 main {
   width: 100%;
-  padding: 2em 0;
-  padding-top: 1em;
   position: relative;
 }
 
@@ -93,52 +91,74 @@ main > h2 {
   position: absolute;
 }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-  margin-bottom: 2em;
-  margin-left: 1rem;
-  padding: 1em;
-  border-radius: 1em;
-  font-size: 0.75em;
-  font-weight: 600;
-  box-shadow: var(--shadow);
-  color: var(--main-color);
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: white;
-  color: black;
-  width: 150%;
-  z-index: 1;
-  border-radius: 1em;
-  box-shadow: var(--shadow);
-  top: 0;
-  left: 0;
-}
-
-.dropdown-content > p {
-  height: 3em;
+#categoryfilterContainer {
+  margin: 2rem 1rem;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+}
+
+.categoryfilterButton {
+  border: 0;
+  background-color: var(--bg-color);
+  box-shadow: var(--shadow);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  cursor: pointer;
+}
+
+.categoryfilterButton > * {
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+.categoryFiterMenu {
+  position: absolute;
+  z-index: 10;
+  height: 0rem;
+  width: 100%;
+  top: 4rem;
+  right: 0;
+  background-color: white;
+  transition: 0.7s;
+  border-radius: 1rem;
+  padding: 0rem;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
 }
 
-.dropdown-content > p:hover {
-  background-color: #f1f1f1;
-  border-radius: 1em;
+#filterMenu {
+  align-content: flex-start;
+  justify-content: space-between;
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
+#categoryMenu > div {
+  height: 2rem;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
-#moreFilters {
-  font-size: 0.75rem;
-  margin-left: 1em;
-  color: var(--text-color);
+#categoryMenu input {
+  height: 1rem;
+  width: 1rem;
+}
+
+#filterMenu h3 {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+#filterMenu h3:last-child {
+  text-align: center;
+  width: 100%;
+  margin-top: 2rem;
 }
 
 .mainCard {
@@ -146,6 +166,7 @@ main > h2 {
   height: 25em;
   margin-bottom: 1em;
   position: relative;
+  border-radius: 1rem;
   box-shadow: var(--shadow);
 }
 
@@ -157,6 +178,7 @@ main > h2 {
       var(--secondary-color)
     ),
     url("../images/laptop.jpeg");
+  border-radius: 1rem;
 }
 
 .mainCard > .cardText {
