@@ -1,6 +1,7 @@
 "use strict";
 
 const url = "http://localhost:3000";
+const liveServerUrl = "http://127.0.0.1:5500";
 
 function createCards(posts) {
   console.log(posts);
@@ -14,6 +15,13 @@ function createCards(posts) {
 
     const img = document.createElement("div");
     img.classList.add("cardImage");
+    const imgUrl = liveServerUrl + "/Back-end/uploads/" + post.image;
+    img.style.cssText += `background-image:linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.092),
+      var(--secondary-color)
+    ),
+    url("${imgUrl}");`;
 
     const heading = document.createElement("p");
     heading.innerHTML = post.heading;
