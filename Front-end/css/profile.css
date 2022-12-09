@@ -1,1 +1,46 @@
 @import url("main.css");
+
+@import url("nav.css");
+
+/* Main */
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  position: relative;
+  width: 100vw;
+  box-shadow: var(--shadow);
+  margin: 0 0;
+}
+
+main {
+  width: 100%;
+  position: relative;
+}
+
+/* Profile text */
+
+
+/* Footer */
+footer {
+  width: 100%;
+  height: 5vh;
+  background-color: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+footer > h2 {
+  font-size: 1rem;
+  margin-bottom: 1em;
+  color: var(--main-color);
+}
+
+@media only screen and (min-width: 450px) {
+  .container {
+    width: 450px;
+  }
+}
