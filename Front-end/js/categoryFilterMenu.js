@@ -16,38 +16,56 @@ function delay(time) {
 }
 
 categoryButton.addEventListener("click", () => {
-  container.classList.toggle("MenuOpen");
   if (categoryMenuHidden) {
+    filterMenu.style.height = "0rem";
+    filterMenu.style.padding = "0rem";
+
     categoryMenu.style.height = "20rem";
     categoryMenu.style.padding = "2rem";
+
+    filterItem.forEach((element) => element.classList.add("hidden"));
+    container.classList.add("MenuOpen");
     delay(100).then(() =>
-      categoryItem.forEach((element) => element.classList.toggle("hidden"))
+      categoryItem.forEach((element) => element.classList.remove("hidden"))
     );
+
     categoryMenuHidden = false;
+    filterMenuHidden = true;
   } else {
     categoryMenu.style.height = "0";
     categoryMenu.style.padding = "0rem";
+
+    container.classList.remove("MenuOpen");
     delay(100).then(() =>
-      categoryItem.forEach((element) => element.classList.toggle("hidden"))
+      categoryItem.forEach((element) => element.classList.add("hidden"))
     );
     categoryMenuHidden = true;
   }
 });
 
 filterButton.addEventListener("click", () => {
-  container.classList.toggle("MenuOpen");
   if (filterMenuHidden) {
+    categoryMenu.style.height = "0rem";
+    categoryMenu.style.padding = "0rem";
+
     filterMenu.style.height = "20rem";
     filterMenu.style.padding = "2rem";
+
+    categoryItem.forEach((element) => element.classList.add("hidden"));
+    container.classList.add("MenuOpen");
     delay(100).then(() =>
-      filterItem.forEach((element) => element.classList.toggle("hidden"))
+      filterItem.forEach((element) => element.classList.remove("hidden"))
     );
+
     filterMenuHidden = false;
+    categoryMenuHidden = true;
   } else {
     filterMenu.style.height = "0";
     filterMenu.style.padding = "0rem";
+
+    container.classList.remove("MenuOpen");
     delay(100).then(() =>
-      filterItem.forEach((element) => element.classList.toggle("hidden"))
+      filterItem.forEach((element) => element.classList.add("hidden"))
     );
     filterMenuHidden = true;
   }

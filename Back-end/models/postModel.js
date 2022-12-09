@@ -5,8 +5,10 @@ const promisePool = pool.promise();
 
 const getAllposts = async (next) => {
   try {
-    const [rows] = await promisePool.execute(`SELECT *  
-    FROM duck_post`);
+    const [rows] =
+      await promisePool.execute(`SELECT duck_post.*, duck_profile.location
+    FROM duck_post INNER JOIN duck_profile 
+    ON duck_profile.id = duck_post.profileid;`);
     return rows;
   } catch (e) {
     console.error("getAllposts", e.message);
