@@ -148,7 +148,7 @@ main > h2 {
   margin-bottom: 1rem;
 }
 
-#filterMenu h3:last-child {
+#filterMenu h3 {
   text-align: center;
   width: 100%;
   margin-top: 2rem;
