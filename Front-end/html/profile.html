@@ -10,9 +10,10 @@
     ></script>
     <script src="../js/menu.js" defer></script>
     <script src="../js/categoryFilterMenu.js" defer></script>
+    <script src="../js/profile.js" defer></script>
     <link rel="stylesheet" href="../css/profile.css" />
     <title>Duckyard - Profile</title>
-    <link rel="icon" type="image/x-icon" href="../images/Ankkalogo3.png" />
+    <link rel="icon" type="image/x-icon" href="../images/Ankkalogo.svg" />
   </head>
 
   <body>
@@ -32,7 +33,7 @@
       <ul id="navMenu">
         <ul id="navMenuItems" class="hidden">
           <li><a href="front.html">Etusivu</a></li>
-          <li><a href="" style="color:#1d5c5dce">Profiili</a></li>
+          <li><a href="" style="color: #1d5c5dce">Profiili</a></li>
           <li><a href="">Lisää ilmoitus</a></li>
           <li><a href="">Tykkäykset</a></li>
           <li><a href="">Kirjaudu ulos</a></li>
@@ -41,9 +42,17 @@
 
       <!-- Main page -->
       <main>
-        <div>
-
+        <!-- profile information -->
+        <div class="profCard">
+          <div class="profImg"></div>
+          <h3>Omat tiedot:</h3>
+          <p class="profName">Matti Meikäläinen</p>
+          <p class="profPuh">+050 12345678</p>
+          <p class="profEmail">matti.meik@gmail.com</p>
+          <p class="profPassword">*******</p>
+          <p class="profArea">Helsinki</p>
         </div>
+        <i id="settings" class="fa-solid fa-gear fa-2xl"></i>
       </main>
 
       <!-- Footer -->

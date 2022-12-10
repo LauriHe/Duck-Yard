@@ -6,6 +6,7 @@
 body {
   display: flex;
   justify-content: center;
+  background-color: #131614;
 }
 
 .container {
@@ -18,10 +19,31 @@ body {
 main {
   width: 100%;
   position: relative;
+  background-color: white;
 }
 
 /* Profile text */
+.profCard{
+  position:relative;
+  padding:15px;
+}
 
+.profCard>*{
+  text-align: center;
+  padding-top: 10px;
+}
+
+/* After profile */
+#settings{
+  position: absolute;
+  right: 30px;
+  bottom: 20px; 
+}
+
+#settings:hover{
+  cursor: pointer;
+  color: #4DA87D;
+}
 
 /* Footer */
 footer {
