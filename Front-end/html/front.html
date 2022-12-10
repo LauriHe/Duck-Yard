@@ -27,106 +27,119 @@
           </button>
         </div>
       </nav>
-      <ul id="navMenu">
-        <ul id="navMenuItems" class="hidden">
-          <li><a href="">Profiili</a></li>
-          <li><a href="">Lisää ilmoitus</a></li>
-          <li><a href="">Tykkäykset</a></li>
-          <li><a href="">Kirjaudu ulos</a></li>
-        </ul>
-      </ul>
-      <main>
-        <div id="categoryfilterContainer">
-          <button class="categoryfilterButton" id="categoryButton">
-            <div>Kategoriat</div>
-            <i class="fa-solid fa-sliders"></i>
-          </button>
-          <button class="categoryfilterButton" id="filterButton">
-            <div>Suodata</div>
-            <i class="fa-solid fa-sliders"></i>
-          </button>
+      <div id="mainContainer">
+        <main>
+          <div id="categoryfilterContainer">
+            <button class="categoryfilterButton" id="categoryButton">
+              <div>Kategoriat</div>
+              <i class="fa-solid fa-sliders"></i>
+            </button>
+            <button class="categoryfilterButton" id="filterButton">
+              <div>Suodata</div>
+              <i class="fa-solid fa-sliders"></i>
+            </button>
+          </div>
+          <div id="categoryMenu" class="categoryFiterMenu menuHidden">
+            <div class="categoryItem hidden">
+              <input
+                type="radio"
+                id="category1"
+                value="category1"
+                name="selectCategory"
+              />
+              <label for="category1">Kategoria 1</label>
+            </div>
+            <div class="categoryItem hidden">
+              <input
+                type="radio"
+                id="category2"
+                value="category2"
+                name="selectCategory"
+              />
+              <label for="category2">Kategoria 2</label>
+            </div>
+            <div class="categoryItem hidden">
+              <input
+                type="radio"
+                id="category3"
+                value="category3"
+                name="selectCategory"
+              />
+              <label for="category3">Kategoria 3</label>
+            </div>
+            <div class="categoryItem hidden">
+              <input
+                type="radio"
+                id="category4"
+                value="category4"
+                name="selectCategory"
+              />
+              <label for="category4">Kategoria 4</label>
+            </div>
+          </div>
+          <div id="filterMenu" class="categoryFiterMenu menuHidden">
+            <h3 class="filterItem hidden">Kunto</h3>
+            <div class="filterItem hidden">
+              <input
+                type="radio"
+                id="condition1"
+                value="condition1"
+                name="selectCondition"
+              />
+              <label for="condition1">Kunto 1</label>
+            </div>
+            <div class="filterItem hidden">
+              <input
+                type="radio"
+                id="condition2"
+                value="condition2"
+                name="selectCondition"
+              />
+              <label for="condition2">Kunto 2</label>
+            </div>
+            <div class="filterItem hidden">
+              <input
+                type="radio"
+                id="condition3"
+                value="condition3"
+                name="selectCondition"
+              />
+              <label for="condition3">Kunto 3</label>
+            </div>
+            <div class="filterItem hidden">
+              <input
+                type="radio"
+                id="condition4"
+                value="condition4"
+                name="selectCondition"
+              />
+              <label for="condition4">Kunto 4</label>
+            </div>
+            <h3 class="filterItem hidden">Sijainti</h3>
+            <h3 class="filterItem hidden">Hinta</h3>
+          </div>
+          <h2>Tietokoneet</h2>
+          <div id="mainCards"></div>
+        </main>
+        <div id="navMenuContainer">
+          <ul id="navMenu">
+            <ul id="navMenuItems" class="hidden">
+              <li><i class="fa-regular fa-user"></i><a href="">Profiili</a></li>
+              <li>
+                <i class="fa-regular fa-square-plus"></i
+                ><a href="">Lisää ilmoitus</a>
+              </li>
+              <li>
+                <i class="fa-regular fa-heart"></i><a href="">Tykkäykset</a>
+              </li>
+              <li>
+                <i class="fa-solid fa-arrow-right-from-bracket"></i
+                ><a href="">Kirjaudu ulos</a>
+              </li>
+            </ul>
+          </ul>
         </div>
-        <div id="categoryMenu" class="categoryFiterMenu">
-          <div class="categoryItem hidden">
-            <input
-              type="radio"
-              id="category1"
-              value="category1"
-              name="selectCategory"
-            />
-            <label for="category1">Kategoria 1</label>
-          </div>
-          <div class="categoryItem hidden">
-            <input
-              type="radio"
-              id="category2"
-              value="category2"
-              name="selectCategory"
-            />
-            <label for="category2">Kategoria 2</label>
-          </div>
-          <div class="categoryItem hidden">
-            <input
-              type="radio"
-              id="category3"
-              value="category3"
-              name="selectCategory"
-            />
-            <label for="category3">Kategoria 3</label>
-          </div>
-          <div class="categoryItem hidden">
-            <input
-              type="radio"
-              id="category4"
-              value="category4"
-              name="selectCategory"
-            />
-            <label for="category4">Kategoria 4</label>
-          </div>
-        </div>
-        <div id="filterMenu" class="categoryFiterMenu">
-          <h3 class="filterItem hidden">Kunto</h3>
-          <div class="filterItem hidden">
-            <input
-              type="radio"
-              id="condition1"
-              value="condition1"
-              name="selectCondition"
-            />
-            <label for="condition1">Kunto 1</label>
-          </div>
-          <div class="filterItem hidden">
-            <input
-              type="radio"
-              id="condition2"
-              value="condition2"
-              name="selectCondition"
-            />
-            <label for="condition2">Kunto 2</label>
-          </div>
-          <div class="filterItem hidden">
-            <input
-              type="radio"
-              id="condition3"
-              value="condition3"
-              name="selectCondition"
-            />
-            <label for="condition3">Kunto 3</label>
-          </div>
-          <div class="filterItem hidden">
-            <input
-              type="radio"
-              id="condition4"
-              value="condition4"
-              name="selectCondition"
-            />
-            <label for="condition4">Kunto 4</label>
-          </div>
-          <h3 class="filterItem hidden">Sijainti</h3>
-        </div>
-        <h2>Tietokoneet</h2>
-        <div id="mainCards"></div>
-      </main>
+      </div>
       <footer>
         <h2>Duckyard</h2>
       </footer>
