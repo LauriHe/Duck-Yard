@@ -30,9 +30,9 @@ router
   .get(post_list_get)
   .post(
     upload.single("post"),
-    body("name").isLength({ min: 1 }).escape(),
-    body("birthdate").isDate(),
-    body("weight").isNumeric(),
+    body("heading").isLength({ min: 1 }).escape(),
+    body("price").isNumeric(),
+    body("description").isLength({ min: 1 }).escape(),
     post_post
   );
 

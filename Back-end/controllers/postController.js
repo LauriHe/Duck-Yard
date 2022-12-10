@@ -58,20 +58,18 @@ const post_post = async (req, res, next) => {
 
     console.log("post_post", req.body, req.file);
 
-    const thumbnail = await sharp(req.file.path)
+    /*const thumbnail = await sharp(req.file.path)
       .resize(160, 160)
       .png()
-      .toFile("./thumbnails/" + req.file.filename);
-
-    const coords = await getCoordinates(req.file.path);
+      .toFile("./thumbnails/" + req.file.image);
+*/
 
     const data = [
-      req.body.name,
-      req.body.birthdate,
-      req.body.weight,
-      req.user.user_id,
-      req.file.filename,
-      JSON.stringify(coords),
+      req.body.heading,
+      req.body.price,
+      //req.file.image,
+      req.body.description,
+      
     ];
 
     const result = await addpost(data, next);
@@ -79,12 +77,17 @@ const post_post = async (req, res, next) => {
       next(httpError("Invalid data", 400));
       return;
     }
-    if (thumbnail) {
+
+
+    
+    //CHANGE BACK TO THUMBNAIL!!!!!!!!!!!!!!!!!!!!!!!!
+    if (true) {
       res.json({
         message: "post added",
         post_id: result.insertId,
       });
     }
+    
   } catch (e) {
     console.error("post_post", e.message);
     next(httpError("Internal server error", 500));

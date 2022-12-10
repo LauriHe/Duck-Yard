@@ -4,7 +4,9 @@ const promisePool = pool.promise();
 
 const getAllUsers = async () => {
   try {
-    const [rows] = await promisePool.execute(`SELECT id, name, email, phone, location, image, roleid FROM duck_profile;`);
+    const [rows] = await promisePool.execute(
+      `SELECT id, name, email, phone, location, image, roleid FROM duck_profile;`
+    );
     return rows;
   } catch (e) {
     console.error("error", e.message);
@@ -17,15 +19,6 @@ const getUser = async (userId) => {
       `SELECT id, name, email, phone, location, image, roleid FROM duck_profile WHERE id = ?;`,
       [userId]
     );
-    return rows;
-  } catch (e) {
-    console.error("error", e.message);
-  }
-};
-
-const addUser = async (data) => {
-  try {
-    const [rows] = await promisePool.execute(`INSERT INTO duck_profile (name, passwd, email, phone, location, roleid) VALUES (?, ?, ?, ?, ?, ?);`, data);
     return rows;
   } catch (e) {
     console.error("error", e.message);
@@ -53,19 +46,32 @@ const getUserLogin = async (params, next) => {
   try {
     console.log(params);
     const [rows] = await promisePool.execute(
-        'SELECT * FROM duck_profile WHERE email = ?;',
-        params);
+      "SELECT * FROM duck_profile WHERE email = ?;",
+      params
+    );
     return rows;
   } catch (e) {
-    console.log('getUserLogin', e.message);
-    next(httpError('Database error', 500));
+    console.log("getUserLogin", e.message);
+    next(httpError("Database error", 500));
+  }
+};
+
+const getUserLikes = async (profileid) => {
+  try {
+    const [rows] = await promisePool.execute(
+      `SELECT postid from duck_likes WHERE profileid = ?;`,
+      [profileid]
+    );
+    return rows;
+  } catch (e) {
+    console.error("error", e.message);
   }
 };
 
 module.exports = {
   getAllUsers,
   getUser,
-  addUser,
   deleteUser,
   getUserLogin,
+  getUserLikes,
 };

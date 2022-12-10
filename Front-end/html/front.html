@@ -9,6 +9,9 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="../css/front.css" />
+    <script src="../js/menu.js" defer></script>
+    <script src="../js/categoryFilterMenu.js" defer></script>
+    <script src="../js/front.js" defer></script>
     <title>Kauppa Sovellus</title>
   </head>
   <body>
@@ -16,58 +19,113 @@
       <nav>
         <div class="navDiv" id="navDiv1">
           <img id="logo" src="../images/Ankkalogo3.png" alt="logo" />
-          <h2><a href="main.html"></a>Duckyard</h2>
+          <a href="front.html"><h2>Duckyard</h2></a>
         </div>
         <div class="navDiv" id="navDiv2">
-          <button id="profileButton">
-            <i class="fa-solid fa-user"></i>
+          <button id="navMenuButton">
+            <i id="navMenuIcon" class="fa-solid fa-bars"></i>
           </button>
         </div>
-        <ul>
-          <li>Kategoria 1</li>
-          <li>Kategoria 2</li>
-          <li>Kategoria 3</li>
-          <li>Kategoria 4</li>
-        </ul>
       </nav>
+      <ul id="navMenu">
+        <ul id="navMenuItems" class="hidden">
+          <li><a href="">Profiili</a></li>
+          <li><a href="">Lisää ilmoitus</a></li>
+          <li><a href="">Tykkäykset</a></li>
+          <li><a href="">Kirjaudu ulos</a></li>
+        </ul>
+      </ul>
       <main>
-        <div id="dropdownContainer">
-          <div class="dropdown">
-            <span>Filtteri 1</span>
+        <div id="categoryfilterContainer">
+          <button class="categoryfilterButton" id="categoryButton">
+            <div>Kategoriat</div>
+            <i class="fa-solid fa-sliders"></i>
+          </button>
+          <button class="categoryfilterButton" id="filterButton">
+            <div>Suodata</div>
+            <i class="fa-solid fa-sliders"></i>
+          </button>
+        </div>
+        <div id="categoryMenu" class="categoryFiterMenu">
+          <div class="categoryItem hidden">
+            <input
+              type="radio"
+              id="category1"
+              value="category1"
+              name="selectCategory"
+            />
+            <label for="category1">Kategoria 1</label>
           </div>
-          <div class="dropdown">
-            <span>Filtteri 2</span>
+          <div class="categoryItem hidden">
+            <input
+              type="radio"
+              id="category2"
+              value="category2"
+              name="selectCategory"
+            />
+            <label for="category2">Kategoria 2</label>
           </div>
-          <div class="dropdown">
-            <span>Filtteri 3</span>
+          <div class="categoryItem hidden">
+            <input
+              type="radio"
+              id="category3"
+              value="category3"
+              name="selectCategory"
+            />
+            <label for="category3">Kategoria 3</label>
           </div>
-          <span id="moreFilters">Lisää filttereitä</span>
+          <div class="categoryItem hidden">
+            <input
+              type="radio"
+              id="category4"
+              value="category4"
+              name="selectCategory"
+            />
+            <label for="category4">Kategoria 4</label>
+          </div>
+        </div>
+        <div id="filterMenu" class="categoryFiterMenu">
+          <h3 class="filterItem hidden">Kunto</h3>
+          <div class="filterItem hidden">
+            <input
+              type="radio"
+              id="condition1"
+              value="condition1"
+              name="selectCondition"
+            />
+            <label for="condition1">Kunto 1</label>
+          </div>
+          <div class="filterItem hidden">
+            <input
+              type="radio"
+              id="condition2"
+              value="condition2"
+              name="selectCondition"
+            />
+            <label for="condition2">Kunto 2</label>
+          </div>
+          <div class="filterItem hidden">
+            <input
+              type="radio"
+              id="condition3"
+              value="condition3"
+              name="selectCondition"
+            />
+            <label for="condition3">Kunto 3</label>
+          </div>
+          <div class="filterItem hidden">
+            <input
+              type="radio"
+              id="condition4"
+              value="condition4"
+              name="selectCondition"
+            />
+            <label for="condition4">Kunto 4</label>
+          </div>
+          <h3 class="filterItem hidden">Sijainti</h3>
         </div>
         <h2>Tietokoneet</h2>
-        <div class="mainCard">
-          <a href="product.html"></a>
-          <div class="cardImage"></div>
-          <p class="cardText">Tietokone</p>
-          <p class="cardLocation">Sijainti: Helsinki</p>
-          <p class="cardPrice">500€</p>
-          <i class="fa-regular fa-heart"></i>
-        </div>
-        <div class="mainCard">
-          <a href="product.html"></a>
-          <div class="cardImage"></div>
-          <p class="cardText">Ttietokone</p>
-          <p class="cardLocation">Sijainti: Helsinki</p>
-          <p class="cardPrice">500€</p>
-          <i class="fa-regular fa-heart"></i>
-        </div>
-        <div class="mainCard">
-          <a href="product.html"></a>
-          <div class="cardImage"></div>
-          <p class="cardText">Tietokone</p>
-          <p class="cardLocation">Sijainti: Helsinki</p>
-          <p class="cardPrice">500€</p>
-          <i class="fa-regular fa-heart"></i>
-        </div>
+        <div id="mainCards"></div>
       </main>
       <footer>
         <h2>Duckyard</h2>
