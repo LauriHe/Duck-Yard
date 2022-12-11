@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/login.css" />
+    <script src="../js/login.js" defer></script>
+    <script src="../js/serialize.js" defer></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <main>
+        <div class="mainCard">
+          <h1 class="cardHeader">Duckyard</h1>
+          <form
+            class="signIn"
+            method="post"
+            action="http://localhost:3000/auth/login"
+          >
+            <div>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Username"
+              />
+            </div>
+            <div>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+              />
+            </div>
+            <input type="submit" value="Login" />
+          </form>
+          <form
+            hidden
+            class="register"
+            method="post"
+            action="http://localhost:3000/auth/register"
+          >
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" />
+            <label for="passwd">Password:</label>
+            <input type="password" id="passwd" name="passwd" />
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" />
+            <label for="phone">Phonenumber:</label>
+            <input type="text" id="phone" name="phone" />
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" />
+            <input type="submit" value="Register" />
+          </form>
+          <div>
+            <button id="btn" onclick="hideFunction()">Register Now!</button>
+            <button hidden id="btn2" onclick="hideFunction2()">Sign In!</button>
+          </div>
+          <div>
+            <img id="logo" src="../images/Ankkalogo3.png" alt="logo" />
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
