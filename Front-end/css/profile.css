@@ -12,37 +12,46 @@ body {
 .container {
   position: relative;
   width: 100vw;
+  height: 100vh;
   box-shadow: var(--shadow);
   margin: 0 0;
+}
+
+#mainContainer {
+  width: 105%;
+  display: flex;
+  gap: 1rem;
+  height: 85%;
 }
 
 main {
   width: 100%;
   position: relative;
   background-color: white;
+  border-radius: 1em;
 }
 
 /* Profile text */
-.profCard{
-  position:relative;
-  padding:15px;
+.profCard {
+  position: relative;
+  padding: 15px;
 }
 
-.profCard>*{
+.profCard > * {
   text-align: center;
   padding-top: 10px;
 }
 
 /* After profile */
-#settings{
+#settings {
   position: absolute;
   right: 30px;
-  bottom: 20px; 
+  bottom: 20px;
 }
 
-#settings:hover{
+#settings:hover {
   cursor: pointer;
-  color: #4DA87D;
+  color: #4da87d;
 }
 
 /* Footer */
