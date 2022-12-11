@@ -21,7 +21,6 @@ categoryButton.addEventListener("click", () => {
     categoryMenu.classList.add("showMenu");
 
     filterItem.forEach((element) => element.classList.add("hidden"));
-    container.classList.add("MenuOpen");
     delay(100).then(() =>
       categoryItem.forEach((element) => element.classList.remove("hidden"))
     );
@@ -31,7 +30,6 @@ categoryButton.addEventListener("click", () => {
   } else {
     categoryMenu.classList.remove("showMenu");
 
-    container.classList.remove("MenuOpen");
     delay(100).then(() =>
       categoryItem.forEach((element) => element.classList.add("hidden"))
     );
@@ -45,7 +43,6 @@ filterButton.addEventListener("click", () => {
     filterMenu.classList.add("showMenu");
 
     categoryItem.forEach((element) => element.classList.add("hidden"));
-    container.classList.add("MenuOpen");
     delay(300).then(() =>
       filterItem.forEach((element) => element.classList.remove("hidden"))
     );
@@ -55,7 +52,6 @@ filterButton.addEventListener("click", () => {
   } else {
     filterMenu.classList.remove("showMenu");
 
-    container.classList.remove("MenuOpen");
     delay(100).then(() =>
       filterItem.forEach((element) => element.classList.add("hidden"))
     );

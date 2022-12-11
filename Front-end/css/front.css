@@ -10,12 +10,14 @@ body {
 .container {
   position: relative;
   width: 100vw;
+  min-height: 100vh;
   box-shadow: var(--shadow);
   margin: 0 0;
 }
 
 #mainContainer {
-  width: 105%;
+  width: 100%;
+  min-height: 85vh;
   display: flex;
   gap: 1rem;
 }
@@ -77,11 +79,12 @@ main > h2 {
 
 .categoryFiterMenu {
   position: absolute;
+  transform: translate(50%, 0);
   z-index: 10;
   height: 0rem;
   width: 100%;
   top: 4rem;
-  right: 0;
+  right: 50%;
   background-color: white;
   transition: 0.7s;
   border-radius: 1rem;
@@ -221,7 +224,10 @@ footer > h2 {
   }
 }
 
-@media only screen and (min-width: 818px) {
+@media only screen and (min-width: 600px) {
+  .categoryFiterMenu {
+    width: 600px;
+  }
 }
 
 @media only screen and (min-width: 1198px) {
@@ -231,6 +237,7 @@ footer > h2 {
   .container {
     display: flex;
     flex-wrap: wrap;
+    align-content: flex-start;
   }
 }
 
