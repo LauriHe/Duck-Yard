@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/login.css" />
     <script src="../js/login.js" defer></script>
+    <script src="../js/serialize.js" defer></script>
     <title>Document</title>
 </head>
 <body>
@@ -14,22 +15,25 @@
             <div class="mainCard">
                 
             <h1 class="cardHeader">Duckyard</h1>
-            <form class="signIn">
-                <label for="username">Username:</label><br>
-                <input type="text" id="username" name="username"><br>
-                <label for="pwd">Password:</label><br>
-                <input type="password" id="pwd" name="pwd">
+            <form class="signIn" method="post" action="http://localhost:3000/auth/login">
+                <label for="username">Email:</label>
+                <input type="text" id="username" name="username">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
                 <input type="submit" value="Login">
             </form> 
-            <form hidden class="register">
-                <label for="username">Username:</label><br>
-                <input type="text" id="username" name="username"><br>
-                <label for="name">Name:</label><br>
-                <input type="text" id="name" name="name"><br>
-                <label for="pwd">Password:</label><br>
-                <input type="password" id="pwd" name="pwd">
-                <label for="email">Email:</label><br>
-                <input type="text" id="email" name="email"><br>     
+            <form hidden class="register" method="post" action="http://localhost:3000/auth/register">
+                
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+                <label for="passwd">Password:</label>
+                <input type="password" id="passwd" name="passwd">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email">  
+                <label for="phone">Phonenumber:</label>
+                <input type="text" id="phone" name="phone">
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location">
                 <input type="submit" value="Register">
             </form> 
             <button id="btn" onclick="hideFunction()">Register Now!</button>

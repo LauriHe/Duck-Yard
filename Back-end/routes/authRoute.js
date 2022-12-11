@@ -10,6 +10,8 @@ router.post('/register',
     body('name').isLength({min: 3}).escape(),
     body('email').isEmail(),
     body('passwd').matches(/(?=.*\p{Lu}).{8,}/u),
+    body('phone').isMobilePhone(),
+    body('location'),
     user_post);
 
 module.exports = router;

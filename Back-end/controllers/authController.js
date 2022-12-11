@@ -48,8 +48,8 @@ const user_post = async (req, res, next) => {
       pwd,
       req.body.email,
       req.body.phone,
-      req.body.location,
-      req.body.roleid,
+      req.body.location
+      
     ];
 
     const result = await addUser(data, next);
