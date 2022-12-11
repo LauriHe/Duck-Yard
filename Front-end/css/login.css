@@ -1,0 +1,128 @@
+@import url("main.css");
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100vw;
+  box-shadow: var(--shadow);
+  margin: 0 0;
+  background-image: url(../images/duck-with-knife-meme-pink-wallpaper-scaled.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  padding-top: 2em;
+}
+
+.mainCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: white;
+  border-radius: 1em;
+  width: 90%;
+  height: 35em;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 1em;
+
+  box-shadow: var(--shadow);
+}
+
+.mainCard > form.signIn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+  margin-top: 0;
+  justify-content: center;
+}
+.mainCard > form.register {
+  font-size: 1rem;
+  margin-top: 0;
+}
+.mainCard > img {
+}
+input {
+  font-family: inherit;
+  margin-bottom: 1rem;
+}
+input[type="text"] {
+  height: 1.5rem;
+  border-radius: 1em;
+}
+input[type="password"] {
+  height: 1.5rem;
+  border-radius: 1em;
+}
+input[type="submit"] {
+  margin-top: 1.5rem;
+  width: 50%;
+  height: 2rem;
+
+  background-color: white;
+  color: var(--main-color);
+  border-radius: 1em;
+}
+
+form.register > input[type="submit"] {
+  height: 2rem;
+
+  background-color: white;
+  color: var(--main-color);
+  border-radius: 1em;
+}
+
+form.signIn > input[type="submit"]:hover {
+  background-color: var(--main-color);
+  color: var(--text-color);
+}
+
+form.register > input[type="submit"]:hover {
+  background-color: var(--main-color);
+  color: var(--text-color);
+}
+
+.mainCard > .cardHeader {
+  font-size: 1.5rem;
+  margin-top: 0;
+
+  color: var(--main-color);
+}
+
+#btn {
+  background-color: transparent;
+  border-color: transparent;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--main-color);
+}
+#btn2 {
+  background-color: transparent;
+  border-color: transparent;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--main-color);
+}
+#btn:hover {
+  color: var(--text-color);
+}
+
+#btn2:hover {
+  color: var(--text-color);
+}
+
+@media only screen and (min-width: 450px) {
+  .container {
+    width: 450px;
+    height: 100vh;
+  }
+}

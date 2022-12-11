@@ -42,6 +42,18 @@ const deleteUser = async (userId, user, next) => {
   }
 };
 
+
+const addUser = async (data, next) => {
+  try {
+    const [rows] = await promisePool.execute(`INSERT INTO duck_profile (name, passwd, email, phone, location) VALUES (?, ?, ?, ?, ?);`,
+        data);
+    return rows;
+  } catch (e) {
+    console.error('addUser', e.message);
+    next(httpError('Database error', 500));
+  }
+};
+
 const getUserLogin = async (params, next) => {
   try {
     console.log(params);
@@ -72,6 +84,7 @@ module.exports = {
   getAllUsers,
   getUser,
   deleteUser,
+  addUser,
   getUserLogin,
   getUserLikes,
 };
