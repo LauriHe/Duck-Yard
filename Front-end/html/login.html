@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/login.css" />
+    <script src="../js/login.js" defer></script>
     <title>Document</title>
 </head>
 <body>
@@ -13,14 +14,26 @@
             <div class="mainCard">
                 
             <h1 class="cardHeader">Duckyard</h1>
-            <form>
+            <form class="signIn">
                 <label for="username">Username:</label><br>
                 <input type="text" id="username" name="username"><br>
                 <label for="pwd">Password:</label><br>
                 <input type="password" id="pwd" name="pwd">
                 <input type="submit" value="Login">
             </form> 
-            <a href="#">Register Now!</a>
+            <form hidden class="register">
+                <label for="username">Username:</label><br>
+                <input type="text" id="username" name="username"><br>
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name"><br>
+                <label for="pwd">Password:</label><br>
+                <input type="password" id="pwd" name="pwd">
+                <label for="email">Email:</label><br>
+                <input type="text" id="email" name="email"><br>     
+                <input type="submit" value="Register">
+            </form> 
+            <button id="btn" onclick="hideFunction()">Register Now!</button>
+            <button hidden id="btn2" onclick="hideFunction2()">Sign In!</button>
             
             <img id="logo" src="../images/Ankkalogo3.png" alt="logo">
             </div>
