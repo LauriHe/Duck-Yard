@@ -23,7 +23,7 @@ function createCards(posts) {
       card.classList.add("mainCard");
 
       const link = document.createElement("div");
-      card.classList.add("mainCardLink");
+      link.classList.add("mainCardLink");
 
       const img = document.createElement("div");
       img.classList.add("cardImage");
@@ -59,6 +59,11 @@ function createCards(posts) {
       card.appendChild(like);
 
       document.querySelector("#mainCards").appendChild(card);
+
+      link.addEventListener("click", () => {
+        sessionStorage.setItem("post", JSON.stringify(post));
+        window.location.href = "product.html";
+      });
     }
   }
 
