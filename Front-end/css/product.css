@@ -1,15 +1,19 @@
 @import url("main.css");
 @import url("nav.css");
 
+.container {
+  width: 100vw;
+}
+
 #mainContainer {
   width: 100%;
   min-height: 85vh;
-  display: flex;
   gap: 1rem;
 }
 
 main {
   min-height: 85vh;
+  width: 100%;
 }
 
 .productImgContainer {
@@ -35,6 +39,7 @@ main {
 
 .mainText {
   margin-bottom: 0.5rem;
+  font-size: 1rem;
 }
 
 .mainText:nth-child(3) {
