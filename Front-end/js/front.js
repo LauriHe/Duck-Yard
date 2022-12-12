@@ -22,8 +22,8 @@ function createCards(posts) {
       const card = document.createElement("div");
       card.classList.add("mainCard");
 
-      const link = document.createElement("a");
-      link.href = `product.html`;
+      const link = document.createElement("div");
+      card.classList.add("mainCardLink");
 
       const img = document.createElement("div");
       img.classList.add("cardImage");
