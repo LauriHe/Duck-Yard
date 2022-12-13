@@ -5,15 +5,17 @@ const liveServerUrl = "http://127.0.0.1:5500";
 
 function createUser(user) {
   console.log(user);
-
+  // main
   const card = document.createElement("div");
   card.classList.add("profCard");
-
+  // separated div
   const left = document.createElement("div");
   left.classList.add("left");
 
   const right = document.createElement("div");
   right.classList.add("right");
+
+  // content
   const img = document.createElement("div");
   img.classList.add("profImg");
   const imgUrl = liveServerUrl + "/Back-end/uploads/" + user.image;
