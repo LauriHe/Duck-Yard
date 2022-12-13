@@ -66,14 +66,45 @@ function createCards(posts) {
 
       let liked = false;
 
+      function renderLikes() {
+        if (liked) {
+          like.style.backgroundPosition = "right";
+        } else {
+          like.style.backgroundPosition = "left";
+        }
+      }
+
+      async function isLiked(postId) {
+        const userId = JSON.parse(sessionStorage.getItem("user")).id;
+        try {
+          const response = await fetch(url + "/user/likes/" + userId);
+          const likeList = await response.json();
+
+          for (let i = 0; i < likeList.length; i++) {
+            if (likeList[i].postid === postId) {
+              liked = true;
+            }
+          }
+          renderLikes();
+        } catch (e) {
+          console.log(e.message);
+        }
+      }
+      isLiked(post.id);
+
       async function addLike(postId) {
         const userId = JSON.parse(sessionStorage.getItem("user")).id;
         try {
-          data = [userId, postId];
-
+          const data = {
+            userId: userId,
+            postId: postId,
+          };
           const fetchOptions = {
             method: "POST",
-            body: data,
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
           };
           const response = await fetch(url + "/post/like/", fetchOptions);
         } catch (e) {
@@ -81,7 +112,25 @@ function createCards(posts) {
         }
       }
 
-      function removeLike(postId) {}
+      async function removeLike(postId) {
+        const userId = JSON.parse(sessionStorage.getItem("user")).id;
+        try {
+          const data = {
+            userId: userId,
+            postId: postId,
+          };
+          const fetchOptions = {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          };
+          const response = await fetch(url + "/post/like/", fetchOptions);
+        } catch (e) {
+          console.log(e.message);
+        }
+      }
 
       like.addEventListener("click", () => {
         if (!liked) {

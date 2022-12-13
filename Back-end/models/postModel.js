@@ -94,7 +94,20 @@ const addLike = async (data, next) => {
     );
     return rows;
   } catch (e) {
-    console.error("addpost", e.message);
+    console.error("addLike", e.message);
+    next(httpError("database error", 500));
+  }
+};
+
+const deleteLike = async (data, next) => {
+  try {
+    const [rows] = await promisePool.execute(
+      `DELETE FROM duck_likes where profileid = ? AND postid = ?;`,
+      data
+    );
+    return rows;
+  } catch (e) {
+    console.error("deleteLike", e.message);
     next(httpError("database error", 500));
   }
 };
@@ -148,6 +161,7 @@ module.exports = {
   updatepost,
   deletepost,
   addLike,
+  deleteLike,
   getpostLikes,
   getpostCategories,
   getpostComments,
