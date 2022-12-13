@@ -9,6 +9,11 @@ function createUser(user) {
   const card = document.createElement("div");
   card.classList.add("profCard");
 
+  const left = document.createElement("div");
+  left.classList.add("left");
+
+  const right = document.createElement("div");
+  right.classList.add("right");
   const img = document.createElement("div");
   img.classList.add("profImg");
   const imgUrl = liveServerUrl + "/Back-end/uploads/" + user.image;
