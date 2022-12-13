@@ -19,23 +19,16 @@
             method="post"
             action="http://localhost:3000/auth/login"
           >
+          <div class="hide1">
             <div>
-              <input
-                type="text"
-                id="username"
-                name="username"
-                placeholder="Username"
-              />
+                <input type="text" id="username" name="username" placeholder="Username"/>
             </div>
             <div>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Password"
-              />
+                <input type="password" id="password" name="password" placeholder="Password"/>
             </div>
-            <input type="submit" value="Login" />
+          </div>
+            <input type="submit" id="submit1" value="Login" />
+        
           </form>
           <form
             hidden
@@ -43,17 +36,27 @@
             method="post"
             action="http://localhost:3000/auth/register"
           >
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" />
-            <label for="passwd">Password:</label>
-            <input type="password" id="passwd" name="passwd" />
-            <label for="email">Email:</label>
-            <input type="text" id="email" name="email" />
-            <label for="phone">Phonenumber:</label>
-            <input type="text" id="phone" name="phone" />
-            <label for="location">Location:</label>
-            <input type="text" id="location" name="location" />
-            <input type="submit" value="Register" />
+          <div class="hide2" hidden>
+            <div>
+                <input type="text" id="name" name="name" placeholder="Name"/>
+            </div>
+                <input type="password" id="passwd" name="passwd" placeholder="Password"/>
+            <div>
+                <input type="text" id="email" name="email" placeholder="Email"/>
+            </div>
+                <input type="text" id="phone" name="phone" placeholder="Phonenumber"/>
+            <div>
+                <input type="text" id="location" name="location" placeholder="Location"/>
+            </div>
+            <div>
+                <input type="radio" name="roleid" value="2"> Private
+            </div>
+            <div>
+                <input type="radio" name="roleid" value="3"> Company
+            </div>
+        </div>
+            <input type="submit" id="submit2" value="Register" hidden/>
+        
           </form>
           <div>
             <button id="btn" onclick="hideFunction()">Register Now!</button>

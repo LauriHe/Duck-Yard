@@ -45,7 +45,7 @@ const deleteUser = async (userId, user, next) => {
 
 const addUser = async (data, next) => {
   try {
-    const [rows] = await promisePool.execute(`INSERT INTO duck_profile (name, passwd, email, phone, location) VALUES (?, ?, ?, ?, ?);`,
+    const [rows] = await promisePool.execute(`INSERT INTO duck_profile (name, passwd, email, phone, location, roleid) VALUES (?, ?, ?, ?, ?, ?);`,
         data);
     return rows;
   } catch (e) {
