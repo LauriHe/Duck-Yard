@@ -175,14 +175,34 @@ main > h2 {
   right: 4rem;
 }
 
-.mainCard > i {
-  color: white;
-  font-size: 1.7rem;
-  margin-top: 0;
+.likeButton {
   position: absolute;
-  z-index: 1;
-  bottom: 1.25rem;
-  right: 1rem;
+  bottom: -1em;
+  right: -1em;
+  cursor: pointer;
+  height: 100px;
+  width: 100px;
+  background-image: url("../images/web_heart_animation.png");
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: 2900%;
+}
+
+.likeButton:hover {
+  background-position: right;
+}
+
+.is_animating {
+  animation: heart-burst 0.8s steps(28) 1;
+}
+
+@keyframes heart-burst {
+  from {
+    background-position: left;
+  }
+  to {
+    background-position: right;
+  }
 }
 
 footer {

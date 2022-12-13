@@ -47,9 +47,8 @@ function createCards(posts) {
       price.innerHTML = `${post.price}€`;
       price.classList.add("cardPrice");
 
-      const like = document.createElement("i");
-      like.classList.add("fa-regular");
-      like.classList.add("fa-heart");
+      const like = document.createElement("div");
+      like.classList.add("likeButton");
 
       card.appendChild(link);
       card.appendChild(img);
@@ -63,6 +62,40 @@ function createCards(posts) {
       link.addEventListener("click", () => {
         sessionStorage.setItem("post", JSON.stringify(post));
         window.location.href = "product.html";
+      });
+
+      let liked = false;
+
+      async function addLike(postId) {
+        const userId = JSON.parse(sessionStorage.getItem("user")).id;
+        try {
+          data = [userId, postId];
+
+          const fetchOptions = {
+            method: "POST",
+            body: data,
+          };
+          const response = await fetch(url + "/post/like/", fetchOptions);
+        } catch (e) {
+          console.log(e.message);
+        }
+      }
+
+      function removeLike(postId) {}
+
+      like.addEventListener("click", () => {
+        if (!liked) {
+          like.style.backgroundPosition = "left";
+          like.classList.add("is_animating");
+          like.style.backgroundPosition = "right";
+          liked = true;
+          addLike(post.id);
+        } else {
+          like.classList.remove("is_animating");
+          like.style.backgroundPosition = "left";
+          liked = false;
+          removeLike(post.id);
+        }
       });
     }
   }

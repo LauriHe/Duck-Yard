@@ -86,6 +86,19 @@ const deletepost = async (postId, user, next) => {
   }
 };
 
+const addLike = async (data, next) => {
+  try {
+    const [rows] = await promisePool.execute(
+      `INSERT INTO duck_likes VALUES (?, ?);`,
+      data
+    );
+    return rows;
+  } catch (e) {
+    console.error("addpost", e.message);
+    next(httpError("database error", 500));
+  }
+};
+
 const getpostLikes = async (postId, next) => {
   try {
     const [rows] = await promisePool.execute(
@@ -94,7 +107,7 @@ const getpostLikes = async (postId, next) => {
     );
     return rows;
   } catch (e) {
-    console.error("getpost", e.message);
+    console.error("getpostLikes", e.message);
     next(httpError("database error", 500));
   }
 };
@@ -107,7 +120,7 @@ const getpostComments = async (postId, next) => {
     );
     return rows;
   } catch (e) {
-    console.error("getpost", e.message);
+    console.error("getpostComments", e.message);
     next(httpError("database error", 500));
   }
 };
@@ -123,7 +136,7 @@ const getpostCategories = async (postId, next) => {
     );
     return rows;
   } catch (e) {
-    console.error("getpost", e.message);
+    console.error("getpostCategories", e.message);
     next(httpError("database error", 500));
   }
 };
@@ -134,6 +147,7 @@ module.exports = {
   addpost,
   updatepost,
   deletepost,
+  addLike,
   getpostLikes,
   getpostCategories,
   getpostComments,

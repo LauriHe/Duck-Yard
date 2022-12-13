@@ -9,6 +9,7 @@ const {
   getpostLikes,
   getpostCategories,
   getpostComments,
+  addLike,
 } = require("../models/postModel");
 const { httpError } = require("../utils/errors");
 const { validationResult } = require("express-validator");
@@ -69,7 +70,6 @@ const post_post = async (req, res, next) => {
       req.body.price,
       //req.file.image,
       req.body.description,
-      
     ];
 
     const result = await addpost(data, next);
@@ -78,8 +78,6 @@ const post_post = async (req, res, next) => {
       return;
     }
 
-
-    
     //CHANGE BACK TO THUMBNAIL!!!!!!!!!!!!!!!!!!!!!!!!
     if (true) {
       res.json({
@@ -87,7 +85,6 @@ const post_post = async (req, res, next) => {
         post_id: result.insertId,
       });
     }
-    
   } catch (e) {
     console.error("post_post", e.message);
     next(httpError("Internal server error", 500));
@@ -160,6 +157,21 @@ const post_delete = async (req, res, next) => {
   }
 };
 
+const post_like = async (req, res, next) => {
+  try {
+    const data = [req.body.profileId, req.body.postId];
+
+    const result = await addLike(data, next);
+    if (result.affectedRows < 1) {
+      next(httpError("Invalid data", 400));
+      return;
+    }
+  } catch (e) {
+    console.error("post_post", e.message);
+    next(httpError("Internal server error", 500));
+  }
+};
+
 const post_likes_get = async (req, res, next) => {
   try {
     const post = await getpostLikes(req.params.id, next);
@@ -208,6 +220,7 @@ module.exports = {
   post_post,
   post_put,
   post_delete,
+  post_like,
   post_likes_get,
   post_categories_get,
   post_comments_get,

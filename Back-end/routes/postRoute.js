@@ -22,6 +22,7 @@ const {
   post_likes_get,
   post_categories_get,
   post_comments_get,
+  post_like,
 } = require("../controllers/postController");
 const router = express.Router();
 
@@ -46,6 +47,8 @@ router
     body("weight").isNumeric(),
     post_put
   );
+
+router.route("/like/").post(post_like);
 
 router.route("/likes/:id").get(post_likes_get);
 
