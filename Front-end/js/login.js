@@ -3,7 +3,8 @@ const url = 'http://localhost:3000'; // change url when uploading to server
 
 // select existing html elements
 
-
+let form1 = document.querySelector('.signIn');
+let form2 = document.querySelector('.register');
 let button1 = document.querySelector('#btn');
 let button2 = document.querySelector('#btn2');
 let input1 = document.querySelector('#username');
