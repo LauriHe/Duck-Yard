@@ -65,11 +65,12 @@ nav button i {
 }
 
 #navMenuContainer {
-  width: 100%;
+  width: 0%;
   height: 100%;
   position: absolute;
   z-index: 5;
   top: 5em;
+  right: 0;
 }
 
 #navMenu {
@@ -80,11 +81,26 @@ nav button i {
   width: 0;
   right: 0;
   background-color: white;
-  transition: 0.7s;
 }
 
 #navMenu.width-100 {
   width: 100%;
+  transition: 0.7s;
+}
+
+#navMenuContainer.width-100 {
+  width: 100%;
+  transition: 0.7s;
+}
+
+#navMenu.width-0 {
+  width: 0;
+  transition: 0.7s;
+}
+
+#navMenuContainer.width-0 {
+  width: 0;
+  transition: 0.7s;
 }
 
 #navMenuItems {
@@ -108,7 +124,7 @@ nav button i {
   list-style-type: none;
   text-decoration: none;
   color: var(--text-color);
-  font-size: 1.5rem;
+  font-size: 1.1em;
 }
 
 #navMenuItems i {
