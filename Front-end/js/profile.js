@@ -14,7 +14,6 @@ function createUser(user) {
   const imgUrl = liveServerUrl + "/Back-end/uploads/" + user.image;
   img.style.cssText += `background-image:url("${imgUrl}");`;
 
-  // Lisää otsikko
   const heading = document.createElement("h3");
   heading.innerHTML = `Omat tiedot:`;
   heading.classList.add("profHeading");
