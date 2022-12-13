@@ -17,14 +17,10 @@ function delay(time) {
 
 categoryButton.addEventListener("click", () => {
   if (categoryMenuHidden) {
-    filterMenu.style.height = "0rem";
-    filterMenu.style.padding = "0rem";
-
-    categoryMenu.style.height = "20rem";
-    categoryMenu.style.padding = "2rem";
+    filterMenu.classList.remove("showMenu");
+    categoryMenu.classList.add("showMenu");
 
     filterItem.forEach((element) => element.classList.add("hidden"));
-    container.classList.add("MenuOpen");
     delay(100).then(() =>
       categoryItem.forEach((element) => element.classList.remove("hidden"))
     );
@@ -32,10 +28,8 @@ categoryButton.addEventListener("click", () => {
     categoryMenuHidden = false;
     filterMenuHidden = true;
   } else {
-    categoryMenu.style.height = "0";
-    categoryMenu.style.padding = "0rem";
+    categoryMenu.classList.remove("showMenu");
 
-    container.classList.remove("MenuOpen");
     delay(100).then(() =>
       categoryItem.forEach((element) => element.classList.add("hidden"))
     );
@@ -45,25 +39,19 @@ categoryButton.addEventListener("click", () => {
 
 filterButton.addEventListener("click", () => {
   if (filterMenuHidden) {
-    categoryMenu.style.height = "0rem";
-    categoryMenu.style.padding = "0rem";
-
-    filterMenu.style.height = "20rem";
-    filterMenu.style.padding = "2rem";
+    categoryMenu.classList.remove("showMenu");
+    filterMenu.classList.add("showMenu");
 
     categoryItem.forEach((element) => element.classList.add("hidden"));
-    container.classList.add("MenuOpen");
-    delay(100).then(() =>
+    delay(300).then(() =>
       filterItem.forEach((element) => element.classList.remove("hidden"))
     );
 
     filterMenuHidden = false;
     categoryMenuHidden = true;
   } else {
-    filterMenu.style.height = "0";
-    filterMenu.style.padding = "0rem";
+    filterMenu.classList.remove("showMenu");
 
-    container.classList.remove("MenuOpen");
     delay(100).then(() =>
       filterItem.forEach((element) => element.classList.add("hidden"))
     );

@@ -1,3 +1,4 @@
+
 nav {
   width: 100%;
   height: 5rem;
@@ -64,6 +65,15 @@ nav button i {
   font-size: 2rem;
 }
 
+#navMenuContainer {
+  width: 0%;
+  height: 100%;
+  position: absolute;
+  z-index: 5;
+  top: 5em;
+  right: 0;
+}
+
 #navMenu {
   display: block;
   position: absolute;
@@ -72,19 +82,35 @@ nav button i {
   width: 0;
   right: 0;
   background-color: white;
-  transition: 0.7s;
 }
 
 #navMenu.width-100 {
   width: 100%;
+  transition: 0.7s;
+}
+
+#navMenuContainer.width-100 {
+  width: 100%;
+  transition: 0.7s;
+}
+
+#navMenu.width-0 {
+  width: 0;
+  transition: 0.7s;
+}
+
+#navMenuContainer.width-0 {
+  width: 0;
+  transition: 0.7s;
 }
 
 #navMenuItems {
+  width: 75%;
   position: absolute;
   z-index: 20;
   transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
+  top: 40%;
+  left: 60%;
   height: 60%;
   display: flex;
   flex-direction: column;
@@ -96,11 +122,14 @@ nav button i {
 }
 
 #navMenuItems * {
-  text-align: center;
   list-style-type: none;
   text-decoration: none;
   color: var(--text-color);
-  font-size: 1.5rem;
+  font-size: 1.1em;
+}
+
+#navMenuItems i {
+  margin: 0 0.5em;
 }
 
 #navMenuItems a:hover {
@@ -110,4 +139,50 @@ nav button i {
 .MenuOpen {
   height: 100vh;
   overflow: hidden;
+}
+
+@media only screen and (min-width: 1198px) {
+  nav {
+    width: 100%;
+  }
+  #navMenuContainer {
+    position: inherit;
+    z-index: 0;
+    width: 25%;
+    margin-right: 1rem;
+  }
+  #navMenu {
+    position: static;
+    margin-top: 7rem;
+    height: 25rem;
+    width: 100%;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #navMenuItems {
+    position: static;
+    height: 90%;
+    transform: translate(0, 0);
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+  }
+  #navMenuButton {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 1360px) {
+  #navMenuContainer {
+    width: 339px;
+  }
+}
+
+#icon{
+  color:#4DA87D;
 }
