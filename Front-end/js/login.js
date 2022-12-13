@@ -3,25 +3,34 @@ const url = 'http://localhost:3000'; // change url when uploading to server
 
 // select existing html elements
 
-let form1 = document.querySelector('.signIn');
-let form2 = document.querySelector('.register');
-let button1 = document.querySelector('#btn')
-let button2 = document.querySelector('#btn2')
 
-function hideFunction (){
+let button1 = document.querySelector('#btn');
+let button2 = document.querySelector('#btn2');
+let input1 = document.querySelector('#username');
+let input2 = document.querySelector('#password');
+let submit1 = document.querySelector('#submit1');
+let submit2 = document.querySelector('#submit2');
+let hide1 = document.querySelector('.hide1');
+let hide2 = document.querySelector('.hide2');
+
+function hideFunction(){
     console.log("klick");
-    form1.setAttribute('hidden', '');
-    form2.removeAttribute('hidden');
+    hide2.removeAttribute('hidden', '')
+    hide1.setAttribute('hidden', '');
+    submit2.removeAttribute('hidden', '');
+    submit1.setAttribute('hidden', '');
     button1.setAttribute('hidden', '');
     button2.removeAttribute('hidden');
 };
 
-function hideFunction2 (){
+function hideFunction2(){
     console.log("klick2");
-    form1.removeAttribute('hidden');
-    form2.setAttribute('hidden', '');
+    submit1.removeAttribute('hidden', '');
+    submit2.setAttribute('hidden', '');
     button1.removeAttribute('hidden');
     button2.setAttribute('hidden', '');
+    hide2.setAttribute('hidden', '');
+    hide1.removeAttribute('hidden', '');
 };
 
 

@@ -12,6 +12,7 @@ router.post('/register',
     body('passwd').matches(/(?=.*\p{Lu}).{8,}/u),
     body('phone').isMobilePhone(),
     body('location'),
+    body('roleid'),
     user_post);
 
 module.exports = router;
