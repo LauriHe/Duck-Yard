@@ -3,14 +3,18 @@
 const url = "http://localhost:3000";
 const liveServerUrl = "http://127.0.0.1:5500";
 let currentCategory = "Tietokoneet";
+let currentConditions = [];
+let checkLiked = false;
 
 function createCards(posts) {
+  document.querySelector("#mainCards").innerHTML = "";
   console.log(posts);
 
-  document.querySelector("#mainCards").innerHTML = "";
-
-  function renderPost(categories, post) {
+  function renderPost(categories, likeList, post) {
     let hasCurrentCategory = false;
+    let hasCurrentCondition = false;
+    let hasLike = false;
+    let hasLikeIfChecked = false;
 
     for (let i = 0; i < categories.length; i++) {
       if (categories[i].name === currentCategory) {
@@ -18,7 +22,31 @@ function createCards(posts) {
       }
     }
 
-    if (hasCurrentCategory) {
+    for (let i = 0; i < categories.length; i++) {
+      if (currentConditions.includes(categories[i].name)) {
+        hasCurrentCondition = true;
+      }
+    }
+
+    if (currentConditions.length === 0) {
+      hasCurrentCondition = true;
+    }
+
+    for (let i = 0; i < likeList.length; i++) {
+      if (likeList[i].postid === post.id) {
+        hasLike = true;
+      }
+    }
+
+    if (checkLiked === true && hasLike === true) {
+      hasLikeIfChecked = true;
+    }
+
+    if (checkLiked === false) {
+      hasLikeIfChecked = true;
+    }
+
+    if (hasCurrentCategory && hasCurrentCondition && hasLikeIfChecked) {
       const card = document.createElement("div");
       card.classList.add("mainCard");
 
@@ -64,8 +92,6 @@ function createCards(posts) {
         window.location.href = "product.html";
       });
 
-      let liked = false;
-
       function renderLikes() {
         if (liked) {
           like.style.backgroundPosition = "right";
@@ -73,6 +99,8 @@ function createCards(posts) {
           like.style.backgroundPosition = "left";
         }
       }
+
+      let liked = false;
 
       async function isLiked(postId) {
         const userId = JSON.parse(sessionStorage.getItem("user")).id;
@@ -150,16 +178,19 @@ function createCards(posts) {
   }
 
   posts.forEach((post) => {
-    const getcategories = async () => {
+    const getcategoriesAndLikes = async () => {
       try {
         const response = await fetch(url + "/post/categories/" + post.id);
         const categories = await response.json();
-        renderPost(categories, post);
+        const userId = JSON.parse(sessionStorage.getItem("user")).id;
+        const response2 = await fetch(url + "/user/likes/" + userId);
+        const likeList = await response2.json();
+        renderPost(categories, likeList, post);
       } catch (e) {
         console.log(e.message);
       }
     };
-    getcategories();
+    getcategoriesAndLikes();
   });
 }
 
@@ -188,4 +219,32 @@ categories.forEach((category) => {
     console.log("Current category:", currentCategory);
     getPosts();
   });
+});
+
+const conditions = document.querySelectorAll(".filterItem > .condition");
+
+conditions.forEach((condition) => {
+  condition.addEventListener("click", (e) => {
+    if (!condition.checked) {
+      const index = currentConditions.indexOf(e.target.value);
+      if (index > -1) {
+        currentConditions.splice(index, 1);
+      }
+    } else {
+      currentConditions.push(e.target.value);
+    }
+    console.log("Current condition:", currentConditions);
+    getPosts();
+  });
+});
+
+const liked = document.querySelector("#liked");
+
+liked.addEventListener("click", () => {
+  if (liked.checked) {
+    checkLiked = true;
+  } else {
+    checkLiked = false;
+  }
+  getPosts();
 });
