@@ -11,11 +11,11 @@
   display: flex;
   gap: 1rem;
   justify-content: center;
-  align-items: center;
 }
 
 main {
-  height: 95%;
+  min-height: 95%;
+  max-height: 95%;
   width: 100%;
   background-color: white;
   box-shadow: var(--shadow);
@@ -140,6 +140,7 @@ footer > h2 {
     border-radius: 1em;
   }
   main {
+    margin-top: 1em;
     width: 600px;
     border-radius: 1em;
   }
