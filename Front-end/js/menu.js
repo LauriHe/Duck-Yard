@@ -74,3 +74,39 @@ menuButton.addEventListener("click", () => {
     MenuHidden = true;
   }
 });
+
+const profileLink = document.querySelector("#profileLink");
+const addPostLink = document.querySelector("#addPostLink");
+const loginLogoutLink = document.querySelector("#loginLogoutLink");
+
+if (sessionStorage.getItem("token") === null) {
+  loginLogoutLink.innerHTML = "Login";
+} else {
+  loginLogoutLink.innerHTML = "Logout";
+}
+
+profileLink.addEventListener("click", () => {
+  if (sessionStorage.getItem("token") === null) {
+    window.location.href = "login.html";
+  } else {
+    window.location.href = "profile.html";
+  }
+});
+
+addPostLink.addEventListener("click", () => {
+  if (sessionStorage.getItem("token") === null) {
+    window.location.href = "login.html";
+  } else {
+    window.location.href = "addPost.html";
+  }
+});
+
+loginLogoutLink.addEventListener("click", () => {
+  if (sessionStorage.getItem("token") === null) {
+    window.location.href = "login.html";
+  } else {
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("user");
+    window.location.href = "front.html";
+  }
+});
