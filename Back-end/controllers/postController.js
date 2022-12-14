@@ -9,6 +9,8 @@ const {
   getpostLikes,
   getpostCategories,
   getpostComments,
+  addLike,
+  deleteLike,
 } = require("../models/postModel");
 const { httpError } = require("../utils/errors");
 const { validationResult } = require("express-validator");
@@ -79,8 +81,6 @@ const post_post = async (req, res, next) => {
       return;
     }
 
-
-    
     //CHANGE BACK TO THUMBNAIL!!!!!!!!!!!!!!!!!!!!!!!!
     if (thumbnail) {
       res.json({
@@ -88,7 +88,6 @@ const post_post = async (req, res, next) => {
         post_id: result.insertId,
       });
     }
-    
   } catch (e) {
     console.error("post_post", e.message);
     next(httpError("Internal server error", 500));
@@ -147,16 +146,58 @@ const post_put = async (req, res, next) => {
 
 const post_delete = async (req, res, next) => {
   try {
-    const result = await deletepost(req.params.id, req.user, next);
+    const data = [req.body.userId, req.body.postId];
+    console.log("like_delete_data", data);
+    const result = await deleteLike(data, next);
     if (result.affectedRows < 1) {
       next(httpError("No post deleted", 400));
       return;
     }
     res.json({
-      message: "post deleted",
+      message: "like deleted",
     });
   } catch (e) {
     console.error("delete", e.message);
+    next(httpError("Internal server error", 500));
+  }
+};
+
+const post_like = async (req, res, next) => {
+  try {
+    const data = [req.body.userId, req.body.postId];
+    console.log("post_like_data", data);
+    const result = await addLike(data, next);
+    if (result.affectedRows < 1) {
+      next(httpError("Invalid data", 400));
+      return;
+    }
+    if (true) {
+      res.json({
+        message: "Like added",
+      });
+    }
+  } catch (e) {
+    console.error("post_post", e.message);
+    next(httpError("Internal server error", 500));
+  }
+};
+
+const delete_like = async (req, res, next) => {
+  try {
+    const data = [req.body.userId, req.body.postId];
+    console.log("post_like_data", data);
+    const result = await deleteLike(data, next);
+    if (result.affectedRows < 1) {
+      next(httpError("Invalid data", 400));
+      return;
+    }
+    if (true) {
+      res.json({
+        message: "Like deleted",
+      });
+    }
+  } catch (e) {
+    console.error("post_post", e.message);
     next(httpError("Internal server error", 500));
   }
 };
@@ -209,6 +250,8 @@ module.exports = {
   post_post,
   post_put,
   post_delete,
+  post_like,
+  delete_like,
   post_likes_get,
   post_categories_get,
   post_comments_get,

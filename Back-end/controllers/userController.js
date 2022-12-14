@@ -111,12 +111,12 @@ const check_token = (req, res, next) => {
 
 const user_likes_get = async (req, res, next) => {
   try {
-    const user = await getUserLikes(req.params.id, next);
-    if (user.length < 1) {
-      next(httpError("No user found", 404));
+    const likes = await getUserLikes(req.params.id, next);
+    if (likes.length < 1) {
+      next(httpError("No likes found", 404));
       return;
     }
-    res.json(user.pop());
+    res.json(likes);
   } catch (e) {
     console.error("user_get", e.message);
     next(httpError("Internal server error", 500));

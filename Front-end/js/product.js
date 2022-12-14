@@ -1,47 +1,80 @@
 "use stirct";
-
+const url = "http://localhost:3000";
 const post = JSON.parse(sessionStorage.getItem("post"));
 
-const imgContainer = document.querySelector(".productImgContainer");
-const mainProductInfo = document.querySelector(".mainProductInfo");
-const additionalInfo = document.querySelector(".additionalProductInfo");
+function renderPost(likes, seller) {
+  const imgContainer = document.querySelector(".productImgContainer");
+  const mainProductInfo = document.querySelector(".mainProductInfo");
+  const secondaryInfo = document.querySelector(".secondaryProductInfo");
+  const additionalInfo = document.querySelector(".additionalProductInfo");
 
-imgContainer.innerHTML = "";
-mainProductInfo.innerHTML = "";
-additionalInfo.innerHTML = "";
+  imgContainer.innerHTML = "";
+  mainProductInfo.innerHTML = "";
+  secondaryInfo.innerHTML = "";
+  additionalInfo.innerHTML = "";
 
-const img = document.createElement("div");
-img.classList.add("productImg");
+  const img = document.createElement("div");
+  img.classList.add("productImg");
 
-const heading = document.createElement("h2");
-heading.innerHTML = post.heading;
-heading.classList.add("mainText");
+  const heading = document.createElement("h2");
+  heading.innerHTML = post.heading;
+  heading.classList.add("mainText");
 
-const productLocation = document.createElement("h2");
-productLocation.innerHTML = `Sijainti: ${post.location}`;
-productLocation.classList.add("mainText");
+  const productLocation = document.createElement("h2");
+  productLocation.innerHTML = `Sijainti: ${post.location}`;
+  productLocation.classList.add("mainText");
 
-const price = document.createElement("h2");
-price.innerHTML = `${post.price}€`;
-price.classList.add("mainText");
+  const price = document.createElement("h2");
+  price.innerHTML = `${post.price}€`;
+  price.classList.add("mainText");
 
-const descriptionTitle = document.createElement("h2");
-descriptionTitle.innerHTML = "Lisätietoja";
+  const sellerName = document.createElement("p");
+  sellerName.innerHTML = `<i class="icon fa-solid fa-user"></i> ${seller.name}`;
+  sellerName.classList.add("secondaryText");
 
-const description = document.createElement("p");
-description.innerHTML = post.description;
-description.classList.add("additionalText");
+  const sellerPhone = document.createElement("p");
+  sellerPhone.innerHTML = `<i class="icon fa-solid fa-phone"></i> ${seller.phone}`;
+  sellerPhone.classList.add("secondaryText");
 
-const expandButton = document.createElement("input");
-expandButton.type = "checkbox";
-expandButton.classList.add("expandButton");
+  const likeCount = document.createElement("p");
+  likeCount.innerHTML = `<i class="icon fa-solid fa-heart"></i> ${likes.numberOfLikes}`;
+  likeCount.classList.add("secondaryText");
 
-imgContainer.appendChild(img);
+  const descriptionTitle = document.createElement("h2");
+  descriptionTitle.innerHTML = "Lisätietoja";
 
-mainProductInfo.appendChild(heading);
-mainProductInfo.appendChild(productLocation);
-mainProductInfo.appendChild(price);
+  const description = document.createElement("p");
+  description.innerHTML = post.description;
+  description.classList.add("additionalText");
 
-additionalInfo.appendChild(descriptionTitle);
-additionalInfo.appendChild(description);
-additionalInfo.appendChild(expandButton);
+  const expandButton = document.createElement("input");
+  expandButton.type = "checkbox";
+  expandButton.classList.add("expandButton");
+
+  imgContainer.appendChild(img);
+
+  mainProductInfo.appendChild(heading);
+  mainProductInfo.appendChild(productLocation);
+  mainProductInfo.appendChild(price);
+
+  secondaryInfo.appendChild(sellerName);
+  secondaryInfo.appendChild(sellerPhone);
+  secondaryInfo.appendChild(likeCount);
+
+  additionalInfo.appendChild(descriptionTitle);
+  additionalInfo.appendChild(description);
+  additionalInfo.appendChild(expandButton);
+}
+
+const getInfo = async () => {
+  try {
+    const response = await fetch(url + "/post/likes/" + post.id);
+    const likes = await response.json();
+    const response2 = await fetch(url + "/user/" + post.profileid);
+    const seller = await response2.json();
+    renderPost(likes, seller);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+getInfo();
