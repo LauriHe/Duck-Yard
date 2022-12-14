@@ -115,7 +115,7 @@ const deleteLike = async (data, next) => {
 const getpostLikes = async (postId, next) => {
   try {
     const [rows] = await promisePool.execute(
-      `SELECT COUNT(*) AS "Number of likes" FROM duck_likes WHERE postid = ?`,
+      `SELECT COUNT(*) AS "numberOfLikes" FROM duck_likes WHERE postid = ?`,
       [postId]
     );
     return rows;
