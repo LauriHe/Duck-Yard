@@ -37,7 +37,7 @@ const getpost = async (postId, next) => {
 const addpost = async (data, next) => {
   try {
     const [rows] = await promisePool.execute(
-      `INSERT INTO duck_post (heading, price, description) VALUES (?, ?, ?);`,
+      `INSERT INTO duck_post (heading, price, image, description, profileid) VALUES (?, ?, ?, ?, ?);`,
       data
     );
     return rows;

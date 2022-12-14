@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../css/post.css" />
     <script src="../js/menu.js" defer></script>
     <script src="../js/post.js" defer></script>
+    <script src="../js/serialize.js" defer></script>
     <title>Kauppa Sovellus</title>
   </head>
   <body>
@@ -29,48 +30,56 @@
       <div id="mainContainer">
         <main>
           <div id="kuvaBanner">
-            <button>Lisää Kuva</button>
+            <input type="file" name="image" accept="image/*" placeholder="Lisää Kuva" id="image"></input>
           </div>
           <div>
-            <form>
-          
+            <form id="postForm" method="post" action="http://localhost:3000/auth/register">
+              <div id="prodHeader">
+                <h3>Tuote</h3>
+              </div>
             <div class="name">
-                <input type="text" id="name" name="name" placeholder="Tuote Nimi"/>
+                <input type="text" required id="heading" name="heading" placeholder="Tuote Nimi"/>
+            </div>
+            <div id="priceHeader">
+              <h3>Hinta</h3>
             </div>
             <div class="price">
-                <input type="password" id="passwd" name="passwd" placeholder="hinta"/>
+                <input type="number" required id="price" min="0" value="0" step="0.1" name="price" placeholder="hinta"/>
             </div>
             <div class="dropDown">
               <div>
-                <h2>Kategoria</h2>
-                <select name="dog-names" id="dog-names">
-                  <option value="rigatoni">Tietokoneet</option>
-                  <option value="dave">Mobiililaitteet</option>
-                  <option value="pumpernickel">Oheislaitteet</option>
-                  <option value="reeses">Muu Elektroniikka</option>
+                <h3 id="catHeader">Kategoria</h3>
+                <select name="category" required id="category">
+                  <option value="1">Tietokoneet</option>
+                  <option value="2">Mobiililaitteet</option>
+                  <option value="3">Oheislaitteet</option>
+                  <option value="4">Muu Elektroniikka</option>
                 </select>
               </div>
               <div>
-                <h2>Kunto</h2>
-                <select name="dog-names" id="dog-names">
-                  <option value="rigatoni">Uusi</option>
-                  <option value="dave">Erinomainen</option>
-                  <option value="pumpernickel">Hyvä</option>
-                  <option value="reeses">Välttävä</option>
+                <h3 id="kuntoHeader">Kunto</h3>
+                <select name="kunto" required id="kunto">
+                  <option value="5">Avaamaton</option>
+                  <option value="6">Erinomainen</option>
+                  <option value="7">Hyvä</option>
+                  <option value="8">Välttävä</option>
                 </select>
               </div>
             </div>
             <div class="infoHeader">
-              <h2>Lisäinfo</h2>
+              <h3>Lisäinfo</h3>
             </div>
             <div class="info">
-            <div>
-              <textarea style="width: 100%; height: 300px; resize: none; border: none; "  name="comment" form="usrform" placeholder="Lisää tuotekuvaus">
+              <textarea name="description" id="description" type="text" placeholder="Lisää tuotekuvaus">
               Enter text here...</textarea>
-            </div>
+          </div>
+          <div id="postdiv">
+          <button type="submit" id="postbtn">Julkaise</button>
           </div>
           </form>
+          
             
+          
           </div>
         </main>
         <div id="navMenuContainer">

@@ -57,18 +57,19 @@ const post_post = async (req, res, next) => {
     }
 
     console.log("post_post", req.body, req.file);
-
-    /*const thumbnail = await sharp(req.file.path)
+    
+    const thumbnail = await sharp(req.file.path)
       .resize(160, 160)
       .png()
       .toFile("./thumbnails/" + req.file.image);
-*/
+
 
     const data = [
       req.body.heading,
       req.body.price,
-      //req.file.image,
+      req.file.image,
       req.body.description,
+      req.user.id
       
     ];
 
@@ -81,7 +82,7 @@ const post_post = async (req, res, next) => {
 
     
     //CHANGE BACK TO THUMBNAIL!!!!!!!!!!!!!!!!!!!!!!!!
-    if (true) {
+    if (thumbnail) {
       res.json({
         message: "post added",
         post_id: result.insertId,

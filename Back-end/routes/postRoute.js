@@ -3,6 +3,7 @@ const express = require("express");
 const { body } = require("express-validator");
 const { httpError } = require("../utils/errors");
 const multer = require("multer");
+const passport = require("../utils/pass");
 
 const fileFilter = (req, file, cb) => {
   if (file.mimetype.includes("image")) {
@@ -29,11 +30,14 @@ router
   .route("/")
   .get(post_list_get)
   .post(
+    passport.authenticate("jwt", { session: false }),
     upload.single("post"),
     body("heading").isLength({ min: 1 }).escape(),
     body("price").isNumeric(),
+    body("image"),
     body("description").isLength({ min: 1 }).escape(),
     post_post
+    
   );
 
 router
