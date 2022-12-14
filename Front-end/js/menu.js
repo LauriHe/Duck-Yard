@@ -99,7 +99,7 @@ addPostLink.addEventListener("click", () => {
   if (sessionStorage.getItem("token") === null) {
     window.location.href = "login.html";
   } else {
-    window.location.href = "addPost.html";
+    window.location.href = "post.html";
   }
 });
 
