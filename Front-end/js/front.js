@@ -225,7 +225,7 @@ const getPosts = async () => {
     console.log(e.message);
   }
 };
-getLikes();
+getPosts();
 
 const categories = document.querySelectorAll(".categoryItem > input");
 
@@ -234,7 +234,7 @@ categories.forEach((category) => {
     currentCategory = e.target.value;
     document.querySelector("main > h2").innerHTML = currentCategory;
     console.log("Current category:", currentCategory);
-    getLikes();
+    getPosts();
   });
 });
 
@@ -251,7 +251,7 @@ conditions.forEach((condition) => {
       currentConditions.push(e.target.value);
     }
     console.log("Current condition:", currentConditions);
-    getLikes();
+    getPosts();
   });
 });
 
@@ -263,5 +263,5 @@ liked.addEventListener("click", () => {
   } else {
     checkLiked = false;
   }
-  getLikes();
+  getPosts();
 });

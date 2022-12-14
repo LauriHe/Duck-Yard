@@ -35,8 +35,10 @@ addEventListener("resize", () => {
     menuItems.classList.remove("hidden");
     if (mobile) {
       menuContainer.classList.remove("width-100");
-      container.classList.remove("MenuOpen");
       menu.classList.remove("width-100");
+      menuContainer.classList.remove("width-0");
+      menu.classList.remove("width-0");
+      container.classList.remove("MenuOpen");
       icon.classList.remove("fa-x");
       icon.classList.add("fa-bars");
       menuItems.classList.toggle("hidden");
