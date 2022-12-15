@@ -1,6 +1,6 @@
 "use strict";
 
-const url = "https://10.114.34.56/app";
+const url = "http://localhost:3000";
 const liveServerUrl = "http://127.0.0.1:5500";
 let currentCategory = "Tietokoneet";
 let currentConditions = [];
