@@ -53,8 +53,7 @@ main {
   margin-top: 0;
   justify-content: center;
 }
-.mainCard > img {
-}
+
 input {
   font-family: inherit;
   margin-bottom: 1rem;
@@ -122,6 +121,37 @@ form.register > input[type="submit"]:hover {
 
 #btn2:hover {
   color: var(--text-color);
+}
+label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 6em;
+  color: white;
+  background-color: var(--main-color);
+  border-radius: 0.7em;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  
+  height: 2em
+}
+label:hover{
+  background-color: var(--secondary-color);
+}
+input[type="file"]{
+  position: absolute;
+  z-index: -1;
+}
+input#image{
+   box-sizing: border-box;
+   display: flex;
+   justify-content: center;
+   
+}
+#profkuva{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1em;
 }
 
 @media only screen and (min-width: 450px) {

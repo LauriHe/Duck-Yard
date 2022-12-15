@@ -1,6 +1,7 @@
 "use strict";
 const pool = require("../database/db");
 const promisePool = pool.promise();
+const { httpError } = require("../utils/errors");
 
 const getAllUsers = async () => {
   try {
@@ -45,8 +46,10 @@ const deleteUser = async (userId, user, next) => {
 
 const addUser = async (data, next) => {
   try {
-    const [rows] = await promisePool.execute(`INSERT INTO duck_profile (name, passwd, email, phone, location, roleid) VALUES (?, ?, ?, ?, ?, ?);`,
+    
+    const [rows] = await promisePool.execute(`INSERT INTO duck_profile (name, passwd, email, phone, location, image, roleid) VALUES (?, ?, ?, ?, ?, ?, ?);`,
         data);
+        console.log(rows , 'asdas');
     return rows;
   } catch (e) {
     console.error('addUser', e.message);

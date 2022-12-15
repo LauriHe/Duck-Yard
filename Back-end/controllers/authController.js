@@ -5,6 +5,7 @@ const {httpError} = require('../utils/errors');
 const {validationResult} = require('express-validator');
 const {addUser} = require('../models/userModel');
 const bcrypt = require('bcryptjs');
+const sharp = require("sharp");
 
 const login = (req, res, next) => {
   // TODO: add passport authenticate
@@ -31,7 +32,7 @@ const user_post = async (req, res, next) => {
   try {
     // Extract the validation errors from a request.
     const errors = validationResult(req);
-
+    console.log(req.file , 'dawda');
     if (!errors.isEmpty()) {
       // There are errors.
       // Error messages can be returned in an array using `errors.array()`.
@@ -43,26 +44,34 @@ const user_post = async (req, res, next) => {
     const salt = bcrypt.genSaltSync(10);
     const pwd = bcrypt.hashSync(req.body.passwd, salt);
 
+    const thumbnail = await sharp(req.file.path)
+      .resize(160, 160)
+      .png()
+      .toFile("./thumbnails/" + req.file.filename);
+
+
     const data = [
       req.body.name,
       pwd,
       req.body.email,
       req.body.phone,
       req.body.location,
+      req.file.filename,
       req.body.roleid
     ];
-
+    console.log(data);
     const result = await addUser(data, next);
     if (result.affectedRows < 1) {
       next(httpError('Invalid data', 400));
       return;
     }
-
+    if (thumbnail) {
     res.json({
       message: 'user added',
       user_id: result.insertId,
     });
-  } catch (e) {
+  }
+} catch (e) {
     console.error('user_post', e.message);
     next(httpError('Internal server error', 500));
   }
