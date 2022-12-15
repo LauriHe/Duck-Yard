@@ -70,7 +70,8 @@ const user_post = async (req, res, next) => {
       message: 'user added',
       user_id: result.insertId,
     });
-  }} catch (e) {
+  }
+} catch (e) {
     console.error('user_post', e.message);
     next(httpError('Internal server error', 500));
   }
