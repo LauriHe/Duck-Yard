@@ -18,7 +18,7 @@
 main {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   
   min-height: 95%;
   max-height: 95%;
@@ -32,6 +32,7 @@ main {
 #postForm{
     display: flex;
     flex-direction: column;
+    padding-bottom: 3em;
 }
 
 
@@ -40,7 +41,7 @@ main {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 25%;
+    height: 40%;
     background-image: url("../images/laptop.jpeg");
     background-size: cover;
     border-radius: 1em;
@@ -65,31 +66,37 @@ main {
     border-color: var(--main-color);
     text-align: center;
 }
-.price {
-    display: flex;
-    justify-content: center;
-    
-    height: 2em;
+.dropDown{
+  display: flex;
+  justify-content: space-around;
+  padding: 1em;
+  
+}
+.price{
+  display: flex;
+  flex-direction: column;
+  width: 25%;
 }
 #price {
-    border-radius: 1em;
-    width: 30%;
-    font-family: inherit;
-    border-color: var(--main-color);
-    text-align: center;
+  
+  border-radius: 1em;
+  border-color: var(--main-color);
+  background-color: var(--bg-color);
+  height: 2em;
+  
+  font-family: inherit;
+  text-align: center;
 }
-.dropDown{
-    display: flex;
-    justify-content: space-around;
-    padding: 1em;
-    
+.category{
+  display: flex;
+  flex-direction: column;
 }
-
 #category {
     border-radius: 1em;
     border-color: var(--main-color);
     background-color: var(--bg-color);
     height: 2em;
+    
     font-family: inherit;
     text-align: center;
     cursor: pointer;
@@ -106,6 +113,10 @@ main {
     text-align: center;
     cursor: pointer;
 }
+.kunto{
+  display: flex;
+  flex-direction: column;
+}
 .infoHeader {
     display: flex;
     justify-content:center;
@@ -121,6 +132,7 @@ main {
     display: flex;
     justify-content: center;
     padding: 1em;
+   
 }
 #catHeader  {
     display: flex;
