@@ -29,12 +29,18 @@ main {
   
 
 }
-#postForm{
+#postDiv{
     display: flex;
     flex-direction: column;
     padding-bottom: 3em;
 }
+form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 
+}
 
 #kuvaBanner {
     display: flex;
@@ -60,6 +66,7 @@ main {
     
 }
 #heading {
+    
     border-radius: 1em;
     width: 50%;
     font-family: inherit;
