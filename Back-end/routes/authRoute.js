@@ -12,7 +12,7 @@ router.post('/register',
     body('passwd').matches(/(?=.*\p{Lu}).{8,}/u),
     body('phone').isMobilePhone(),
     body('location'),
-    body('image'),
+    file('image'),
     body('roleid'),
     user_post);
 

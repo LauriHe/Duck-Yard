@@ -65,17 +65,16 @@ form1.addEventListener('submit', async (evt) => {
 // submit register form
 form2.addEventListener('submit', async (evt) => {
   evt.preventDefault();
-  const data = new FormData(form2);
-  console.log(data);
+  const data = serializeJson(form2);
   const fetchOptions = {
     method: 'POST',
-    body: data,
+    
+    body: JSON.stringify(data),
   };
   const response = await fetch(url + '/auth/register', fetchOptions);
   const json = await response.json();
   alert(json.message);
 });
-
 
 
         
