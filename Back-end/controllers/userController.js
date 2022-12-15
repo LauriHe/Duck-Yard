@@ -9,6 +9,7 @@ const {
 } = require("../models/userModel");
 const { validationResult } = require("express-validator");
 const { httpError } = require("../utils/errors");
+const bcrypt = require("bcryptjs");
 
 const user_list_get = async (req, res, next) => {
   try {
@@ -136,11 +137,14 @@ const user_update_put = async (req, res, next) => {
       return;
     }
 
+    const salt = bcrypt.genSaltSync(10);
+    const pwd = bcrypt.hashSync(req.body.passwd, salt);
+
     console.log("user_update_put", req.body);
 
     const data = [
       req.body.name,
-      req.body.passwd,
+      pwd,
       req.body.email,
       req.body.phone,
       req.body.location,
