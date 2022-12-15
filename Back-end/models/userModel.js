@@ -80,6 +80,16 @@ const getUserLikes = async (profileid) => {
   }
 };
 
+const updateUser = async (data, next) => {
+  try {
+    const [rows] = await promisePool.execute(`UPDATE duck_profile set name = ?, passwd = ?, email = ?, phone = ?, location = ?  WHERE id = ?;`, data);
+    return rows;
+  } catch (e) {
+    console.error('updateUser', e.message);
+    next(('Database error', 500));
+  }
+}
+
 module.exports = {
   getAllUsers,
   getUser,
@@ -87,4 +97,5 @@ module.exports = {
   addUser,
   getUserLogin,
   getUserLikes,
+  updateUser,
 };

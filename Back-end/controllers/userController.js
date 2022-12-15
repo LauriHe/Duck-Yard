@@ -123,6 +123,46 @@ const user_likes_get = async (req, res, next) => {
   }
 };
 
+
+const user_update_put = async (req, res, next) => {
+  try {
+    // Extract the validation errors from a request.
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      // There are errors.
+      // Error messages can be returned in an array using `errors.array()`.
+      console.error("user_post validation", errors.array());
+      next(httpError("Invalid data", 400));
+      return;
+    }
+
+    let data = [];
+
+      data = [
+        req.body.name,
+        req.body.passwd,
+        req.body.email,
+        req.body.phone,
+        req.body.location,
+      ];
+
+    console.log("user_put", data);
+    const result = await updateUser(data, next);
+    if (result.affectedRows < 1) {
+      next(httpError("No user modified", 400));
+      return;
+    }
+
+    res.json({
+      message: "User modified",
+    });
+  } catch (e) {
+    console.error("user_put", e.message);
+    next(httpError("Internal server error", 500));
+  }
+};
+
 module.exports = {
   user_list_get,
   user_get,
@@ -130,4 +170,5 @@ module.exports = {
   user_delete,
   check_token,
   user_likes_get,
+  user_update_put,
 };

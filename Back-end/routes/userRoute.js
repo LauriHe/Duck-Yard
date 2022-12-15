@@ -7,10 +7,22 @@ const {
   user_delete,
   check_token,
   user_likes_get,
+  user_update_put
 } = require("../controllers/userController");
+const { body } = require("express-validator");
 const router = express.Router();
 
-router.route("/").get(user_list_get).put(user_put);
+router
+  .route("/")
+  .get(user_list_get)
+  .put(
+    body("name"),
+    body("password"),
+    body("email"),
+    body("phone"),
+    body("location"),
+    user_update_put
+  );
 
 router.get("/token", check_token);
 

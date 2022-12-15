@@ -22,7 +22,7 @@ const modForm = document.querySelector('#formContainer');
 
 // add existing cat data to form
 const getUser = async (id) => {
-  const response = await fetch(url + '/user/' + id);
+  const response = await fetch(url + '/profile/' + id);
   const cat = await response.json();
   const inputs = modForm.querySelectorAll('input');
   inputs[0].value = cat.name;
@@ -45,7 +45,7 @@ form.addEventListener('submit', async (evt) => {
   };
 
   console.log(fetchOptions);
-  const response = await fetch(url + '/auth/register', fetchOptions);
+  const response = await fetch(url + '/user', fetchOptions);
   const json = await response.json();
   alert(json.message);
   location.href = 'profile.html';
