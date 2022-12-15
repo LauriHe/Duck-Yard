@@ -83,42 +83,48 @@
             <h3 class="filterItem hidden">Kunto</h3>
             <div class="filterItem hidden">
               <input
-                type="radio"
+                type="checkbox"
                 id="condition1"
-                value="condition1"
+                class="condition"
+                value="Avaamaton"
                 name="selectCondition"
               />
-              <label for="condition1">Kunto 1</label>
+              <label for="condition1">Avaamaton</label>
             </div>
-            <div class="filterItem hidden">
+            <div class="filterItem condition hidden">
               <input
-                type="radio"
+                type="checkbox"
                 id="condition2"
-                value="condition2"
+                class="condition"
+                value="Erinomainen"
                 name="selectCondition"
               />
-              <label for="condition2">Kunto 2</label>
+              <label for="condition2">Erinomainen</label>
             </div>
-            <div class="filterItem hidden">
+            <div class="filterItem condition hidden">
               <input
-                type="radio"
+                type="checkbox"
                 id="condition3"
-                value="condition3"
+                class="condition"
+                value="Hyvä"
                 name="selectCondition"
               />
-              <label for="condition3">Kunto 3</label>
+              <label for="condition3">Hyvä</label>
             </div>
-            <div class="filterItem hidden">
+            <div class="filterItem condition hidden">
               <input
-                type="radio"
+                type="checkbox"
                 id="condition4"
-                value="condition4"
+                class="condition"
+                value="Välttävä"
                 name="selectCondition"
               />
-              <label for="condition4">Kunto 4</label>
+              <label for="condition4">Välttävä</label>
             </div>
-            <h3 class="filterItem hidden">Sijainti</h3>
-            <h3 class="filterItem hidden">Hinta</h3>
+            <h3 class="filterItem hidden">
+              Tykätyt
+              <input type="checkbox" id="liked" />
+            </h3>
           </div>
           <h2>Tietokoneet</h2>
           <div id="mainCards"></div>
@@ -126,15 +132,21 @@
         <div id="navMenuContainer">
           <ul id="navMenu">
             <ul id="navMenuItems" class="hidden">
-              <li><i id="icon" class="fa-solid fa-house"></i></i></i><a href="front.html" style="color:#1D5C5D">Etusivu</a></li>
-              <li><i id="icon" class="fa-solid fa-user"></i></i><a href="profile.html" >Profiili</a></li>
               <li>
-                <i id="icon" class="fa-solid fa-square-plus"></i></i
-                ><a href="post.html">Lisää ilmoitus</a>
+                <i class="icon fa-solid fa-house"></i
+                ><a href="front.html" style="color: #1d5c5d">Etusivu</a>
               </li>
               <li>
-                <i id="icon" class="fa-solid fa-arrow-right-from-bracket"></i
-                ><a href="">Kirjaudu ulos</a>
+                <i class="icon fa-solid fa-user"></i
+                ><a id="profileLink">Profiili</a>
+              </li>
+              <li>
+                <i class="icon fa-solid fa-square-plus"></i
+                ><a id="addPostLink">Lisää ilmoitus</a>
+              </li>
+              <li>
+                <i class="icon fa-solid fa-arrow-right-from-bracket"></i
+                ><a id="loginLogoutLink">Kirjaudu ulos</a>
               </li>
             </ul>
           </ul>

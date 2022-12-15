@@ -3,6 +3,7 @@ const express = require("express");
 const { body } = require("express-validator");
 const { httpError } = require("../utils/errors");
 const multer = require("multer");
+const passport = require("../utils/pass");
 
 const fileFilter = (req, file, cb) => {
   if (file.mimetype.includes("image")) {
@@ -22,6 +23,8 @@ const {
   post_likes_get,
   post_categories_get,
   post_comments_get,
+  post_like,
+  delete_like,
 } = require("../controllers/postController");
 const router = express.Router();
 
@@ -29,11 +32,14 @@ router
   .route("/")
   .get(post_list_get)
   .post(
+    passport.authenticate("jwt", { session: false }),
     upload.single("post"),
     body("heading").isLength({ min: 1 }).escape(),
     body("price").isNumeric(),
+    body("image"),
     body("description").isLength({ min: 1 }).escape(),
     post_post
+    
   );
 
 router
@@ -46,6 +52,8 @@ router
     body("weight").isNumeric(),
     post_put
   );
+
+router.route("/like/").post(post_like).delete(delete_like);
 
 router.route("/likes/:id").get(post_likes_get);
 

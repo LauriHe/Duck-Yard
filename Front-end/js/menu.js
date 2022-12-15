@@ -35,8 +35,10 @@ addEventListener("resize", () => {
     menuItems.classList.remove("hidden");
     if (mobile) {
       menuContainer.classList.remove("width-100");
-      container.classList.remove("MenuOpen");
       menu.classList.remove("width-100");
+      menuContainer.classList.remove("width-0");
+      menu.classList.remove("width-0");
+      container.classList.remove("MenuOpen");
       icon.classList.remove("fa-x");
       icon.classList.add("fa-bars");
       menuItems.classList.toggle("hidden");
@@ -72,5 +74,41 @@ menuButton.addEventListener("click", () => {
     icon.classList.add("fa-bars");
     menuItems.classList.toggle("hidden");
     MenuHidden = true;
+  }
+});
+
+const profileLink = document.querySelector("#profileLink");
+const addPostLink = document.querySelector("#addPostLink");
+const loginLogoutLink = document.querySelector("#loginLogoutLink");
+
+if (sessionStorage.getItem("token") === null) {
+  loginLogoutLink.innerHTML = "Login";
+} else {
+  loginLogoutLink.innerHTML = "Logout";
+}
+
+profileLink.addEventListener("click", () => {
+  if (sessionStorage.getItem("token") === null) {
+    window.location.href = "login.html";
+  } else {
+    window.location.href = "profile.html";
+  }
+});
+
+addPostLink.addEventListener("click", () => {
+  if (sessionStorage.getItem("token") === null) {
+    window.location.href = "login.html";
+  } else {
+    window.location.href = "post.html";
+  }
+});
+
+loginLogoutLink.addEventListener("click", () => {
+  if (sessionStorage.getItem("token") === null) {
+    window.location.href = "login.html";
+  } else {
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("user");
+    window.location.href = "front.html";
   }
 });

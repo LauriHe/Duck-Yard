@@ -37,7 +37,7 @@ const getpost = async (postId, next) => {
 const addpost = async (data, next) => {
   try {
     const [rows] = await promisePool.execute(
-      `INSERT INTO duck_post (heading, price, description) VALUES (?, ?, ?);`,
+      `INSERT INTO duck_post (heading, price, image, description, profileid) VALUES (?, ?, ?, ?, ?);`,
       data
     );
     return rows;
@@ -86,15 +86,41 @@ const deletepost = async (postId, user, next) => {
   }
 };
 
+const addLike = async (data, next) => {
+  try {
+    const [rows] = await promisePool.execute(
+      `INSERT INTO duck_likes VALUES (?, ?);`,
+      data
+    );
+    return rows;
+  } catch (e) {
+    console.error("addLike", e.message);
+    next(httpError("database error", 500));
+  }
+};
+
+const deleteLike = async (data, next) => {
+  try {
+    const [rows] = await promisePool.execute(
+      `DELETE FROM duck_likes where profileid = ? AND postid = ?;`,
+      data
+    );
+    return rows;
+  } catch (e) {
+    console.error("deleteLike", e.message);
+    next(httpError("database error", 500));
+  }
+};
+
 const getpostLikes = async (postId, next) => {
   try {
     const [rows] = await promisePool.execute(
-      `SELECT COUNT(*) AS "Number of likes" FROM duck_likes WHERE postid = ?`,
+      `SELECT COUNT(*) AS "numberOfLikes" FROM duck_likes WHERE postid = ?`,
       [postId]
     );
     return rows;
   } catch (e) {
-    console.error("getpost", e.message);
+    console.error("getpostLikes", e.message);
     next(httpError("database error", 500));
   }
 };
@@ -107,7 +133,7 @@ const getpostComments = async (postId, next) => {
     );
     return rows;
   } catch (e) {
-    console.error("getpost", e.message);
+    console.error("getpostComments", e.message);
     next(httpError("database error", 500));
   }
 };
@@ -123,7 +149,7 @@ const getpostCategories = async (postId, next) => {
     );
     return rows;
   } catch (e) {
-    console.error("getpost", e.message);
+    console.error("getpostCategories", e.message);
     next(httpError("database error", 500));
   }
 };
@@ -134,6 +160,8 @@ module.exports = {
   addpost,
   updatepost,
   deletepost,
+  addLike,
+  deleteLike,
   getpostLikes,
   getpostCategories,
   getpostComments,

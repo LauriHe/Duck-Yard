@@ -1,0 +1,266 @@
+@import url("main.css");
+@import url("nav.css");
+
+.container {
+  width: 100vw;
+}
+
+#mainContainer {
+  
+  width: 100%;
+  min-height: 85vh;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  
+  min-height: 95%;
+  max-height: 95%;
+  width: 100%;
+  background-color: white;
+  box-shadow: var(--shadow);
+  align-items: center;
+  
+
+}
+#postForm{
+    display: flex;
+    flex-direction: column;
+}
+
+
+#kuvaBanner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 25%;
+    background-image: url("../images/laptop.jpeg");
+    background-size: cover;
+    border-radius: 1em;
+    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+.name {
+    display: flex;
+    justify-content: center;
+    
+    margin: 1em;
+    height: 2em;
+    
+}
+#heading {
+    border-radius: 1em;
+    width: 50%;
+    font-family: inherit;
+    border-color: var(--main-color);
+    text-align: center;
+}
+.price {
+    display: flex;
+    justify-content: center;
+    
+    height: 2em;
+}
+#price {
+    border-radius: 1em;
+    width: 30%;
+    font-family: inherit;
+    border-color: var(--main-color);
+    text-align: center;
+}
+.dropDown{
+    display: flex;
+    justify-content: space-around;
+    padding: 1em;
+    
+}
+
+#category {
+    border-radius: 1em;
+    border-color: var(--main-color);
+    background-color: var(--bg-color);
+    height: 2em;
+    font-family: inherit;
+    text-align: center;
+    cursor: pointer;
+}
+#category > option:hover {
+    color: var(--main-color);
+}
+#kunto {
+    border-radius: 1em;
+    height: 2em;
+    border-color: var(--main-color);
+    background-color: var(--bg-color);
+    font-family: inherit;
+    text-align: center;
+    cursor: pointer;
+}
+.infoHeader {
+    display: flex;
+    justify-content:center;
+    padding: 1em;
+}
+
+#prodHeader  {
+    display: flex;
+    justify-content: center;
+    padding-top: 1em;
+}
+#priceHeader  {
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+}
+#catHeader  {
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+}
+#kuntoHeader  {
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+}
+#image {
+    border-radius: 1em;
+    height: 3em;
+    width: 20%;
+    border: none;
+    background-color: var(--bg-color);
+    box-shadow: var(--shadow);
+    font-family: inherit;
+    cursor: pointer;
+}
+#image:hover {
+    background-color: var(--main-color);
+}
+
+input#image{
+   box-sizing: border-box;
+   display: flex;
+   justify-content: center;
+   
+}
+::file-selector-button {
+    display: none;
+    font-family: inherit;
+    
+  }
+textarea {
+    display: flex;
+    width: 100%; 
+    height: 5rem;
+    resize: none; 
+    border: none; 
+    font-family: inherit;
+    padding: 1em;
+    
+}
+
+#postdiv {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    height: 100%;
+    
+}
+#postbtn {
+    cursor: pointer;
+    border-radius: 1em;
+    height: 3em;
+    width: 20%;
+    border-color: var(--main-color);
+    background-color: var(--main-color);
+    font-family: inherit;
+    width: 7em;
+    color: var(--bg-color)
+    
+}
+#postbtn:hover {
+    background-color: var(--secondary-color);
+}
+
+footer {
+  width: 100%;
+  height: 5vh;
+  background-color: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+footer > h2 {
+  font-size: 1rem;
+  margin-bottom: 1em;
+  color: var(--main-color);
+}
+
+@media only screen and (min-width: 600px) {
+  .productImgContainer {
+    height: 50%;
+    border-radius: 1em;
+  }
+  main {
+    margin-top: 1em;
+    width: 600px;
+    border-radius: 1em;
+  }
+}
+
+@media only screen and (min-width: 940px) {
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+  }
+  nav {
+    width: 100%;
+  }
+  #navMenuContainer {
+    position: inherit;
+    z-index: 0;
+    width: 25%;
+    margin-right: 1rem;
+  }
+  #navMenu {
+    position: static;
+    margin-top: 7rem;
+    height: 25rem;
+    width: 100%;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #navMenuItems {
+    position: static;
+    height: 90%;
+    transform: translate(0, 0);
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+  }
+  #navMenuButton {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 1360px) {
+  #navMenuContainer {
+    width: 339px;
+  }
+}

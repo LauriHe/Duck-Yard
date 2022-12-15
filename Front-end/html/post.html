@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/f30e376f7f.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../css/post.css" />
+    <script src="../js/menu.js" defer></script>
+    <script src="../js/post.js" defer></script>
+    <script src="../js/serialize.js" defer></script>
+    <title>Kauppa Sovellus</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <div class="navDiv" id="navDiv1">
+          <img id="logo" src="../images/Ankkalogo3.png" alt="logo" />
+          <a href="front.html"><h2>Duckyard</h2></a>
+        </div>
+        <div class="navDiv" id="navDiv2">
+          <button id="navMenuButton">
+            <i id="navMenuIcon" class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </nav>
+      <div id="mainContainer">
+        <main>
+          <div id="kuvaBanner">
+            <input type="file" name="image" accept="image/*" placeholder="Lisää Kuva" id="image"></input>
+          </div>
+          <div>
+            <form id="postForm" method="post" action="http://localhost:3000/auth/register">
+              <div id="prodHeader">
+                <h3>Tuote</h3>
+              </div>
+            <div class="name">
+                <input type="text" required id="heading" name="heading" placeholder="Tuote Nimi"/>
+            </div>
+            <div id="priceHeader">
+              <h3>Hinta</h3>
+            </div>
+            <div class="price">
+                <input type="number" required id="price" min="0" value="0" step="0.1" name="price" placeholder="hinta"/>
+            </div>
+            <div class="dropDown">
+              <div>
+                <h3 id="catHeader">Kategoria</h3>
+                <select name="category" required id="category">
+                  <option value="1">Tietokoneet</option>
+                  <option value="2">Mobiililaitteet</option>
+                  <option value="3">Oheislaitteet</option>
+                  <option value="4">Muu Elektroniikka</option>
+                </select>
+              </div>
+              <div>
+                <h3 id="kuntoHeader">Kunto</h3>
+                <select name="kunto" required id="kunto">
+                  <option value="5">Avaamaton</option>
+                  <option value="6">Erinomainen</option>
+                  <option value="7">Hyvä</option>
+                  <option value="8">Välttävä</option>
+                </select>
+              </div>
+            </div>
+            <div class="infoHeader">
+              <h3>Lisäinfo</h3>
+            </div>
+            <div class="info">
+              <textarea name="description" id="description" type="text" placeholder="Lisää tuotekuvaus">
+              Enter text here...</textarea>
+          </div>
+          <div id="postdiv">
+          <button type="submit" id="postbtn">Julkaise</button>
+          </div>
+          </form>
+          
+            
+          
+          </div>
+        </main>
+        <div id="navMenuContainer">
+          <ul id="navMenu">
+            <ul id="navMenuItems" class="hidden">
+              <li>
+                <i class="icon fa-solid fa-house"></i
+                ><a href="front.html">Etusivu</a>
+              </li>
+              <li>
+                <i class="icon fa-solid fa-user"></i
+                ><a id="profileLink">Profiili</a>
+              </li>
+              <li>
+                <i class="icon fa-solid fa-square-plus"></i
+                ><a id="addPostLink">Lisää ilmoitus</a>
+              </li>
+              <li>
+                <i class="icon fa-solid fa-arrow-right-from-bracket"></i
+                ><a id="loginLogoutLink">Kirjaudu ulos</a>
+              </li>
+            </ul>
+          </ul>
+        </div>
+      </div>
+      <footer>
+        <h2>Duckyard</h2>
+      </footer>
+    </div>
+  </body>
+</html>
