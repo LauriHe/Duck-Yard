@@ -46,11 +46,23 @@ h3 {
 #formContainer>*{
   padding: 0.2rem;
   margin: 0.5rem;
+  border-radius: 0.7em;
+  border-color: var(--main-color);
 }
 
 #submit{
   width: 100px;
   height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: var(--main-color);
+  border-radius: 0.7em;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  border: none;
+  height: 2em
 }
 
 /* Footer */

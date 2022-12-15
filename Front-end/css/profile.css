@@ -59,6 +59,8 @@ main {
   width:250px;
   background-size: cover;
   margin:auto;
+  border: 2px solid #4da87d;
+  border-radius: 25px;
 }
 /* After profile */
 #settings {
@@ -67,9 +69,14 @@ main {
   bottom: 2.5rem;
 }
 
+a:visited{
+  color: #4da87d;
+}
+
 #settings:hover {
   cursor: pointer;
-  color: #4da87d;
+  color: #1d5c5d;
+  
 }
 
 /* Footer */
