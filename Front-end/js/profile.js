@@ -20,7 +20,7 @@ function createUser(user) {
   // find user image and replace it if not found
   const check = user.image;
   if (check != "") {
-    const imgUrl = liveServerUrl + "/Duck-yard/Back-end/uploads/" + user.image;
+    const imgUrl = liveServerUrl + "/Back-end/uploads/" + user.image;
     img.style.cssText += `background-image:url("${imgUrl}");`;
   } else {
     img.style.cssText += `background-image:url("../images/duck-with-knife-meme-pink-wallpaper-scaled.jpg");`;
