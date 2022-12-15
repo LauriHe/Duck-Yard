@@ -63,13 +63,13 @@ const post_post = async (req, res, next) => {
     const thumbnail = await sharp(req.file.path)
       .resize(160, 160)
       .png()
-      .toFile("./thumbnails/" + req.file.image);
+      .toFile("./thumbnails/" + req.file.filename);
 
 
     const data = [
       req.body.heading,
       req.body.price,
-      req.file.image,
+      req.file.filename,
       req.body.description,
       req.user.id
       

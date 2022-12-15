@@ -7,14 +7,14 @@ let button = document.querySelector('#postbtn');
 
 form.addEventListener('submit', async (evt) => {
     evt.preventDefault();
-    const data = serializeJson(form);
+    const data = new FormData(form);
     console.log(data);
     const fetchOptions = {
       method: 'POST',
       headers: {
-        Authorization: 'Bearer ' + sessionStorage.getItem('token'), "Content-Type": "application/json", 
+        Authorization: 'Bearer ' + sessionStorage.getItem('token'),
       },
-      body: JSON.stringify(data),
+      body: data,
     };
     const response = await fetch(url + '/post', fetchOptions);
     const json = await response.json();
