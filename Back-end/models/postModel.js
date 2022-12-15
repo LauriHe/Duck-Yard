@@ -40,9 +40,23 @@ const addpost = async (data, next) => {
       `INSERT INTO duck_post (heading, price, image, description, profileid) VALUES (?, ?, ?, ?, ?);`,
       data
     );
+    
     return rows;
   } catch (e) {
     console.error("addpost", e.message);
+    next(httpError("database error", 500));
+  }
+};
+
+const addcategory = async (data, next) => {
+  try {
+    const [rows] = await promisePool.execute(
+      `INSERT INTO duck_includes (postid, categoryid) VALUES (?, ?), (?, ?) ;`,
+      data
+    );
+    return rows;
+  } catch (e) {
+    console.error("addcategory", e.message);
     next(httpError("database error", 500));
   }
 };
@@ -165,4 +179,5 @@ module.exports = {
   getpostLikes,
   getpostCategories,
   getpostComments,
+  addcategory,
 };

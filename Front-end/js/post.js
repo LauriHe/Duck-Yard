@@ -7,16 +7,28 @@ let button = document.querySelector('#postbtn');
 
 form.addEventListener('submit', async (evt) => {
     evt.preventDefault();
-    const data = serializeJson(form);
+    const data = new FormData(form);
+    const category = data.category;
+    const kunto = data.kunto;
     console.log(data);
     const fetchOptions = {
       method: 'POST',
       headers: {
-        Authorization: 'Bearer ' + sessionStorage.getItem('token'), "Content-Type": "application/json", 
+        Authorization: 'Bearer ' + sessionStorage.getItem('token'),
       },
-      body: JSON.stringify(data),
+      body: data,
     };
     const response = await fetch(url + '/post', fetchOptions);
     const json = await response.json();
     alert(json.message);
+    /* const fetchOptions2 = {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+      },
+      body: id, category, id, kunto,
+    };
+    const response2 = await fetch(url + '/post', fetchOptions2);
+    const json2 = await response2.json();
+    alert(json2.message); */
   });

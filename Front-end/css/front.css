@@ -20,6 +20,7 @@ body {
   min-height: 85vh;
   display: flex;
   gap: 1rem;
+  margin-bottom: 1em;
 }
 
 main {

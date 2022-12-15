@@ -6,6 +6,7 @@ const multer = require("multer");
 const passport = require("../utils/pass");
 
 const fileFilter = (req, file, cb) => {
+  console.log("fileFilter", file)
   if (file.mimetype.includes("image")) {
     cb(null, true);
   } else {
@@ -25,6 +26,7 @@ const {
   post_comments_get,
   post_like,
   delete_like,
+  post_category_add,
 } = require("../controllers/postController");
 const router = express.Router();
 
@@ -33,7 +35,7 @@ router
   .get(post_list_get)
   .post(
     passport.authenticate("jwt", { session: false }),
-    upload.single("post"),
+    upload.single("image"),
     body("heading").isLength({ min: 1 }).escape(),
     body("price").isNumeric(),
     body("image"),
@@ -41,6 +43,7 @@ router
     post_post
     
   );
+
 
 router
   .route("/:id")
