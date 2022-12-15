@@ -59,7 +59,7 @@ const user_post = async (req, res, next) => {
       req.body.filename,
       req.body.roleid
     ];
-
+    console.log(data);
     const result = await addUser(data, next);
     if (result.affectedRows < 1) {
       next(httpError('Invalid data', 400));
