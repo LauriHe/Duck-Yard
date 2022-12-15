@@ -6,13 +6,26 @@ const liveServerUrl = "http://127.0.0.1:5500";
 function createUser(user) {
   console.log(user);
 
-  const card = document.createElement("div");
-  card.classList.add("profCard");
+  // separated div
+  const left = document.createElement("div");
+  left.classList.add("left");
 
+  const right = document.createElement("div");
+  right.classList.add("right");
+
+  // content
   const img = document.createElement("div");
   img.classList.add("profImg");
-  const imgUrl = liveServerUrl + "/Back-end/uploads/" + user.image;
-  img.style.cssText += `background-image:url("${imgUrl}");`;
+  const check = user.imgage;
+  console.log(check);
+  if (check == null) {
+    console.log("Null");
+    img.style.cssText += `background-image:url("../images/duck-with-knife-meme-pink-wallpaper-scaled.jpg");`;
+  } else {
+    console.log("notNull");
+    const imgUrl = liveServerUrl + "/Back-end/uploads/" + user.image;
+    img.style.cssText += `background-image:url("${imgUrl}");`;
+  }
 
   const heading = document.createElement("h3");
   heading.innerHTML = `Omat tiedot:`;
@@ -34,14 +47,15 @@ function createUser(user) {
   area.innerHTML = `Paikkakunta: ${user.location}`;
   area.classList.add("profArea");
 
-  card.appendChild(img);
-  card.appendChild(heading);
-  card.appendChild(name);
-  card.appendChild(puh);
-  card.appendChild(email);
-  card.appendChild(area);
+  left.appendChild(img);
+  right.appendChild(heading);
+  right.appendChild(name);
+  right.appendChild(puh);
+  right.appendChild(email);
+  right.appendChild(area);
 
-  document.querySelector(".profCard").appendChild(card);
+  document.querySelector(".profCard").appendChild(left);
+  document.querySelector(".profCard").appendChild(right);
 }
 
 const getUser = async () => {

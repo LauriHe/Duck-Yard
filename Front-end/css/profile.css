@@ -32,20 +32,39 @@ main {
 
 /* Profile text */
 .profCard {
-  position: relative;
+  display: flex;
   padding: 15px;
+  align-items: center;
+  flex-direction: column;
 }
 
-.profCard > * {
+.right > * {
   text-align: center;
-  padding-top: 10px;
+  padding-top: 1rem;
+  font-size: 1.4rem;
 }
 
+.left{
+  width: 50%; 
+  margin: 1.5rem;
+}
+
+.right{
+  width: 50%;
+  margin: 1.5rem;
+}
+
+.profImg{
+  height: 250px;
+  width:250px;
+  background-size: cover;
+  margin:auto;
+}
 /* After profile */
 #settings {
   position: absolute;
-  right: 30px;
-  bottom: 20px;
+  right: 5rem;
+  bottom: 2.5rem;
 }
 
 #settings:hover {
@@ -92,6 +111,13 @@ footer > h2 {
   .container {
     display: flex;
     flex-wrap: wrap;
+  }
+  .profCard{
+    flex-direction: row;
+  }
+  .profImg{
+    width: 450px;
+    height: 450px;
   }
 }
 
