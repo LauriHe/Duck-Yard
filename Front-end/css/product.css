@@ -7,15 +7,15 @@
 
 #mainContainer {
   width: 100%;
-  min-height: 85vh;
+  height: 100%;
   display: flex;
   gap: 1rem;
   justify-content: center;
+  margin-bottom: 1em;
 }
 
 main {
-  min-height: 95%;
-  max-height: 95%;
+  height: 100%;
   width: 100%;
   background-color: white;
   box-shadow: var(--shadow);
@@ -31,7 +31,7 @@ main {
 
 .productImg {
   width: 75%;
-  height: 100%;
+  height: 30em;
   background-image: url("../images/laptop.jpeg");
   background-size: cover;
 }
@@ -73,7 +73,7 @@ main {
 }
 
 .additionalText {
-  --max-lines: 5;
+  --max-lines: 2;
   --line-height: 1.5;
 
   max-height: calc(var(--line-height) * 1em * var(--max-lines));
