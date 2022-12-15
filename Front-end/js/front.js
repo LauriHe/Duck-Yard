@@ -59,7 +59,7 @@ function createCards(posts) {
 
       const img = document.createElement("div");
       img.classList.add("cardImage");
-      const imgUrl = liveServerUrl + "/Back-end/uploads/" + post.image;
+      const imgUrl = liveServerUrl + "/Back-end/thumbnails/" + post.image;
       img.style.cssText += `background-image:linear-gradient(
         to bottom,
         rgba(0, 0, 0, 0.092),

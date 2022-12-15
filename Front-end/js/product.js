@@ -1,5 +1,6 @@
 "use stirct";
 const url = "http://localhost:3000";
+const liveServerUrl = "http://127.0.0.1:5500";
 const post = JSON.parse(sessionStorage.getItem("post"));
 
 function renderPost(likes, seller) {
@@ -15,6 +16,13 @@ function renderPost(likes, seller) {
 
   const img = document.createElement("div");
   img.classList.add("productImg");
+  const imgUrl = liveServerUrl + "/Back-end/thumbnails/" + post.image;
+  img.style.cssText += `background-image:linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.092),
+        var(--secondary-color)
+      ),
+      url("${imgUrl}");`;
 
   const heading = document.createElement("h2");
   heading.innerHTML = post.heading;
