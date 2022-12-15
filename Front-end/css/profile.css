@@ -44,21 +44,21 @@ main {
   font-size: 1.4rem;
 }
 
-.left{
-  width: 50%; 
-  margin: 1.5rem;
-}
-
-.right{
+.left {
   width: 50%;
   margin: 1.5rem;
 }
 
-.profImg{
+.right {
+  width: 50%;
+  margin: 1.5rem;
+}
+
+.profImg {
   height: 250px;
-  width:250px;
+  width: 250px;
   background-size: cover;
-  margin:auto;
+  margin: auto;
   border: 2px solid #4da87d;
   border-radius: 25px;
 }
@@ -69,14 +69,13 @@ main {
   bottom: 2.5rem;
 }
 
-a:visited{
+a {
   color: #4da87d;
 }
 
 #settings:hover {
   cursor: pointer;
   color: #1d5c5d;
-  
 }
 
 /* Footer */
@@ -115,10 +114,10 @@ footer > h2 {
     display: flex;
     flex-wrap: wrap;
   }
-  .profCard{
+  .profCard {
     flex-direction: row;
   }
-  .profImg{
+  .profImg {
     width: 450px;
     height: 450px;
   }
