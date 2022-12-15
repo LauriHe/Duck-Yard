@@ -10,6 +10,8 @@
       crossorigin="anonymous"
     ></script>
     <script src="../js/menu.js" defer></script>
+    <script src="../js/settings.js" defer></script>
+    <script src="../js/serialize.js" defer></script>
     <title>Duckyad - Asetukset</title>
     <link rel="icon" type="image/x-icon" href="../images/Ankkalogo.svg" />
   </head>
@@ -32,9 +34,21 @@
       <div id="mainContainer">
         <main>
           <!-- Update form -->
+          <div class="formCard">
+            <h3>Päivitä tietosi</h3>
+            
+            <form class="register" method="put" id="formContainer">
 
+              <input type="text" id="name" name="name" placeholder="Name" />
+              <input type="password" id="passwd" name="passwd" placeholder="Password"/>
+              <input type="text" id="email" name="email" placeholder="Email" />
+              <input type="text"id=" phone"name="phone" placeholder="Phonenumber"/>
+              <input type="text" id="location" name="location" placeholder="Location"/>
+              <input type="submit" id="submit" value="Päivitä tiedot" />
+
+            </form>
+          </div>
           <!-- Update form end -->
-
         </main>
 
         <!-- navbar -->
