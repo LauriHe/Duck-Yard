@@ -16,15 +16,14 @@ function createUser(user) {
   // content
   const img = document.createElement("div");
   img.classList.add("profImg");
-  const check = user.imgage;
-  console.log(check);
-  if (check == null) {
-    console.log("Null");
-    img.style.cssText += `background-image:url("../images/duck-with-knife-meme-pink-wallpaper-scaled.jpg");`;
-  } else {
-    console.log("notNull");
-    const imgUrl = liveServerUrl + "/Back-end/uploads/" + user.image;
+
+  // find user image and replace it if not found
+  const check = user.image;
+  if (check != "") {
+    const imgUrl = liveServerUrl + "/Duck-yard/Back-end/uploads/" + user.image;
     img.style.cssText += `background-image:url("${imgUrl}");`;
+  } else {
+    img.style.cssText += `background-image:url("../images/duck-with-knife-meme-pink-wallpaper-scaled.jpg");`;
   }
 
   const heading = document.createElement("h3");
@@ -59,21 +58,8 @@ function createUser(user) {
 }
 
 const getUser = async () => {
-  /*
-  try {
-    const fetchOptions = {
-      headers: {
-        Authorization: "Bearer " + sessionStorage.getItem("token"),
-      },
-    };
-    const response = await fetch(url + "/user/2" fetchOptions);
-    const user = await response.json();
-    createUser(user);
-  } catch (e) {
-    console.log(e.message);
-  }
-  */
   const user = JSON.parse(sessionStorage.getItem("user"));
   createUser(user);
 };
+
 getUser();
