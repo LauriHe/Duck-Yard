@@ -38,7 +38,7 @@ main {
   background-color: white;
   border-radius: 1em;
   width: 90%;
-  height: 35em;
+  height: 40em;
   margin-left: 5%;
   margin-right: 5%;
   margin-bottom: 1em;
@@ -65,7 +65,7 @@ main {
 
 input {
   font-family: inherit;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }
 input[type="text"] {
   height: 1.5rem;
@@ -91,6 +91,10 @@ form.register > input[type="submit"] {
   background-color: white;
   color: var(--main-color);
   border-radius: 1em;
+}
+.button{
+  margin-bottom: 1em;
+  
 }
 
 form.signIn > input[type="submit"]:hover {
