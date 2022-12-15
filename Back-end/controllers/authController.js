@@ -43,12 +43,19 @@ const user_post = async (req, res, next) => {
     const salt = bcrypt.genSaltSync(10);
     const pwd = bcrypt.hashSync(req.body.passwd, salt);
 
+    const thumbnail = await sharp(req.file.path)
+      .resize(160, 160)
+      .png()
+      .toFile("./thumbnails/" + req.file.filename);
+
+
     const data = [
       req.body.name,
       pwd,
       req.body.email,
       req.body.phone,
       req.body.location,
+      req.body.filename,
       req.body.roleid
     ];
 
@@ -57,12 +64,12 @@ const user_post = async (req, res, next) => {
       next(httpError('Invalid data', 400));
       return;
     }
-
+    if (thumbnail) {
     res.json({
       message: 'user added',
       user_id: result.insertId,
     });
-  } catch (e) {
+  }} catch (e) {
     console.error('user_post', e.message);
     next(httpError('Internal server error', 500));
   }
