@@ -60,23 +60,21 @@ const post_post = async (req, res, next) => {
     }
 
     console.log("post_post", req.body, req.file);
-    
+
     const thumbnail = await sharp(req.file.path)
-      .resize(160, 160)
+      .resize(300, 300)
       .png()
       .toFile("./thumbnails/" + req.file.filename);
-
 
     const data = [
       req.body.heading,
       req.body.price,
       req.file.filename,
       req.body.description,
-      req.user.id
-      
+      req.user.id,
     ];
 
-    const cat = req.body.category; 
+    const cat = req.body.category;
     const kunt = req.body.kunto;
 
     const result = await addpost(data, next);
@@ -91,34 +89,20 @@ const post_post = async (req, res, next) => {
         message: "post added",
         post_id: result.insertId,
       });
-      
     }
 
-  post_category_add (result.insertId, cat, kunt, next);
-
+    post_category_add(result.insertId, cat, kunt, next);
   } catch (e) {
     console.error("post_post", e.message);
     next(httpError("Internal server error", 500));
   }
 };
 
-
-
 const post_category_add = async (id, category, kunto, next) => {
   try {
     // Extract the validation errors from a request.
 
-    
-    
-
-
-    const data = [
-      id,
-      category,
-      id,
-      kunto,
-      
-    ];
+    const data = [id, category, id, kunto];
 
     const result = await addcategory(data, next);
     if (result.affectedRows < 1) {
@@ -126,7 +110,6 @@ const post_category_add = async (id, category, kunto, next) => {
       console.log(result);
       return;
     }
-    
   } catch (e) {
     console.error("post_category_add", e.message);
     next(httpError("Internal server error", 500));

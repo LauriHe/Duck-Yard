@@ -16,13 +16,8 @@ function renderPost(likes, seller) {
 
   const img = document.createElement("div");
   img.classList.add("productImg");
-  const imgUrl = liveServerUrl + "/Back-end/thumbnails/" + post.image;
-  img.style.cssText += `background-image:linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.092),
-        var(--secondary-color)
-      ),
-      url("${imgUrl}");`;
+  const imgUrl = liveServerUrl + "/Back-end/uploads/" + post.image;
+  img.style.cssText += `background-image:url("${imgUrl}");`;
 
   const heading = document.createElement("h2");
   heading.innerHTML = post.heading;
