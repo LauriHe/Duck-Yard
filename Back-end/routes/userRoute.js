@@ -11,11 +11,13 @@ const {
 } = require("../controllers/userController");
 const { body } = require("express-validator");
 const router = express.Router();
+const passport = require("../utils/pass");
 
 router
   .route("/")
   .get(user_list_get)
   .put(
+    passport.authenticate("jwt", { session: false }),
     body("name").isLength({ min: 3 }).escape(),
     body("passwd").matches(/(?=.*\p{Lu}).{8,}/u),
     body("email").isEmail(),

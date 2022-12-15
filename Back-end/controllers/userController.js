@@ -131,10 +131,12 @@ const user_update_put = async (req, res, next) => {
     if (!errors.isEmpty()) {
       // There are errors.
       // Error messages can be returned in an array using `errors.array()`.
-      console.error("user_post validation", errors.array());
+      console.error("user_update_put", errors.array());
       next(httpError("Invalid data", 400));
       return;
     }
+
+    console.log("user_update_put", req.body);
 
     const data = [
       req.body.name,

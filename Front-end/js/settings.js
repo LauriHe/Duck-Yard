@@ -38,13 +38,15 @@ const getUser = async (id) => {
 // submit modify form
 form.addEventListener("submit", async (evt) => {
   evt.preventDefault();
-  const data = new FormData(form);
+  const data = serializeJson(form);
+  console.log(data);
   const fetchOptions = {
     method: "PUT",
     headers: {
       Authorization: "Bearer " + sessionStorage.getItem("token"),
+      "content-type": "application/json",
     },
-    body: data,
+    body: JSON.stringify(data),
   };
   const response = await fetch(url + "/user", fetchOptions);
   const json = await response.json();
