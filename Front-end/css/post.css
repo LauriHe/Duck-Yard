@@ -152,30 +152,42 @@ form {
     padding: 1em;
 }
 #image {
-    border-radius: 1em;
-    height: 3em;
-    width: 20%;
-    border: none;
-    background-color: var(--bg-color);
-    box-shadow: var(--shadow);
-    font-family: inherit;
+    
+    
     cursor: pointer;
 }
-#image:hover {
-    background-color: var(--main-color);
+
+input[type="file"] {
+  
+  z-index: -1;
+  
+  position: absolute;
+  
 }
 
+label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  color: white;
+  background-color: var(--main-color);
+  border-radius: 0.7em;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  
+  height: 2em
+}
+label:hover{
+  background-color: var(--secondary-color);
+}
 input#image{
    box-sizing: border-box;
    display: flex;
    justify-content: center;
    
 }
-::file-selector-button {
-    display: none;
-    font-family: inherit;
-    
-  }
+
 textarea {
     display: flex;
     width: 100%; 
