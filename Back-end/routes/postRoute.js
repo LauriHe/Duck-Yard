@@ -26,6 +26,7 @@ const {
   post_comments_get,
   post_like,
   delete_like,
+  post_category_add,
 } = require("../controllers/postController");
 const router = express.Router();
 
@@ -42,6 +43,7 @@ router
     post_post
     
   );
+
 
 router
   .route("/:id")

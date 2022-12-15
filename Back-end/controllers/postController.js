@@ -11,6 +11,7 @@ const {
   getpostComments,
   addLike,
   deleteLike,
+  addcategory,
 } = require("../models/postModel");
 const { httpError } = require("../utils/errors");
 const { validationResult } = require("express-validator");
@@ -75,21 +76,59 @@ const post_post = async (req, res, next) => {
       
     ];
 
+    const cat = req.body.category; 
+    const kunt = req.body.kunto;
+
     const result = await addpost(data, next);
     if (result.affectedRows < 1) {
       next(httpError("Invalid data", 400));
       return;
     }
-
+    console.log(result);
     //CHANGE BACK TO THUMBNAIL!!!!!!!!!!!!!!!!!!!!!!!!
     if (thumbnail) {
       res.json({
         message: "post added",
         post_id: result.insertId,
       });
+      
     }
+
+  post_category_add (result.insertId, cat, kunt, next);
+
   } catch (e) {
     console.error("post_post", e.message);
+    next(httpError("Internal server error", 500));
+  }
+};
+
+
+
+const post_category_add = async (id, category, kunto, next) => {
+  try {
+    // Extract the validation errors from a request.
+
+    
+    
+
+
+    const data = [
+      id,
+      category,
+      id,
+      kunto,
+      
+    ];
+
+    const result = await addcategory(data, next);
+    if (result.affectedRows < 1) {
+      next(httpError("Invalid data", 400));
+      console.log(result);
+      return;
+    }
+    
+  } catch (e) {
+    console.error("post_category_add", e.message);
     next(httpError("Internal server error", 500));
   }
 };
@@ -255,4 +294,5 @@ module.exports = {
   post_likes_get,
   post_categories_get,
   post_comments_get,
+  post_category_add,
 };
