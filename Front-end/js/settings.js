@@ -1,15 +1,18 @@
-'use strict';
-const url = 'http://localhost:3000'; // change url when uploading to server
+"use strict";
+const url = "http://localhost:3000"; // change url when uploading to server
 
 // select existing html elements
 
-let form = document.querySelector('.register');
+/*
 let button1 = document.querySelector('#btn');
 let button2 = document.querySelector('#btn2');
 let input1 = document.querySelector('#username');
 let input2 = document.querySelector('#password');
-let submit = document.querySelector('#submit');
+*/
 
+let form = document.querySelector("form");
+let button = document.querySelector("#submit");
+/*
 // get query parameter
 const getQParam = (param) => {
   const queryString = window.location.search;
@@ -30,25 +33,21 @@ const getUser = async (id) => {
   inputs[2].value = cat.email;
   inputs[3].value = cat.phone;
   inputs[4].value = cat.location;
-};
+};*/
 
 // submit modify form
-form.addEventListener('submit', async (evt) => {
+form.addEventListener("submit", async (evt) => {
   evt.preventDefault();
-  const data = serializeJson(form);
+  const data = new FormData(form);
   const fetchOptions = {
-    method: 'PUT',
+    method: "PUT",
     headers: {
-      'Content-Type': 'application/json',
+      Authorization: "Bearer " + sessionStorage.getItem("token"),
     },
-    body: JSON.stringify(data),
+    body: data,
   };
-
-  console.log(fetchOptions);
-  const response = await fetch(url + '/user', fetchOptions);
+  const response = await fetch(url + "/user", fetchOptions);
   const json = await response.json();
   alert(json.message);
-  location.href = 'profile.html';
+  location.href = "profile.html";
 });
-
-

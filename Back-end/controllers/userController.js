@@ -123,7 +123,6 @@ const user_likes_get = async (req, res, next) => {
   }
 };
 
-
 const user_update_put = async (req, res, next) => {
   try {
     // Extract the validation errors from a request.
@@ -137,15 +136,14 @@ const user_update_put = async (req, res, next) => {
       return;
     }
 
-    let data = [];
-
-      data = [
-        req.body.name,
-        req.body.passwd,
-        req.body.email,
-        req.body.phone,
-        req.body.location,
-      ];
+    const data = [
+      req.body.name,
+      req.body.passwd,
+      req.body.email,
+      req.body.phone,
+      req.body.location,
+      req.user.id,
+    ];
 
     console.log("user_put", data);
     const result = await updateUser(data, next);
