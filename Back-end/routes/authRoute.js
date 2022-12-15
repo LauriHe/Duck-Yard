@@ -1,5 +1,5 @@
-'use strict';
-const express = require('express');
+"use strict";
+const express = require("express");
 const router = express.Router();
 const {login, user_post} = require('../controllers/authController');
 const {body} = require('express-validator');
@@ -17,7 +17,7 @@ const fileFilter = (req, file, cb) => {
   const upload = multer({ dest: "uploads/", fileFilter });
 
 
-router.post('/login', login);
+router.post("/login", login);
 
 router.post('/register',
     upload.single("image"),

@@ -7,10 +7,24 @@ const {
   user_delete,
   check_token,
   user_likes_get,
+  user_update_put,
 } = require("../controllers/userController");
+const { body } = require("express-validator");
 const router = express.Router();
+const passport = require("../utils/pass");
 
-router.route("/").get(user_list_get).put(user_put);
+router
+  .route("/")
+  .get(user_list_get)
+  .put(
+    passport.authenticate("jwt", { session: false }),
+    body("name").isLength({ min: 3 }).escape(),
+    body("passwd").matches(/(?=.*\p{Lu}).{8,}/u),
+    body("email").isEmail(),
+    body("phone").isMobilePhone(),
+    body("location").isLength({ min: 3 }).escape(),
+    user_update_put
+  );
 
 router.get("/token", check_token);
 
