@@ -4,6 +4,7 @@ const router = express.Router();
 const {login, user_post} = require('../controllers/authController');
 const {body} = require('express-validator');
 const multer = require("multer");
+const { httpError } = require("../utils/errors");
 
 const fileFilter = (req, file, cb) => {
     console.log("fileFilter", file)

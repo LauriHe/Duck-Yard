@@ -1,6 +1,7 @@
 "use strict";
 const pool = require("../database/db");
 const promisePool = pool.promise();
+const { httpError } = require("../utils/errors");
 
 const getAllUsers = async () => {
   try {
