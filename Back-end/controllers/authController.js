@@ -32,7 +32,7 @@ const user_post = async (req, res, next) => {
   try {
     // Extract the validation errors from a request.
     const errors = validationResult(req);
-
+    console.log(req.file , 'dawda');
     if (!errors.isEmpty()) {
       // There are errors.
       // Error messages can be returned in an array using `errors.array()`.
@@ -56,7 +56,7 @@ const user_post = async (req, res, next) => {
       req.body.email,
       req.body.phone,
       req.body.location,
-      req.body.filename,
+      req.file.filename,
       req.body.roleid
     ];
     console.log(data);
