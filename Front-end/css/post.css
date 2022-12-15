@@ -32,6 +32,8 @@ main {
 #postForm{
     display: flex;
     flex-direction: column;
+    height: 100%;
+    width: 100%;
 }
 
 
@@ -171,8 +173,7 @@ textarea {
 #postdiv {
     display: flex;
     justify-content: center;
-    align-items: end;
-    height: 100%;
+    align-items: center;
     
 }
 #postbtn {
