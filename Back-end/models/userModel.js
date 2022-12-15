@@ -48,6 +48,7 @@ const addUser = async (data, next) => {
   try {
     const [rows] = await promisePool.execute(`INSERT INTO duck_profile (name, passwd, email, phone, location, image, roleid) VALUES (?, ?, ?, ?, ?, ?, ?);`,
         data);
+        
     return rows;
   } catch (e) {
     console.error('addUser', e.message);
