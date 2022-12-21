@@ -1,6 +1,5 @@
 "use stirct";
-const url = "http://localhost:3000";
-const liveServerUrl = "http://127.0.0.1:5500";
+const url = "https://10.114.34.56/app";
 const post = JSON.parse(sessionStorage.getItem("post"));
 
 function renderPost(likes, seller) {
@@ -16,7 +15,7 @@ function renderPost(likes, seller) {
 
   const img = document.createElement("div");
   img.classList.add("productImg");
-  const imgUrl = liveServerUrl + "/Back-end/uploads/" + post.image;
+  const imgUrl = url + "/" + post.image;
   img.style.cssText += `background-image:url("${imgUrl}");`;
 
   const heading = document.createElement("h2");

@@ -1,7 +1,6 @@
 "use strict";
 
-const url = "http://localhost:3000";
-const liveServerUrl = "http://127.0.0.1:5500";
+const url = "https://10.114.34.56/app";
 
 function createUser(user) {
   console.log(user);
@@ -20,7 +19,7 @@ function createUser(user) {
   // find user image and replace it if not found
   const check = user.image;
   if (check != "") {
-    const imgUrl = liveServerUrl + "/Back-end/uploads/" + user.image;
+    const imgUrl = url + "/" + user.image;
     img.style.cssText += `background-image:url("${imgUrl}");`;
   } else {
     img.style.cssText += `background-image:url("../images/duck-with-knife-meme-pink-wallpaper-scaled.jpg");`;
