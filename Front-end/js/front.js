@@ -184,30 +184,33 @@ function createCards(posts) {
     }
   }
 
-  posts.forEach((post) => {
-    const getcategoriesAndLikes = async () => {
-      try {
-        let loggedIn = false;
-        const response = await fetch(url + "/post/categories/" + post.id);
-        const categories = await response.json();
+  posts
+    .slice()
+    .reverse()
+    .forEach((post) => {
+      const getcategoriesAndLikes = async () => {
+        try {
+          let loggedIn = false;
+          const response = await fetch(url + "/post/categories/" + post.id);
+          const categories = await response.json();
 
-        if (!(sessionStorage.getItem("token") === null)) {
-          loggedIn = true;
+          if (!(sessionStorage.getItem("token") === null)) {
+            loggedIn = true;
+          }
+          if (loggedIn) {
+            const userId = JSON.parse(sessionStorage.getItem("user")).id;
+            const response2 = await fetch(url + "/user/likes/" + userId);
+            const likeList = await response2.json();
+            renderPost(loggedIn, categories, likeList, post);
+          } else {
+            renderPost(loggedIn, categories, null, post);
+          }
+        } catch (e) {
+          console.log(e.message);
         }
-        if (loggedIn) {
-          const userId = JSON.parse(sessionStorage.getItem("user")).id;
-          const response2 = await fetch(url + "/user/likes/" + userId);
-          const likeList = await response2.json();
-          renderPost(loggedIn, categories, likeList, post);
-        } else {
-          renderPost(loggedIn, categories, null, post);
-        }
-      } catch (e) {
-        console.log(e.message);
-      }
-    };
-    getcategoriesAndLikes();
-  });
+      };
+      getcategoriesAndLikes();
+    });
 }
 
 const getPosts = async () => {

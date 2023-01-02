@@ -76,7 +76,7 @@ const user_put = async (req, res, next) => {
     }
     if (thumbnail) {
       res.json({
-        message: "user added",
+        message: "Käyttäjä lisätty",
         user_id: result.insertId,
       });
     }

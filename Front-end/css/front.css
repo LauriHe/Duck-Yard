@@ -97,7 +97,7 @@ main > h2 {
 }
 
 #filterMenu {
-  align-content: flex-start;
+  align-content: space-around;
   justify-content: space-between;
 }
 
@@ -130,6 +130,12 @@ main > h2 {
 .categoryFiterMenu.showMenu {
   height: 20rem;
   padding: 2rem;
+}
+
+#likeContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .mainCard {

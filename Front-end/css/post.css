@@ -3,12 +3,12 @@
 
 .container {
   width: 100vw;
+  height: 100vh;
 }
 
 #mainContainer {
-  
   width: 100%;
-  min-height: 85vh;
+  height: 85vh;
   display: flex;
   gap: 1rem;
   justify-content: center;
@@ -19,150 +19,145 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
-  min-height: 95%;
-  max-height: 95%;
+  height: 95%;
   width: 100%;
   background-color: white;
   box-shadow: var(--shadow);
   align-items: center;
-  
-
 }
-#postDiv{
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 3em;
+#postDiv {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 3em;
 }
 form {
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
-
 }
 
 #kuvaBanner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 40%;
-    background-image: url("../images/laptop.jpeg");
-    background-size: cover;
-    border-radius: 1em;
-    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40%;
+  background-image: url("../images/laptop.jpeg");
+  background-size: cover;
+  border-radius: 1em;
+  box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.1);
 }
-
-
-
 
 .name {
-    display: flex;
-    justify-content: center;
-    
-    margin: 1em;
-    height: 2em;
-    
+  display: flex;
+  justify-content: center;
+
+  margin: 1em;
+  height: 2em;
 }
+
+input {
+  border-style: solid;
+  border-width: 1px;
+}
+
 #heading {
-    
-    border-radius: 1em;
-    width: 50%;
-    font-family: inherit;
-    border-color: var(--main-color);
-    text-align: center;
+  border-radius: 1em;
+  width: 50%;
+  font-family: inherit;
+  border-color: var(--main-color);
+  text-align: center;
 }
-.dropDown{
+.dropDown {
   display: flex;
   justify-content: space-around;
   padding: 1em;
-  
 }
-.price{
+.price {
   display: flex;
   flex-direction: column;
   width: 25%;
 }
 #price {
-  
   border-radius: 1em;
   border-color: var(--main-color);
   background-color: var(--bg-color);
   height: 2em;
-  
+
   font-family: inherit;
   text-align: center;
 }
-.category{
+.category {
   display: flex;
   flex-direction: column;
 }
 #category {
-    border-radius: 1em;
-    border-color: var(--main-color);
-    background-color: var(--bg-color);
-    height: 2em;
-    
-    font-family: inherit;
-    text-align: center;
-    cursor: pointer;
+  border-radius: 1em;
+  border-color: var(--main-color);
+  background-color: var(--bg-color);
+  height: 2em;
+
+  font-family: inherit;
+  text-align: center;
+  cursor: pointer;
 }
 #category > option:hover {
-    color: var(--main-color);
+  color: var(--main-color);
 }
 #kunto {
-    border-radius: 1em;
-    height: 2em;
-    border-color: var(--main-color);
-    background-color: var(--bg-color);
-    font-family: inherit;
-    text-align: center;
-    cursor: pointer;
+  border-radius: 1em;
+  height: 2em;
+  border-color: var(--main-color);
+  background-color: var(--bg-color);
+  font-family: inherit;
+  text-align: center;
+  cursor: pointer;
 }
-.kunto{
+.kunto {
   display: flex;
   flex-direction: column;
 }
 .infoHeader {
-    display: flex;
-    justify-content:center;
-    padding: 1em;
+  display: flex;
+  justify-content: center;
+  padding: 1em;
 }
 
-#prodHeader  {
-    display: flex;
-    justify-content: center;
-    padding-top: 1em;
+#description {
+  padding: 1em;
+  border-radius: 0.5em;
+  border: 1px solid var(--main-color);
 }
-#priceHeader  {
-    display: flex;
-    justify-content: center;
-    padding: 1em;
-   
+
+#prodHeader {
+  display: flex;
+  justify-content: center;
+  padding-top: 1em;
 }
-#catHeader  {
-    display: flex;
-    justify-content: center;
-    padding: 1em;
+#priceHeader {
+  display: flex;
+  justify-content: center;
+  padding: 1em;
 }
-#kuntoHeader  {
-    display: flex;
-    justify-content: center;
-    padding: 1em;
+#catHeader {
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+}
+#kuntoHeader {
+  display: flex;
+  justify-content: center;
+  padding: 1em;
 }
 #image {
-    
-    
-    cursor: pointer;
+  cursor: pointer;
 }
 
 input[type="file"] {
-  
   z-index: -1;
-  
+
   position: absolute;
-  
 }
 
 label {
@@ -175,50 +170,47 @@ label {
   border-radius: 0.7em;
   box-shadow: var(--shadow);
   cursor: pointer;
-  
-  height: 2em
+
+  height: 2em;
 }
-label:hover{
+label:hover {
   background-color: var(--secondary-color);
 }
-input#image{
-   box-sizing: border-box;
-   display: flex;
-   justify-content: center;
-   
+input#image {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
 }
 
 textarea {
-    display: flex;
-    width: 100%; 
-    height: 5rem;
-    resize: none; 
-    border: none; 
-    font-family: inherit;
-    padding: 1em;
-    
+  display: flex;
+  width: 100%;
+  height: 5rem;
+  resize: none;
+  border: none;
+  font-family: inherit;
+  padding: 1em;
 }
 
 #postdiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #postbtn {
-    cursor: pointer;
-    border-radius: 1em;
-    height: 3em;
-    width: 20%;
-    border-color: var(--main-color);
-    background-color: var(--main-color);
-    font-family: inherit;
-    width: 7em;
-    color: var(--bg-color)
-    
+  cursor: pointer;
+  border-radius: 1em;
+  height: 3em;
+  width: 20%;
+  border-color: var(--main-color);
+  background-color: var(--main-color);
+  font-family: inherit;
+  width: 7em;
+  color: var(--bg-color);
 }
 #postbtn:hover {
-    background-color: var(--secondary-color);
+  background-color: var(--secondary-color);
 }
 
 footer {
@@ -227,7 +219,7 @@ footer {
   background-color: var(--bg-color);
   display: flex;
   justify-content: center;
-  align-items: end;
+  align-items: center;
 }
 
 footer > h2 {
@@ -245,47 +237,6 @@ footer > h2 {
     margin-top: 1em;
     width: 600px;
     border-radius: 1em;
-  }
-}
-
-@media only screen and (min-width: 940px) {
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
-  }
-  nav {
-    width: 100%;
-  }
-  #navMenuContainer {
-    position: inherit;
-    z-index: 0;
-    width: 25%;
-    margin-right: 1rem;
-  }
-  #navMenu {
-    position: static;
-    margin-top: 7rem;
-    height: 25rem;
-    width: 100%;
-    border-radius: 1rem;
-    box-shadow: var(--shadow);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  #navMenuItems {
-    position: static;
-    height: 90%;
-    transform: translate(0, 0);
-    width: 75%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-around;
-  }
-  #navMenuButton {
-    display: none;
   }
 }
 

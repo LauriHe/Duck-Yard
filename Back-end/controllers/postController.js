@@ -86,7 +86,7 @@ const post_post = async (req, res, next) => {
     //CHANGE BACK TO THUMBNAIL!!!!!!!!!!!!!!!!!!!!!!!!
     if (thumbnail) {
       res.json({
-        message: "post added",
+        message: "Ilmoitus lisätty",
         post_id: result.insertId,
       });
     }
