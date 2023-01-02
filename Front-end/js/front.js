@@ -7,7 +7,6 @@ let checkLiked = false;
 
 function createCards(posts) {
   document.querySelector("#mainCards").innerHTML = "";
-  console.log(posts);
 
   function renderPost(loggedIn, categories, likeList, post) {
     let hasCurrentCategory = false;

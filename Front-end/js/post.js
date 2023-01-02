@@ -7,7 +7,6 @@ let button = document.querySelector("#postbtn");
 form.addEventListener("submit", async (evt) => {
   evt.preventDefault();
   const data = new FormData(form);
-  console.log(data);
   const fetchOptions = {
     method: "POST",
     headers: {

@@ -15,7 +15,6 @@ let hide1 = document.querySelector(".hide1");
 let hide2 = document.querySelector(".hide2");
 
 function hideFunction() {
-  console.log("klick");
   hide2.removeAttribute("hidden", "");
   hide1.setAttribute("hidden", "");
   submit2.removeAttribute("hidden", "");
@@ -25,7 +24,6 @@ function hideFunction() {
 }
 
 function hideFunction2() {
-  console.log("klick2");
   submit1.removeAttribute("hidden", "");
   submit2.setAttribute("hidden", "");
   button1.removeAttribute("hidden");
@@ -45,10 +43,8 @@ form1.addEventListener("submit", async (evt) => {
     },
     body: JSON.stringify(data),
   };
-  console.log(data);
   const response = await fetch(url + "/auth/login", fetchOptions);
   const json = await response.json();
-  console.log("login response", json);
   if (!json.user) {
     alert(json.message);
   } else {

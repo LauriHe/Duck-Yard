@@ -3,8 +3,6 @@
 const url = "https://10.114.34.56/app";
 
 function createUser(user) {
-  console.log(user);
-
   // separated div
   const left = document.createElement("div");
   left.classList.add("left");

@@ -39,7 +39,6 @@ const getUser = async (id) => {
 form.addEventListener("submit", async (evt) => {
   evt.preventDefault();
   const data = serializeJson(form);
-  console.log(data);
   const fetchOptions = {
     method: "PUT",
     headers: {
