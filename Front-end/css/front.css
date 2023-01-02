@@ -101,6 +101,10 @@ main > h2 {
   justify-content: space-between;
 }
 
+.filterItem {
+  margin: 0 1rem;
+}
+
 #categoryMenu > div {
   height: 2rem;
   width: 50%;
@@ -113,6 +117,13 @@ main > h2 {
 #categoryMenu input {
   height: 1rem;
   width: 1rem;
+}
+
+#categoryMenu > #all {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #filterMenu h3 {

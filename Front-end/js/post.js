@@ -17,4 +17,5 @@ form.addEventListener("submit", async (evt) => {
   const response = await fetch(url + "/post", fetchOptions);
   const json = await response.json();
   alert(json.message);
+  window.location.href = "front.html";
 });

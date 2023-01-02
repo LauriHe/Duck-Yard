@@ -67,4 +67,5 @@ form2.addEventListener("submit", async (evt) => {
   const response = await fetch(url + "/auth/register", fetchOptions);
   const json = await response.json();
   alert(json.message);
+  window.location.href = "login.html";
 });

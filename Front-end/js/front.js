@@ -1,7 +1,7 @@
 "use strict";
 
 const url = "https://10.114.34.56/app";
-let currentCategory = "Tietokoneet";
+let currentCategory = "Kaikki ilmoitukset";
 let currentConditions = [];
 let checkLiked = false;
 
@@ -13,6 +13,10 @@ function createCards(posts) {
     let hasCurrentCondition = false;
     let hasLike = false;
     let hasLikeIfChecked = false;
+
+    if (currentCategory === "Kaikki ilmoitukset") {
+      hasCurrentCategory = true;
+    }
 
     for (let i = 0; i < categories.length; i++) {
       if (categories[i].name === currentCategory) {
@@ -234,7 +238,6 @@ categories.forEach((category) => {
   category.addEventListener("click", (e) => {
     currentCategory = e.target.value;
     document.querySelector("main > h2").innerHTML = currentCategory;
-    console.log("Current category:", currentCategory);
     getPosts();
   });
 });
@@ -251,7 +254,6 @@ conditions.forEach((condition) => {
     } else {
       currentConditions.push(e.target.value);
     }
-    console.log("Current condition:", currentConditions);
     getPosts();
   });
 });

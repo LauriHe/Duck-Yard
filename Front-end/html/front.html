@@ -41,13 +41,22 @@
             </button>
           </div>
           <div id="categoryMenu" class="categoryFiterMenu menuHidden">
+            <div class="categoryItem hidden" id="all">
+              <input
+                type="radio"
+                id="Kaikki ilmoitukset"
+                value="Kaikki ilmoitukset"
+                name="selectCategory"
+                checked="checked"
+              />
+              <label for="Kaikki ilmoitukset">Kaikki ilmoitukset</label>
+            </div>
             <div class="categoryItem hidden">
               <input
                 type="radio"
                 id="Tietokoneet"
                 value="Tietokoneet"
                 name="selectCategory"
-                checked="checked"
               />
               <label for="Tietokoneet">Tietokoneet</label>
             </div>
@@ -81,7 +90,7 @@
           </div>
           <div id="filterMenu" class="categoryFiterMenu menuHidden">
             <h3 class="filterItem hidden">Kunto</h3>
-            <div class="filterItem hidden">
+            <div class="filterItem condition hidden">
               <input
                 type="checkbox"
                 id="condition1"
@@ -129,7 +138,7 @@
               </div>
             </div>
           </div>
-          <h2>Tietokoneet</h2>
+          <h2>Kaikki ilmoitukset</h2>
           <div id="mainCards"></div>
         </main>
         <div id="navMenuContainer">

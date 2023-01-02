@@ -1,5 +1,8 @@
 "use strict";
 
+/*import { hideCategories, hideFilters } from "./categoryFilterMenu";*/
+
+const body = document.querySelector("body");
 const container = document.querySelector(".container");
 const menuContainer = document.querySelector("#navMenuContainer");
 const menuButton = document.querySelector("#navMenuButton");
@@ -30,18 +33,46 @@ function delay(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
 
-addEventListener("resize", () => {
+function showMenu() {
+  menuContainer.classList.remove("width-0");
+  menuContainer.classList.add("width-100");
+  container.classList.add("MenuOpen");
+  menu.classList.remove("width-0");
+  menu.classList.add("width-100");
+  icon.classList.remove("fa-bars");
+  icon.classList.add("fa-x");
+  delay(100).then(() => menuItems.classList.toggle("hidden"));
+  hideCategories();
+  hideFilters();
+}
+
+function hideMenu() {
+  menuContainer.classList.remove("width-100");
+  menuContainer.classList.add("width-0");
+  container.classList.remove("MenuOpen");
+  menu.classList.remove("width-100");
+  menu.classList.add("width-0");
+  icon.classList.remove("fa-x");
+  icon.classList.add("fa-bars");
+  menuItems.classList.toggle("hidden");
+}
+
+function menuDesktop() {
+  menuContainer.classList.remove("width-100");
+  menu.classList.remove("width-100");
+  menuContainer.classList.remove("width-0");
+  menu.classList.remove("width-0");
+  container.classList.remove("MenuOpen");
+  icon.classList.remove("fa-x");
+  icon.classList.add("fa-bars");
+  menuItems.classList.remove("hidden");
+}
+
+body.onresize = () => {
   if (window.innerWidth > desctopSize) {
     menuItems.classList.remove("hidden");
     if (mobile) {
-      menuContainer.classList.remove("width-100");
-      menu.classList.remove("width-100");
-      menuContainer.classList.remove("width-0");
-      menu.classList.remove("width-0");
-      container.classList.remove("MenuOpen");
-      icon.classList.remove("fa-x");
-      icon.classList.add("fa-bars");
-      menuItems.classList.toggle("hidden");
+      menuDesktop();
       MenuHidden = true;
       mobile = false;
     }
@@ -51,28 +82,14 @@ addEventListener("resize", () => {
       mobile = true;
     }
   }
-});
+};
 
 menuButton.addEventListener("click", () => {
   if (MenuHidden) {
-    menuContainer.classList.remove("width-0");
-    menuContainer.classList.add("width-100");
-    container.classList.add("MenuOpen");
-    menu.classList.remove("width-0");
-    menu.classList.add("width-100");
-    icon.classList.remove("fa-bars");
-    icon.classList.add("fa-x");
-    delay(100).then(() => menuItems.classList.toggle("hidden"));
+    showMenu();
     MenuHidden = false;
   } else {
-    menuContainer.classList.remove("width-100");
-    menuContainer.classList.add("width-0");
-    container.classList.remove("MenuOpen");
-    menu.classList.remove("width-100");
-    menu.classList.add("width-0");
-    icon.classList.remove("fa-x");
-    icon.classList.add("fa-bars");
-    menuItems.classList.toggle("hidden");
+    hideMenu();
     MenuHidden = true;
   }
 });

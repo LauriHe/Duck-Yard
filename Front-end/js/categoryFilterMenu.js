@@ -15,46 +15,60 @@ function delay(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
 
+function showCategories() {
+  filterMenu.classList.remove("showMenu");
+  categoryMenu.classList.add("showMenu");
+
+  filterItem.forEach((element) => element.classList.add("hidden"));
+  delay(100).then(() =>
+    categoryItem.forEach((element) => element.classList.remove("hidden"))
+  );
+}
+
+function hideCategories() {
+  categoryMenu.classList.remove("showMenu");
+
+  delay(100).then(() =>
+    categoryItem.forEach((element) => element.classList.add("hidden"))
+  );
+}
+
+function showFilters() {
+  categoryMenu.classList.remove("showMenu");
+  filterMenu.classList.add("showMenu");
+
+  categoryItem.forEach((element) => element.classList.add("hidden"));
+  delay(300).then(() =>
+    filterItem.forEach((element) => element.classList.remove("hidden"))
+  );
+}
+
+function hideFilters() {
+  filterMenu.classList.remove("showMenu");
+
+  delay(100).then(() =>
+    filterItem.forEach((element) => element.classList.add("hidden"))
+  );
+}
+
 categoryButton.addEventListener("click", () => {
   if (categoryMenuHidden) {
-    filterMenu.classList.remove("showMenu");
-    categoryMenu.classList.add("showMenu");
-
-    filterItem.forEach((element) => element.classList.add("hidden"));
-    delay(100).then(() =>
-      categoryItem.forEach((element) => element.classList.remove("hidden"))
-    );
-
+    showCategories();
     categoryMenuHidden = false;
     filterMenuHidden = true;
   } else {
-    categoryMenu.classList.remove("showMenu");
-
-    delay(100).then(() =>
-      categoryItem.forEach((element) => element.classList.add("hidden"))
-    );
+    hideCategories();
     categoryMenuHidden = true;
   }
 });
 
 filterButton.addEventListener("click", () => {
   if (filterMenuHidden) {
-    categoryMenu.classList.remove("showMenu");
-    filterMenu.classList.add("showMenu");
-
-    categoryItem.forEach((element) => element.classList.add("hidden"));
-    delay(300).then(() =>
-      filterItem.forEach((element) => element.classList.remove("hidden"))
-    );
-
+    showFilters();
     filterMenuHidden = false;
     categoryMenuHidden = true;
   } else {
-    filterMenu.classList.remove("showMenu");
-
-    delay(100).then(() =>
-      filterItem.forEach((element) => element.classList.add("hidden"))
-    );
+    hideFilters();
     filterMenuHidden = true;
   }
 });
