@@ -159,7 +159,7 @@ const user_update_put = async (req, res, next) => {
     }
 
     res.json({
-      message: "User modified",
+      message: "Käyttäjä päivitetty",
     });
   } catch (e) {
     console.error("user_put", e.message);

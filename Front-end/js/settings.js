@@ -71,10 +71,10 @@ form.addEventListener("submit", async (evt) => {
       Authorization: "Bearer " + sessionStorage.getItem("token"),
       "content-type": "application/json",
     },
-    body: JSON.stringify(data),
   };
   const response2 = await fetch(url + "/user", fetchOptions2);
   const json2 = await response2.json();
+  console.log(json2);
   sessionStorage.setItem("user", JSON.stringify(json2));
 
   location.href = "profile.html";
