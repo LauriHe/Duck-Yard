@@ -12,6 +12,8 @@ const {
 const { body } = require("express-validator");
 const router = express.Router();
 const passport = require("../utils/pass");
+const multer = require("multer");
+const upload = multer({ dest: "uploads/", fileFilter });
 
 router
   .route("/")
