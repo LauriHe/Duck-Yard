@@ -21,6 +21,7 @@ router
     body("email").isEmail(),
     body("phone").isMobilePhone(),
     body("location").isLength({ min: 3 }).escape(),
+    body('image'),
     user_update_put
   )
   .get(user_get)
