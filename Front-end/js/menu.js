@@ -1,7 +1,5 @@
 "use strict";
 
-/*import { hideCategories, hideFilters } from "./categoryFilterMenu";*/
-
 const body = document.querySelector("body");
 const container = document.querySelector(".container");
 const menuContainer = document.querySelector("#navMenuContainer");
@@ -42,8 +40,10 @@ function showMenu() {
   icon.classList.remove("fa-bars");
   icon.classList.add("fa-x");
   delay(100).then(() => menuItems.classList.toggle("hidden"));
-  hideCategories();
-  hideFilters();
+  if (window.location.pathname === "/~lauhei/Front-end/html/front.html") {
+    hideCategories();
+    hideFilters();
+  }
 }
 
 function hideMenu() {

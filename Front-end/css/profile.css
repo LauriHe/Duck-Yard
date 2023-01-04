@@ -17,7 +17,7 @@ body {
 }
 
 #mainContainer {
-  width: 105%;
+  width: 100%;
   display: flex;
   gap: 1rem;
   height: 85%;
@@ -45,18 +45,18 @@ main {
 }
 
 .left {
-  width: 50%;
+  width: 100%;
   margin: 1.5rem;
 }
 
 .right {
-  width: 50%;
+  width: 100%;
   margin: 1.5rem;
 }
 
 .profImg {
-  height: 250px;
-  width: 250px;
+  height: 20em;
+  width: 20em;
   background-size: cover;
   margin: auto;
   border: 2px solid #4da87d;

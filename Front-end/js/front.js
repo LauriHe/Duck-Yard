@@ -120,7 +120,6 @@ function createCards(posts) {
                 Authorization: "Bearer " + sessionStorage.getItem("token"),
                 "content-type": "application/json",
               },
-              body: JSON.stringify(data),
             };
             const response = await fetch(
               url + "/user/likes/" + userId,
@@ -213,7 +212,17 @@ function createCards(posts) {
           }
           if (loggedIn) {
             const userId = JSON.parse(sessionStorage.getItem("user")).id;
-            const response2 = await fetch(url + "/user/likes/" + userId);
+            const fetchOptions = {
+              method: "GET",
+              headers: {
+                Authorization: "Bearer " + sessionStorage.getItem("token"),
+                "content-type": "application/json",
+              },
+            };
+            const response2 = await fetch(
+              url + "/user/likes/" + userId,
+              fetchOptions
+            );
             const likeList = await response2.json();
             renderPost(loggedIn, categories, likeList, post);
           } else {
