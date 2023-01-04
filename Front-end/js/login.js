@@ -99,3 +99,4 @@ form2.addEventListener("submit", async (evt) => {
   alert(json.message);
   window.location.href = "login.html";
 });
+
