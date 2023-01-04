@@ -27,7 +27,7 @@ const user_list_get = async (req, res, next) => {
 
 const user_get = async (req, res, next) => {
   try {
-    const user = await getUser(req.params.id, next);
+    const user = await getUser(req.user.id, next);
     if (user.length < 1) {
       next(httpError("No user found", 404));
       return;

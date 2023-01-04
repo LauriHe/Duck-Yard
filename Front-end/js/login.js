@@ -14,6 +14,9 @@ let submit2 = document.querySelector("#submit2");
 let hide1 = document.querySelector(".hide1");
 let hide2 = document.querySelector(".hide2");
 
+const nameInput = document.querySelector("#name");
+const passwdInput = document.querySelector("#passwd");
+
 function hideFunction() {
   hide2.removeAttribute("hidden", "");
   hide1.setAttribute("hidden", "");
@@ -31,6 +34,33 @@ function hideFunction2() {
   hide2.setAttribute("hidden", "");
   hide1.removeAttribute("hidden", "");
 }
+
+nameInput.addEventListener("invalid", (event) => {
+  if (event.target.validity.valueMissing) {
+    event.target.setCustomValidity(
+      "Nimen täytyy olla vähintään 3 merkkiä pitkä."
+    );
+  }
+  if (event.target.validity.tooShort) {
+    event.target.setCustomValidity(
+      "Nimen täytyy olla vähintään 3 merkkiä pitkä."
+    );
+  }
+});
+nameInput.addEventListener("change", function (event) {
+  event.target.setCustomValidity("");
+});
+
+passwdInput.addEventListener("invalid", (event) => {
+  if (event.target.validity.patternMismatch) {
+    event.target.setCustomValidity(
+      "Salasanan täytyy olla vähintään 8 merkkiä pitkä ja sisältää vähintään yksi iso kirjain."
+    );
+  }
+});
+passwdInput.addEventListener("change", function (event) {
+  event.target.setCustomValidity("");
+});
 
 // login
 form1.addEventListener("submit", async (evt) => {

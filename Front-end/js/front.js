@@ -114,7 +114,18 @@ function createCards(posts) {
         async function isLiked(postId) {
           const userId = JSON.parse(sessionStorage.getItem("user")).id;
           try {
-            const response = await fetch(url + "/user/likes/" + userId);
+            const fetchOptions = {
+              method: "GET",
+              headers: {
+                Authorization: "Bearer " + sessionStorage.getItem("token"),
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(data),
+            };
+            const response = await fetch(
+              url + "/user/likes/" + userId,
+              fetchOptions
+            );
             const likeList = await response.json();
 
             for (let i = 0; i < likeList.length; i++) {

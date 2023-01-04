@@ -15,20 +15,18 @@ const passport = require("../utils/pass");
 
 router
   .route("/")
-  .get(user_list_get)
   .put(
-    passport.authenticate("jwt", { session: false }),
     body("name").isLength({ min: 3 }).escape(),
     body("passwd").matches(/(?=.*\p{Lu}).{8,}/u),
     body("email").isEmail(),
     body("phone").isMobilePhone(),
     body("location").isLength({ min: 3 }).escape(),
     user_update_put
-  );
+  )
+  .get(user_get)
+  .delete(user_delete);
 
 router.get("/token", check_token);
-
-router.route("/:id").get(user_get).delete(user_delete);
 
 router.route("/likes/:id").get(user_likes_get);
 

@@ -38,15 +38,45 @@
             <h3>Päivitä tietosi</h3>
 
             <form class="register" method="put" id="formContainer">
-
-              <input type="text" id="name" name="name" placeholder="Name" />
-              <input type="password" id="passwd" name="passwd" placeholder="Password"/>
-              <input type="text" id="email" name="email" placeholder="Email" />
-              <input type="text"id=" phone"name="phone" placeholder="Phonenumber"/>
-              <input type="text" id="location" name="location" placeholder="Location"/>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Name"
+                required
+                minlength="3"
+              />
+              <input
+                type="password"
+                id="passwd"
+                name="passwd"
+                placeholder="Password"
+                required
+                pattern="(?=.*[A-Z]).{8,}"
+              />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email"
+                required
+              />
+              <input
+                type="phone"
+                id="phone"
+                name="phone"
+                placeholder="Phonenumber"
+                required
+              />
+              <input
+                type="text"
+                id="location"
+                name="location"
+                placeholder="Location"
+                required
+              />
 
               <button type="submit" id="submit">Päivitä tiedot</button>
-
             </form>
           </div>
           <!-- Update form end -->

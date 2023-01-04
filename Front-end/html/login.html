@@ -20,16 +20,25 @@
             method="post"
             action="http://localhost:3000/auth/login"
           >
-          <div class="hide1">
-            <div>
-                <input type="text" id="username" name="username" placeholder="Email"/>
+            <div class="hide1">
+              <div>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  placeholder="Email"
+                />
+              </div>
+              <div>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Salasana"
+                />
+              </div>
             </div>
-            <div>
-                <input type="password" id="password" name="password" placeholder="Salasana"/>
-            </div>
-          </div>
             <input type="submit" id="submit1" value="Login" />
-        
           </form>
           <form
             hidden
@@ -37,36 +46,76 @@
             method="post"
             action="http://localhost:3000/auth/register"
           >
-          <div class="hide2" hidden>
-            <div>
-                <input type="text" id="name" name="name" placeholder="Nimi"/>
+            <div class="hide2" hidden>
+              <div>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Nimi"
+                  required
+                  minlength="3"
+                />
+              </div>
+              <input
+                type="password"
+                id="passwd"
+                name="passwd"
+                placeholder="Salasana"
+                required
+                pattern="(?=.*[A-Z]).{8,}"
+              />
+              <div>
+                <input
+                  type="text"
+                  id="email"
+                  name="email"
+                  placeholder="Email"
+                  required
+                />
+              </div>
+              <input
+                type="text"
+                id="phone"
+                name="phone"
+                placeholder="Puhelin nro"
+                required
+              />
+              <div>
+                <input
+                  type="text"
+                  id="location"
+                  name="location"
+                  placeholder="Sijainti"
+                  required
+                />
+              </div>
+              <div id="profkuva">
+                <label class="button" for="image">Lisää Kuva</label>
+                <input
+                  type="file"
+                  name="image"
+                  accept="image/*"
+                  placeholder="Lisää Kuva"
+                  id="image"
+                  required
+                />
+              </div>
+              <div>
+                <input type="radio" name="roleid" value="2" required />
+                Yksityinen
+              </div>
+              <div>
+                <input type="radio" name="roleid" value="3" required /> Yhtiö
+              </div>
             </div>
-                <input type="password" id="passwd" name="passwd" placeholder="Salasana"/>
-            <div>
-                <input type="text" id="email" name="email" placeholder="Email"/>
-            </div>
-                <input type="text" id="phone" name="phone" placeholder="Puhelin nro"/>
-            <div>
-                <input type="text" id="location" name="location" placeholder="Sijainti"/>
-            </div>
-            <div id="profkuva">
-              <label class="button" for="image">Lisää Kuva</label>
-            <input type="file" name="image" accept="image/*" placeholder="Lisää Kuva" id="image">
-
-            </div>
-            <div>
-                <input type="radio" name="roleid" value="2"> Yksityinen
-            </div>
-            <div>
-                <input type="radio" name="roleid" value="3"> Yhtiö
-            </div>
-        </div>
-            <input type="submit" id="submit2" value="Register" hidden/>
-        
+            <input type="submit" id="submit2" value="Register" hidden />
           </form>
           <div>
             <button id="btn" onclick="hideFunction()">Rekisteröidy Nyt!</button>
-            <button hidden id="btn2" onclick="hideFunction2()">Kirjaudu Sisään!</button>
+            <button hidden id="btn2" onclick="hideFunction2()">
+              Kirjaudu Sisään!
+            </button>
           </div>
           <div>
             <img id="logo" src="../images/Ankkalogo3.png" alt="logo" />

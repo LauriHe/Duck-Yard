@@ -36,10 +36,7 @@ app.use(
   "/post",
   /*passport.authenticate("jwt", { session: false }),*/ postRoute
 );
-app.use(
-  "/user",
-  /*passport.authenticate("jwt", { session: false }),*/ userRoute
-);
+app.use("/user", passport.authenticate("jwt", { session: false }), userRoute);
 
 app.use(
   "/category",
