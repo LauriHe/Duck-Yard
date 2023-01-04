@@ -16,6 +16,7 @@ const passport = require("../utils/pass");
 router
   .route("/")
   .put(
+    upload.single("image"),
     body("name").isLength({ min: 3 }).escape(),
     body("passwd").matches(/(?=.*\p{Lu}).{8,}/u),
     body("email").isEmail(),
