@@ -140,7 +140,11 @@ const user_update_put = async (req, res, next) => {
     const salt = bcrypt.genSaltSync(10);
     const pwd = bcrypt.hashSync(req.body.passwd, salt);
 
-    console.log("user_update_put", req.body);
+    console.log("user_update_put", req.body, req.file);
+    const thumbnail = await sharp(req.file.path)
+      .resize(160, 160)
+      .png()
+      .toFile("./thumbnails/" + req.file.filename);
 
     const data = [
       req.body.name,
@@ -148,6 +152,7 @@ const user_update_put = async (req, res, next) => {
       req.body.email,
       req.body.phone,
       req.body.location,
+      req.file.filename,
       req.user.id,
     ];
 
@@ -157,10 +162,13 @@ const user_update_put = async (req, res, next) => {
       next(httpError("No user modified", 400));
       return;
     }
-
-    res.json({
-      message: "User modified",
-    });
+    if (thumbnail) {
+      res.json({
+        message: "Käyttäjä päivitetty",
+        user_id: result.insertId,
+      });
+    }
+    
   } catch (e) {
     console.error("user_put", e.message);
     next(httpError("Internal server error", 500));

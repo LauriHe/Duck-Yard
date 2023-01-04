@@ -13,7 +13,6 @@ const phoneInput = document.querySelector("#phone");
 const locationInput = document.querySelector("#location");
 
 // select existing html elements
-const modForm = document.querySelector("#formContainer");
 
 nameInput.addEventListener("invalid", (event) => {
   if (event.target.validity.valueMissing) {
@@ -52,14 +51,13 @@ locationInput.value = user.location;
 // submit modify form
 form.addEventListener("submit", async (evt) => {
   evt.preventDefault();
-  const data = serializeJson(form);
+  const data = new FormData(form);
   const fetchOptions1 = {
     method: "PUT",
     headers: {
       Authorization: "Bearer " + sessionStorage.getItem("token"),
-      "content-type": "application/json",
     },
-    body: JSON.stringify(data),
+    body: data,
   };
   const response1 = await fetch(url + "/user", fetchOptions1);
   const json1 = await response1.json();
@@ -71,7 +69,6 @@ form.addEventListener("submit", async (evt) => {
       Authorization: "Bearer " + sessionStorage.getItem("token"),
       "content-type": "application/json",
     },
-    body: JSON.stringify(data),
   };
   const response2 = await fetch(url + "/user", fetchOptions2);
   const json2 = await response2.json();
@@ -79,3 +76,6 @@ form.addEventListener("submit", async (evt) => {
 
   location.href = "profile.html";
 });
+
+
+
