@@ -1,9 +1,7 @@
 "use strict";
 const express = require("express");
 const {
-  user_list_get,
   user_get,
-  user_put,
   user_delete,
   check_token,
   user_likes_get,
@@ -15,7 +13,7 @@ const passport = require("../utils/pass");
 const multer = require("multer");
 
 const fileFilter = (req, file, cb) => {
-  console.log("fileFilter", file)
+  console.log("fileFilter", file);
   if (file.mimetype.includes("image")) {
     cb(null, true);
   } else {
@@ -33,7 +31,7 @@ router
     body("email").isEmail(),
     body("phone").isMobilePhone(),
     body("location").isLength({ min: 3 }).escape(),
-    body('image'),
+    body("image"),
     user_update_put
   )
   .get(user_get)
@@ -44,6 +42,3 @@ router.get("/token", check_token);
 router.route("/likes/:id").get(user_likes_get);
 
 module.exports = router;
-
-// Delete this one later
-// git hub

@@ -1,8 +1,5 @@
 "use strict";
 const express = require("express");
-const { body } = require("express-validator");
-const { httpError } = require("../utils/errors");
-const multer = require("multer");
 const router = express.Router();
 
 const {

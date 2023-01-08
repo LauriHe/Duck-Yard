@@ -1,5 +1,4 @@
 "use strict";
-// userController
 const {
   getUser,
   getAllUsers,
@@ -43,12 +42,9 @@ const user_get = async (req, res, next) => {
 
 const user_put = async (req, res, next) => {
   try {
-    // Extract the validation errors from a request.
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      // There are errors.
-      // Error messages can be returned in an array using `errors.array()`.
       console.error("user_post validation", errors.array());
       next(httpError("Invalid data", 400));
       return;
@@ -128,12 +124,9 @@ const user_likes_get = async (req, res, next) => {
 
 const user_update_put = async (req, res, next) => {
   try {
-    // Extract the validation errors from a request.
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      // There are errors.
-      // Error messages can be returned in an array using `errors.array()`.
       console.error("user_update_put", errors.array());
       next(httpError("Invalid data", 400));
       return;
@@ -170,7 +163,6 @@ const user_update_put = async (req, res, next) => {
         user_id: result.insertId,
       });
     }
-    
   } catch (e) {
     console.error("user_put", e.message);
     next(httpError("Internal server error", 500));

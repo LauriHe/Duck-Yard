@@ -6,7 +6,7 @@ const multer = require("multer");
 const passport = require("../utils/pass");
 
 const fileFilter = (req, file, cb) => {
-  console.log("fileFilter", file)
+  console.log("fileFilter", file);
   if (file.mimetype.includes("image")) {
     cb(null, true);
   } else {
@@ -26,7 +26,6 @@ const {
   post_comments_get,
   post_like,
   delete_like,
-  post_category_add,
 } = require("../controllers/postController");
 const router = express.Router();
 
@@ -41,9 +40,7 @@ router
     body("image"),
     body("description").isLength({ min: 1 }).escape(),
     post_post
-    
   );
-
 
 router
   .route("/:id")

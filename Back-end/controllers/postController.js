@@ -1,5 +1,4 @@
 "use strict";
-// postController
 const {
   getpost,
   getAllposts,
@@ -48,12 +47,9 @@ const post_get = async (req, res, next) => {
 
 const post_post = async (req, res, next) => {
   try {
-    // Extract the validation errors from a request.
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      // There are errors.
-      // Error messages can be returned in an array using `errors.array()`.
       console.error("user_post validation", errors.array());
       next(httpError("Invalid data", 400));
       return;
@@ -83,7 +79,6 @@ const post_post = async (req, res, next) => {
       return;
     }
     console.log(result);
-    //CHANGE BACK TO THUMBNAIL!!!!!!!!!!!!!!!!!!!!!!!!
     if (thumbnail) {
       res.json({
         message: "Ilmoitus lisätty",
@@ -100,8 +95,6 @@ const post_post = async (req, res, next) => {
 
 const post_category_add = async (id, category, kunto, next) => {
   try {
-    // Extract the validation errors from a request.
-
     const data = [id, category, id, kunto];
 
     const result = await addcategory(data, next);
@@ -118,12 +111,9 @@ const post_category_add = async (id, category, kunto, next) => {
 
 const post_put = async (req, res, next) => {
   try {
-    // Extract the validation errors from a request.
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      // There are errors.
-      // Error messages can be returned in an array using `errors.array()`.
       console.error("user_post validation", errors.array());
       next(httpError("Invalid data", 400));
       return;

@@ -8,7 +8,6 @@ const bcrypt = require("bcryptjs");
 const sharp = require("sharp");
 
 const login = (req, res, next) => {
-  // TODO: add passport authenticate
   passport.authenticate("local", { session: false }, (err, user, info) => {
     console.log("info: ", info);
     console.log("err1: ", err);
@@ -30,12 +29,9 @@ const login = (req, res, next) => {
 
 const user_post = async (req, res, next) => {
   try {
-    // Extract the validation errors from a request.
     const errors = validationResult(req);
     console.log(req.file, "dawda");
     if (!errors.isEmpty()) {
-      // There are errors.
-      // Error messages can be returned in an array using `errors.array()`.
       console.error("user_post validation", errors.array());
       next(httpError("Invalid data", 400));
       return;
