@@ -26,6 +26,18 @@ const getUser = async (userId) => {
   }
 };
 
+const getUserLimited = async (userId) => {
+  try {
+    const [rows] = await promisePool.execute(
+      `SELECT name, phone FROM duck_profile WHERE id = ?;`,
+      [userId]
+    );
+    return rows;
+  } catch (e) {
+    console.error("error", e.message);
+  }
+};
+
 const deleteUser = async (userId, user, next) => {
   try {
     let sql = "DELETE FROM duck_profile where id = ?";
@@ -43,17 +55,17 @@ const deleteUser = async (userId, user, next) => {
   }
 };
 
-
 const addUser = async (data, next) => {
   try {
-    
-    const [rows] = await promisePool.execute(`INSERT INTO duck_profile (name, passwd, email, phone, location, image, roleid) VALUES (?, ?, ?, ?, ?, ?, ?);`,
-        data);
-        console.log(rows , 'asdas');
+    const [rows] = await promisePool.execute(
+      `INSERT INTO duck_profile (name, passwd, email, phone, location, image, roleid) VALUES (?, ?, ?, ?, ?, ?, ?);`,
+      data
+    );
+    console.log(rows, "asdas");
     return rows;
   } catch (e) {
-    console.error('addUser', e.message);
-    next(httpError('Database error', 500));
+    console.error("addUser", e.message);
+    next(httpError("Database error", 500));
   }
 };
 
@@ -85,13 +97,16 @@ const getUserLikes = async (profileid) => {
 
 const updateUser = async (data, next) => {
   try {
-    const [rows] = await promisePool.execute(`UPDATE duck_profile set name = ?, passwd = ?, email = ?, phone = ?, location = ?, image = ?  WHERE id = ?;`, data);
+    const [rows] = await promisePool.execute(
+      `UPDATE duck_profile set name = ?, passwd = ?, email = ?, phone = ?, location = ?, image = ?  WHERE id = ?;`,
+      data
+    );
     return rows;
   } catch (e) {
-    console.error('updateUser', e.message);
-    next(('Database error', 500));
+    console.error("updateUser", e.message);
+    next(("Database error", 500));
   }
-}
+};
 
 module.exports = {
   getAllUsers,
@@ -101,4 +116,5 @@ module.exports = {
   getUserLogin,
   getUserLikes,
   updateUser,
+  getUserLimited,
 };

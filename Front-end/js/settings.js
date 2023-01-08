@@ -47,30 +47,32 @@ locationInput.value = user.location;
 
 // Upload form data to server
 async function submitForm(data) {
-  const fetchOptions1 = {
+  const fetchOptions = {
     method: "PUT",
     headers: {
       Authorization: "Bearer " + sessionStorage.getItem("token"),
     },
     body: data,
   };
-  const response1 = await fetch(url + "/user", fetchOptions1);
-  const json1 = await response1.json();
-  alert(json1.message);
+  const response = await fetch(url + "/user", fetchOptions);
+  const json = await response.json();
+  alert(json.message);
+  updateUser();
 }
 
 // Update user data
 async function updateUser() {
-  const fetchOptions2 = {
+  const fetchOptions = {
     method: "GET",
     headers: {
       Authorization: "Bearer " + sessionStorage.getItem("token"),
       "content-type": "application/json",
     },
   };
-  const response2 = await fetch(url + "/user", fetchOptions2);
-  const json2 = await response2.json();
-  sessionStorage.setItem("user", JSON.stringify(json2));
+  const response = await fetch(url + "/user", fetchOptions);
+  const json = await response.json();
+  sessionStorage.setItem("user", JSON.stringify(json));
+  location.href = "profile.html";
 }
 
 // Submit form
@@ -79,8 +81,4 @@ form.addEventListener("submit", async (evt) => {
 
   const data = new FormData(form);
   submitForm(data);
-
-  updateUser();
-
-  location.href = "profile.html";
 });

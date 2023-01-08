@@ -79,7 +79,18 @@ const getInfo = async () => {
   try {
     const response = await fetch(url + "/post/likes/" + post.id);
     const likes = await response.json();
-    const response2 = await fetch(url + "/user/" + post.profileid);
+
+    const fetchOptions = {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+        "content-type": "application/json",
+      },
+    };
+    const response2 = await fetch(
+      url + "/user/" + post.profileid,
+      fetchOptions
+    );
     const seller = await response2.json();
     renderPost(likes, seller);
   } catch (e) {

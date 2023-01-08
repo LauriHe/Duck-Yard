@@ -6,6 +6,7 @@ const {
   check_token,
   user_likes_get,
   user_update_put,
+  user_get_limited,
 } = require("../controllers/userController");
 const { body } = require("express-validator");
 const router = express.Router();
@@ -36,6 +37,8 @@ router
   )
   .get(user_get)
   .delete(user_delete);
+
+router.route("/:id").get(user_get_limited);
 
 router.get("/token", check_token);
 
