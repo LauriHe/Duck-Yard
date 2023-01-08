@@ -1,5 +1,6 @@
 "use strict";
 
+// Select existing html elements
 const categoryButton = document.querySelector("#categoryButton");
 const categoryMenu = document.querySelector("#categoryMenu");
 const categoryItem = document.querySelectorAll(".categoryItem");
@@ -8,9 +9,11 @@ const filterButton = document.querySelector("#filterButton");
 const filterMenu = document.querySelector("#filterMenu");
 const filterItem = document.querySelectorAll(".filterItem");
 
+// Variables to keep track of menu state
 let categoryMenuHidden = true;
 let filterMenuHidden = true;
 
+// Function to delay execution of code
 function delay(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
@@ -51,6 +54,7 @@ function hideFilters() {
   );
 }
 
+// Toggle category menu on click
 categoryButton.addEventListener("click", () => {
   if (categoryMenuHidden) {
     showCategories();
@@ -62,6 +66,7 @@ categoryButton.addEventListener("click", () => {
   }
 });
 
+// Toggle filter menu on click
 filterButton.addEventListener("click", () => {
   if (filterMenuHidden) {
     showFilters();

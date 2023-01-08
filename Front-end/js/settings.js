@@ -1,19 +1,16 @@
 "use strict";
-const url = "https://10.114.34.56/app"; // change url when uploading to server
+const url = "https://10.114.34.56/app";
 
-// select existing html elements
-
+// Select existing html elements
 let form = document.querySelector("form");
 let button = document.querySelector("#submit");
-
 const nameInput = document.querySelector("#name");
 const passwdInput = document.querySelector("#passwd");
 const emailInput = document.querySelector("#email");
 const phoneInput = document.querySelector("#phone");
 const locationInput = document.querySelector("#location");
 
-// select existing html elements
-
+// Check input validity before submitting
 nameInput.addEventListener("invalid", (event) => {
   if (event.target.validity.valueMissing) {
     event.target.setCustomValidity(
@@ -41,17 +38,15 @@ passwdInput.addEventListener("change", function (event) {
   event.target.setCustomValidity("");
 });
 
-// add existing cat data to form
+// Add existing user data to form
 const user = JSON.parse(sessionStorage.getItem("user"));
 nameInput.value = user.name;
 emailInput.value = user.email;
 phoneInput.value = user.phone;
 locationInput.value = user.location;
 
-// submit modify form
-form.addEventListener("submit", async (evt) => {
-  evt.preventDefault();
-  const data = new FormData(form);
+// Upload form data to server
+async function submitForm(data) {
   const fetchOptions1 = {
     method: "PUT",
     headers: {
@@ -62,7 +57,10 @@ form.addEventListener("submit", async (evt) => {
   const response1 = await fetch(url + "/user", fetchOptions1);
   const json1 = await response1.json();
   alert(json1.message);
+}
 
+// Update user data
+async function updateUser() {
   const fetchOptions2 = {
     method: "GET",
     headers: {
@@ -72,11 +70,17 @@ form.addEventListener("submit", async (evt) => {
   };
   const response2 = await fetch(url + "/user", fetchOptions2);
   const json2 = await response2.json();
-  console.log(json2);
   sessionStorage.setItem("user", JSON.stringify(json2));
+}
+
+// Submit form
+form.addEventListener("submit", async (evt) => {
+  evt.preventDefault();
+
+  const data = new FormData(form);
+  submitForm(data);
+
+  updateUser();
 
   location.href = "profile.html";
 });
-
-
-

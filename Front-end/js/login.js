@@ -1,8 +1,7 @@
 "use strict";
-const url = "https://10.114.34.56/app"; // change url when uploading to server
+const url = "https://10.114.34.56/app";
 
 // select existing html elements
-
 let form1 = document.querySelector(".signIn");
 let form2 = document.querySelector(".register");
 let button1 = document.querySelector("#btn");
@@ -13,10 +12,10 @@ let submit1 = document.querySelector("#submit1");
 let submit2 = document.querySelector("#submit2");
 let hide1 = document.querySelector(".hide1");
 let hide2 = document.querySelector(".hide2");
-
 const nameInput = document.querySelector("#name");
 const passwdInput = document.querySelector("#passwd");
 
+// Show register form
 function hideFunction() {
   hide2.removeAttribute("hidden", "");
   hide1.setAttribute("hidden", "");
@@ -26,6 +25,7 @@ function hideFunction() {
   button2.removeAttribute("hidden");
 }
 
+// Show login form
 function hideFunction2() {
   submit1.removeAttribute("hidden", "");
   submit2.setAttribute("hidden", "");
@@ -35,6 +35,7 @@ function hideFunction2() {
   hide1.removeAttribute("hidden", "");
 }
 
+// Check input validity before submitting
 nameInput.addEventListener("invalid", (event) => {
   if (event.target.validity.valueMissing) {
     event.target.setCustomValidity(
@@ -78,7 +79,7 @@ form1.addEventListener("submit", async (evt) => {
   if (!json.user) {
     alert(json.message);
   } else {
-    // save token
+    // save token to session storage
     sessionStorage.setItem("token", json.token);
     sessionStorage.setItem("user", JSON.stringify(json.user));
     location.href = "front.html";
@@ -99,4 +100,3 @@ form2.addEventListener("submit", async (evt) => {
   alert(json.message);
   window.location.href = "login.html";
 });
-

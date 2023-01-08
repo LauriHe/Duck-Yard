@@ -1,5 +1,6 @@
 "use strict";
 
+// Select existing html elements
 const body = document.querySelector("body");
 const container = document.querySelector(".container");
 const menuContainer = document.querySelector("#navMenuContainer");
@@ -7,26 +8,33 @@ const menuButton = document.querySelector("#navMenuButton");
 const menu = document.querySelector("#navMenu");
 const menuItems = document.querySelector("#navMenuItems");
 const icon = document.querySelector("#navMenuIcon");
+
+// Variables to keep track of menu state
 let MenuHidden = true;
 let mobile = true;
 
+// Get current page
 const htmlPath = window.location.pathname;
-const thmlPage = htmlPath.substring(htmlPath.lastIndexOf("/") + 1);
+const htmlPage = htmlPath.substring(htmlPath.lastIndexOf("/") + 1);
 
+// The window width where menu changes from mobile to desktop
 let desctopSize = 1198;
 
-if (thmlPage === "front.html") {
+// Chage the width depending on the current page
+if (htmlPage === "front.html") {
   desctopSize = 1198;
-} else if (thmlPage === "product.html") {
+} else if (htmlPage === "product.html") {
   desctopSize = 500;
 }
 
+// Determine if window is mobile or desktop sized
 if (window.innerWidth > desctopSize) {
   mobile = false;
   MenuHidden = false;
   menuItems.classList.remove("hidden");
 }
 
+// Function to delay execution of code
 function delay(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
@@ -40,6 +48,8 @@ function showMenu() {
   icon.classList.remove("fa-bars");
   icon.classList.add("fa-x");
   delay(100).then(() => menuItems.classList.toggle("hidden"));
+
+  // Categories and Filters need to be hidden only in front.html
   if (window.location.pathname === "/~lauhei/Front-end/html/front.html") {
     hideCategories();
     hideFilters();
@@ -68,6 +78,7 @@ function menuDesktop() {
   menuItems.classList.remove("hidden");
 }
 
+// Display desktop or mobile version of menu depending on window size
 body.onresize = () => {
   if (window.innerWidth > desctopSize) {
     menuItems.classList.remove("hidden");
@@ -84,6 +95,7 @@ body.onresize = () => {
   }
 };
 
+// Toggle menu on click
 menuButton.addEventListener("click", () => {
   if (MenuHidden) {
     showMenu();
@@ -94,10 +106,12 @@ menuButton.addEventListener("click", () => {
   }
 });
 
+// Select links whose functionality are dynamic
 const profileLink = document.querySelector("#profileLink");
 const addPostLink = document.querySelector("#addPostLink");
 const loginLogoutLink = document.querySelector("#loginLogoutLink");
 
+// Change links' functionality depending on if user is logged in or not
 if (sessionStorage.getItem("token") === null) {
   loginLogoutLink.innerHTML = "Login";
 } else {

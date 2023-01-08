@@ -1,18 +1,23 @@
 "use stirct";
 const url = "https://10.114.34.56/app";
+
+// Get post data from sessionStorage
 const post = JSON.parse(sessionStorage.getItem("post"));
 
 function renderPost(likes, seller) {
+  // Select existing html elements
   const imgContainer = document.querySelector(".productImgContainer");
   const mainProductInfo = document.querySelector(".mainProductInfo");
   const secondaryInfo = document.querySelector(".secondaryProductInfo");
   const additionalInfo = document.querySelector(".additionalProductInfo");
 
+  // Clear out placeholder data
   imgContainer.innerHTML = "";
   mainProductInfo.innerHTML = "";
   secondaryInfo.innerHTML = "";
   additionalInfo.innerHTML = "";
 
+  // Create html elements and add data from post
   const img = document.createElement("div");
   img.classList.add("productImg");
   const imgUrl = url + "/" + post.image;
@@ -53,6 +58,7 @@ function renderPost(likes, seller) {
   expandButton.type = "checkbox";
   expandButton.classList.add("expandButton");
 
+  // Add elements to page
   imgContainer.appendChild(img);
 
   mainProductInfo.appendChild(heading);
@@ -68,6 +74,7 @@ function renderPost(likes, seller) {
   additionalInfo.appendChild(expandButton);
 }
 
+// Get post info from server and render it
 const getInfo = async () => {
   try {
     const response = await fetch(url + "/post/likes/" + post.id);
