@@ -43,7 +43,7 @@ const user_get = async (req, res, next) => {
 
 const user_get_limited = async (req, res, next) => {
   try {
-    const user = await getUserLimited(req.body.id, next);
+    const user = await getUserLimited(req.params.id, next);
     if (user.length < 1) {
       next(httpError("No user found", 404));
       return;
