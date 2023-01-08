@@ -4,6 +4,11 @@ const url = "https://10.114.34.56/app";
 // Get post data from sessionStorage
 const post = JSON.parse(sessionStorage.getItem("post"));
 
+let loggedIn = false;
+if (!(sessionStorage.getItem("token") === null)) {
+  loggedIn = true;
+}
+
 function renderPost(likes, seller) {
   // Select existing html elements
   const imgContainer = document.querySelector(".productImgContainer");
@@ -36,16 +41,20 @@ function renderPost(likes, seller) {
   price.classList.add("mainText");
 
   const sellerName = document.createElement("p");
-  sellerName.innerHTML = `<i class="icon fa-solid fa-user"></i> ${seller.name}`;
-  sellerName.classList.add("secondaryText");
-
   const sellerPhone = document.createElement("p");
-  sellerPhone.innerHTML = `<i class="icon fa-solid fa-phone"></i> ${seller.phone}`;
-  sellerPhone.classList.add("secondaryText");
-
   const likeCount = document.createElement("p");
-  likeCount.innerHTML = `<i class="icon fa-solid fa-heart"></i> ${likes.numberOfLikes}`;
+  sellerName.classList.add("secondaryText");
+  sellerPhone.classList.add("secondaryText");
   likeCount.classList.add("secondaryText");
+
+  if (loggedIn) {
+    sellerName.innerHTML = `<i class="icon fa-solid fa-user"></i> ${seller.name}`;
+    sellerPhone.innerHTML = `<i class="icon fa-solid fa-phone"></i> ${seller.phone}`;
+    likeCount.innerHTML = `<i class="icon fa-solid fa-heart"></i> ${likes.numberOfLikes}`;
+  } else {
+    sellerName.innerHTML =
+      "Kirjaudu sisään nähdäksesi myyjän tiedot sekä tykkäykset";
+  }
 
   const descriptionTitle = document.createElement("h2");
   descriptionTitle.innerHTML = "Lisätietoja";
@@ -77,22 +86,26 @@ function renderPost(likes, seller) {
 // Get post info from server and render it
 const getInfo = async () => {
   try {
-    const response = await fetch(url + "/post/likes/" + post.id);
-    const likes = await response.json();
+    if (loggedIn) {
+      const response = await fetch(url + "/post/likes/" + post.id);
+      const likes = await response.json();
 
-    const fetchOptions = {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer " + sessionStorage.getItem("token"),
-        "content-type": "application/json",
-      },
-    };
-    const response2 = await fetch(
-      url + "/user/" + post.profileid,
-      fetchOptions
-    );
-    const seller = await response2.json();
-    renderPost(likes, seller);
+      const fetchOptions = {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + sessionStorage.getItem("token"),
+          "content-type": "application/json",
+        },
+      };
+      const response2 = await fetch(
+        url + "/user/" + post.profileid,
+        fetchOptions
+      );
+      const seller = await response2.json();
+      renderPost(likes, seller);
+    } else {
+      renderPost(null, null);
+    }
   } catch (e) {
     console.log(e.message);
   }
