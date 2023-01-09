@@ -2,16 +2,16 @@
 const url = "https://10.114.34.56/app";
 
 // select existing html elements
-let form1 = document.querySelector(".signIn");
-let form2 = document.querySelector(".register");
-let button1 = document.querySelector("#btn");
-let button2 = document.querySelector("#btn2");
-let input1 = document.querySelector("#username");
-let input2 = document.querySelector("#password");
-let submit1 = document.querySelector("#submit1");
-let submit2 = document.querySelector("#submit2");
-let hide1 = document.querySelector(".hide1");
-let hide2 = document.querySelector(".hide2");
+const form1 = document.querySelector(".signIn");
+const form2 = document.querySelector(".register");
+const button1 = document.querySelector("#btn");
+const button2 = document.querySelector("#btn2");
+const input1 = document.querySelector("#username");
+const input2 = document.querySelector("#password");
+const submit1 = document.querySelector("#submit1");
+const submit2 = document.querySelector("#submit2");
+const hide1 = document.querySelector(".hide1");
+const hide2 = document.querySelector(".hide2");
 const nameInput = document.querySelector("#name");
 const passwdInput = document.querySelector("#passwd");
 

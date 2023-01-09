@@ -2,8 +2,8 @@
 const url = "https://10.114.34.56/app";
 
 // Select existing html elements
-let form = document.querySelector("form");
-let button = document.querySelector("#submit");
+const form = document.querySelector("form");
+const button = document.querySelector("#submit");
 const nameInput = document.querySelector("#name");
 const passwdInput = document.querySelector("#passwd");
 const emailInput = document.querySelector("#email");
